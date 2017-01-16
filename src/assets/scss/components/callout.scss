@@ -1,0 +1,22 @@
+.callout {
+    margin: 0;
+    h3.title {
+        margin-top: 0;
+        margin-bottom: .55rem;
+    }
+    p {
+        margin-bottom: 0;
+    }
+    &.warning {
+        border-left: 3px solid map-get($foundation-palette, warning);
+    }
+    &.primary {
+        border-left: 3px solid map-get($foundation-palette, primary);
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    &.alert {
+        border-left: 3px solid map-get($foundation-palette, alert);
+        margin-bottom: 1rem;
+    }
+}

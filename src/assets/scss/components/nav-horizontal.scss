@@ -1,0 +1,23 @@
+.title-bar {
+  z-index: 100;
+  padding: 0;
+}
+
+ul.menu {
+  background: #262626;
+  li {
+    border-bottom: 4px solid transparent;
+    a {
+      color: $light-gray;
+      padding-top: 1.25rem;
+      padding-bottom: 1.05rem;
+    }
+    &.active {
+      border-bottom: 4px solid map-get($foundation-palette, primary);
+    }
+  }
+  li:hover {
+    background: rgba($white, 0.25);
+    transition: background .2s ease-in;
+  }
+}

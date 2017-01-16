@@ -1,0 +1,25 @@
+footer {
+    margin-left: $desktop-cont-margin;
+    padding: 1.75rem 0;
+    border-top: 1px solid $light-gray;
+    background: $black;
+    ul.footer {
+        margin-left: 0;
+        margin-bottom: 0;
+        li {
+            display: inline;
+            text-decoration: none;
+            margin-right: 1rem;
+            font-size: .9rem;
+        }
+         :last-child {
+            margin-right: 0;
+        }
+        a {
+            color: rgba(255, 255, 255, 0.4);
+            &:hover {
+                color: #999;
+            }
+        }
+    }
+}
