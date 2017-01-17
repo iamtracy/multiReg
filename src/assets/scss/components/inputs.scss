@@ -1,3 +1,9 @@
+form {
+  background: #fafafa;
+  padding: 2rem 2.5rem 0;
+  border: 1px solid #ddd;
+}
+
 .customCheckbox {
   position: absolute;
   width: 20px;
@@ -54,4 +60,11 @@ input[name="ShowKey"] {
 
 label {
   color: $medium-gray;
+  font-size: 1.2rem;
+  padding-left: 0;
+}
+
+.input-group-label {
+  background: transparent;
+  border: none;
 }

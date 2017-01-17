@@ -1,25 +1,24 @@
-.card-section {
-  .card {
-    color: $dark-gray;
-    .select-event {
-      margin-left: 2rem;
-    }
-    .card-section div {
-      margin: 7px;
-      text-align: center;
-    }
-    i {
-      color: map-get($foundation-palette, primary);
-      margin-left: .5rem;
-      font-size: 1rem;
-    }
-    h5 {
-      margin-top: .6rem;
-      font-weight: $global-weight-bold;
-      text-align: center;
-    }
-    img {
-      width: 100%;
-    }
+.card {
+  color: $dark-gray;
+  margin-bottom: 2.5rem;
+  .select-event {
+    margin-left: 2rem;
+  }
+  .card-section div {
+    margin: 7px;
+    text-align: center;
+  }
+  i {
+    color: map-get($foundation-palette, primary);
+    margin-left: .5rem;
+    font-size: 1rem;
+  }
+  h5 {
+    margin-top: .6rem;
+    font-weight: $global-weight-bold;
+    text-align: center;
+  }
+  img {
+    width: 100%;
   }
 }

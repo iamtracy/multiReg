@@ -43,10 +43,10 @@
 // 1. Global
 // ---------
 $global-font-size: 90%;
-$global-width: rem-calc(1200);
+$global-width: rem-calc(1100);
 $global-lineheight: 1.5;
-$foundation-palette: ( primary: #0e9948, secondary: #ccc, success: #3adb76, warning: #ffae00, alert: #ec5840);
-$light-gray: #ccc;
+$foundation-palette: ( primary: #3ca0d9, secondary: #ccc, success: #3adb76, warning: #ffae00, alert: #ec5840);
+$light-gray: #ddd;
 $medium-gray: #555;
 $dark-gray: #444;
 $black: #262626;
@@ -187,7 +187,7 @@ $breadcrumbs-item-uppercase: true;
 $breadcrumbs-item-slash: true;
 // 11. Button
 // ----------
-$button-padding: 0.85em 1em;
+$button-padding: 1.15rem 1.2rem;
 $button-margin: 0 0 $global-margin 0;
 $button-fill: solid;
 $button-background: $primary-color;
@@ -252,7 +252,7 @@ $flexvideo-ratio: 4 by 3;
 $flexvideo-ratio-widescreen: 16 by 9;
 // 19. Forms
 // ---------
-$fieldset-border: 1px solid $medium-gray;
+$fieldset-border: 1px solid $light-gray;
 $fieldset-padding: rem-calc(20);
 $fieldset-margin: rem-calc(18 0);
 $legend-padding: rem-calc(0 3);
@@ -278,9 +278,9 @@ $input-font-size: rem-calc(16);
 $input-background: $white;
 $input-background-focus: $white;
 $input-background-disabled: $light-gray;
-$input-border: 1px solid $medium-gray;
-$input-border-focus: 1px solid $dark-gray;
-$input-shadow: inset 0 1px 2px rgba($black, 0.1);
+$input-border: 1px solid darken($light-gray, 5%);
+$input-border-focus: 1px solid $light-gray;
+$input-shadow: inset 0 1px 2px rgba($medium-gray, 0.1);
 $input-shadow-focus: 0 0 5px $medium-gray;
 $input-cursor-disabled: default;
 $input-transition: box-shadow 0.5s,
@@ -290,8 +290,8 @@ $input-radius: $global-radius;
 // 20. Label
 // ---------
 $label-background: $light-gray;
-$label-color: foreground($label-background);
-$label-font-size: 0.8rem;
+$label-color: $medium-gray;
+$label-font-size: 2rem;
 $label-padding: 0.33333rem 0.5rem;
 $label-radius: $global-radius;
 // 21. Media Object
