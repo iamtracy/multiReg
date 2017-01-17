@@ -25,10 +25,15 @@ form {
   cursor: pointer;
 }
 
-input[name="ShowKey"] {
+input[name="ShowKey"],
+input[name="selectAll"] {
   position: absolute;
   z-index: -999;
   opacity: 0;
+}
+
+.select-event {
+  margin-left: 2rem;
 }
 
 .customCheckboxTick .customCheckbox:after {
