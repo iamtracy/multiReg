@@ -1,17 +1,8 @@
 section {
-    margin: 3.25rem 0;
-    article {
-        .main-content-img {
-            margin-left: 1rem;
-            margin-bottom: .5rem;
-        }
-        margin-bottom: 2.7rem;
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-}
-
-.main-content-XPOCAST {
-    margin-bottom: 2rem;
+  margin: 3.25rem 0;
+  &.card-section,
+  &.form-section {
+    width: 50%;
+    float: left;
+  }
 }

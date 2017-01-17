@@ -51,3 +51,7 @@ input[name="ShowKey"] {
 .customRadioControl input:checked~.customRadio {
   background: #f0f0f0;
 }
+
+label {
+  color: $medium-gray;
+}
