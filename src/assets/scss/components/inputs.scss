@@ -1,0 +1,53 @@
+.customCheckbox {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 1px solid #ccc;
+  -webkit-transition: background 0.5s;
+  transition: background 0.5s;
+}
+
+.ShowCheckbox {
+  margin: 0 0 15px 0;
+}
+
+#ShowList label {
+  width: 100%;
+  height: 30px;
+  margin: 0 0 0 2rem;
+  cursor: pointer;
+}
+
+input[name="ShowKey"] {
+  position: absolute;
+  z-index: -999;
+  opacity: 0;
+}
+
+.customCheckboxTick .customCheckbox:after {
+  top: 4px;
+  left: 8px;
+  width: 3px;
+  height: 8px;
+  transform: rotate(45deg);
+  border: solid #666;
+  border-width: 0 2px 2px 0;
+}
+
+.customCheckbox:after,
+.customRadio:after {
+  position: absolute;
+  display: none;
+  content: '';
+}
+
+.customCheckboxControl input:checked~.customCheckbox:after,
+.customRadioControl input:checked~.customRadio:after {
+  display: block;
+}
+
+.customCheckboxControl input:checked~.customCheckbox,
+.customRadioControl input:checked~.customRadio {
+  background: #f0f0f0;
+}

@@ -1,43 +1,22 @@
-.card {
-  color: $dark-gray;
-  .card-section div {
-    margin: 7px;
-    text-align: center;
-  }
-  i {
-    color: map-get($foundation-palette, primary);
-    margin-left: .5rem;
-    font-size: 1rem;
-  }
-  h5 {
-    margin-top: .6rem;
-    font-weight: $global-weight-bold;
-    text-align: center;
-  }
-  p {
-    text-align: center;
-  }
-  img {
-    width: 100%;
-    border: 1px solid $light-gray;
-  }
-}
-
-.gallery-card-container {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 5px;
-  .column {
-    position: relative;
-    margin-bottom: 48px;
-  }
-  .play-video {
-    position: absolute;
-    top: 100%;
-    width: 90.5%;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
+.card-section {
+  .card {
+    color: $dark-gray;
+    .card-section div {
+      margin: 7px;
+      text-align: center;
+    }
+    i {
+      color: map-get($foundation-palette, primary);
+      margin-left: .5rem;
+      font-size: 1rem;
+    }
+    h5 {
+      margin-top: .6rem;
+      font-weight: $global-weight-bold;
+      text-align: center;
+    }
+    img {
+      width: 100%;
+    }
   }
 }
