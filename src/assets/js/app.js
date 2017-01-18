@@ -5,7 +5,7 @@
   let data = fakeAjax();
 
   let showArray = [];
-  data.filter(item => item.ShowTypeDesc === showDesc).forEach((item, index) => {
+  data.filter(item => item.ShowTypeDesc === showDesc).forEach(item => {
     showArray.push({
       live: item.OpenNow === 1 ? true : false,
       upcoming: item.OpenNow === 0 ? true : false,
@@ -13,7 +13,7 @@
       isSelected: false,
       html: `<div class="column">
         <div class="card">
-          <div class="ShowCheckbox" ${index}>
+          <div class="ShowCheckbox">
             <label class="customCheckboxControl customCheckboxTick">
               <input type="checkbox" name="ShowKey" data-showkey="${item.ShowKey}" data-packagekey="${item.ShowPackageKey}">
               <div class="customCheckbox"></div>
