@@ -3,6 +3,7 @@
   let showDesc = searchSettings.ShowTypeDesc;
   let formFields = formSettings.formFields.concat(formSettings.udfFields).concat(formSettings.submit);
 
+  let data = fakeAjax();
 
   data.filter(item => item.ShowTypeDesc === showDesc).forEach(item => buildCard(item));
 
