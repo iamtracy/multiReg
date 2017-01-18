@@ -2,7 +2,6 @@
   let companyKey = searchSettings.CompanyKey;
   let showDesc = searchSettings.ShowTypeDesc;
   let formFields = formSettings.formFields.concat(formSettings.udfFields).concat(formSettings.submit);
-
   let data = fakeAjax();
 
   data.filter(item => item.ShowTypeDesc === showDesc).forEach(item => buildCard(item));
@@ -10,29 +9,29 @@
   function buildCard(item) {
     $('#cards').append(
       `<div class="column">
-      <div class="card">
-        <div class="ShowCheckbox">
-          <label class="customCheckboxControl customCheckboxTick">
-            <input type="checkbox" name="ShowKey" data-showkey="${item.ShowKey}" data-packagekey="${item.ShowPackageKey}">
-            <div class="customCheckbox"></div>
-            <span class="select-event">Select this event</span>
-          </label>
+        <div class="card">
+          <div class="ShowCheckbox">
+            <label class="customCheckboxControl customCheckboxTick">
+              <input type="checkbox" name="ShowKey" data-showkey="${item.ShowKey}" data-packagekey="${item.ShowPackageKey}">
+              <div class="customCheckbox"></div>
+              <span class="select-event">Select this event</span>
+            </label>
+          </div>
+          <img src="${item.ShowImage}" alt="">
+          <div class="card-section">
+            <h4>${item.ShowTypeDesc}</h4>
+            <p>${item.Comments}</p>
+          </div>
         </div>
-        <img src="${item.ShowImage}" alt="">
-        <div class="card-section">
-          <h4>${item.ShowTypeDesc}</h4>
-          <p>${item.Comments}</p>
-        </div>
-      </div>
-    </div>`
+      </div>`
     );
   }
 
   let udfFielfd = [];
 
-  formFields.forEach((item, index) => buildForm(item, index));
+  formFields.forEach(item => buildForm(item));
 
-  function buildForm(item, index) {
+  function buildForm(item) {
     let form = $('#formFields');
     if (item.id.toLowerCase() === 'registerbtn') {
       form.append(

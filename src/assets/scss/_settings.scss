@@ -67,10 +67,6 @@ $global-radius: 0;
 $global-text-direction: ltr;
 $global-flexbox: true;
 $print-transparent-backgrounds: true;
-// Custom Globals
-//Fixed sidebar
-$desktop-cont-margin: 250px;
-$sidebar-width: $desktop-cont-margin;
 @include add-foundation-colors;
 // 2. Breakpoints
 // --------------
