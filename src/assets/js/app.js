@@ -7,7 +7,7 @@
   data.filter(item => item.ShowTypeDesc === showDesc).forEach(item => buildCard(item));
 
   function buildCard(item) {
-    $('#cards').append(
+    $('#cardsLive').append(
       `<div class="column">
         <div class="card">
           <div class="ShowCheckbox">
@@ -19,7 +19,7 @@
           </div>
           <img src="${item.ShowImage}" alt="">
           <div class="card-section">
-            <h4>${item.ShowTypeDesc}</h4>
+            <h4>${item.ShowTitle}</h4>
             <p>${item.Comments}</p>
           </div>
         </div>
