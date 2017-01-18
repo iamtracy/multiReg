@@ -1,3 +1,10 @@
+function searchSettings() {
+  return {
+    CompanyKey: 882,
+    ShowTypeDesc: 'NutraIngredients'
+  }
+}
+
 function formSettings() {
   return {
     formFields: [
@@ -39,11 +46,12 @@ function formSettings() {
           { value: 'Project Manager' },
           { value: 'Event Producer' },
           { value: 'Creative Developer' },
+          { value: 'Webcast Engineer' },
         ]
       },
       {
         labelText: 'UDF Three',
-        fieldType: { inputElem: 'input', type: 'text' },
+        fieldType: { inputElem: 'input', type: 'udf' },
         name: 'UDF1026',
         id: '',
         required: '1'
@@ -52,12 +60,5 @@ function formSettings() {
     submit: [
       { labelText: 'REGISTER', fieldType: { inputElem: 'a', type: 'button' }, id: 'RegisterBTN', required: 'XR' }
     ]
-  }
-}
-
-function searchSettings() {
-  return {
-    CompanyKey: 882,
-    ShowTypeDesc: 'NutraIngredients'
   }
 }

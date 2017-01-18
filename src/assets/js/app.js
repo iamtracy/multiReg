@@ -34,7 +34,6 @@
 
   function buildForm(item, index) {
     let form = $('#formFields');
-    console.log(item.id);
     if (item.id.toLowerCase() === 'registerbtn') {
       form.append(
         `<div class="small-12">
@@ -145,7 +144,7 @@
     let formData = $('#MainForm').serialize();
     let cUrl = `Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1550&CompanyKey=${companyKey}&${formData}`;
     console.log(cUrl, selected);
-    selected.forEach(item => console.log(item));
+    selected.forEach(item => item);
   });
 })(formSettings(), searchSettings());
 
