@@ -54,14 +54,14 @@ function fakeAjax() {
     "ExternalID": "",
     "FromDateTime": "2016-01-31 17:45:00.000",
     "ToDateTime": "2017-01-30 18:45:00.000",
-    "OpenNow": 1,
+    "OpenNow": 0,
     "Comments": "<p>This webinar will inform about the Disinfection management in pharmaceutical cleanrooms. You will learn about regulations related to cleaning and disinfection, the selection of detergents and disinfectants and how disinfectants can kill microorganisms. Furthermore, the webinar will inform about the rotation and qualification of disinfectants. In the second part of the webinar you will learn about the choice of culture media and suitable neutralizers for the sampling of sanitized surfaces.</p><p> <br /><strong>Company summary:</strong> <br /> As part of the global Life Science business of Merck KGaA, Darmstadt Germany, EMD Millipore offers a broad range of innovative products, services and business relationships that enable our customers' success in research, development and production of biotech and pharmaceutical drug therapies.</p>",
     "ShowImage": "https://vts.inxpo.com/cfr/images/VTS/WCW/WebcastLogoLight.png",
     "ShowPackageKey": 56913,
     "IsRegistrationOpen": 0,
     "WCSpeakerList": "Tim Sandle^https://content.inxpo.com/FileLibrary/882/6/Tim_Sandle_100x100.jpg^<p><em>Bio Products Laboratory (U.K.), Head of Microbiology </em></p>\r\n<p>Dr. Sandle serves on several national and international committees relating to pharmaceutical microbiology and cleanroom contamination control. He is a committee member of the Pharmaceutical Microbiology Interest Group (Pharmig) and a member of several editorials boards for scientific journals.</p>||Anne-Grit Klees^https://content.inxpo.com/FileLibrary/882/6/Annie.jpg^<p>Global Product Manager<br />Merck Millipore (Merck Millipore is a business of Merck KGaA, Darmstadt, Germany)<br /><br />Anne-Grit Klees is Global Product Manager at Merck Millipore. She is responsible for culture media for use in environmental monitoring of air and surfaces. Anne holds a Ph. D. in Microbiology from Phillipps-University Marburg, Germany.</p>||",
     "TZAbbrev": "CST",
-    "IsOnDemand": 1
+    "IsOnDemand": 0
   }, {
     "CompanyKey": 882,
     "ShowKey": 30688,
@@ -166,7 +166,7 @@ function fakeAjax() {
     "IsRegistrationOpen": 1,
     "WCSpeakerList": "John Travis^https://content.inxpo.com/FileLibrary/882/6/John_Travis_Cropped.jpg^<p class=\"show\"><em>Senior Research Scientist</em></p>\r\n<p class=\"show\"><strong>NSF International</strong></p>\r\n<p class=\"hide\"><br />John Travis has more than 20 years of experience as an analytical chemist. As Senior Research Scientist at NSF International, Travis analyzes hundreds of dietary supplement products each year for contaminants, emerging drugs and harmful compounds.</p> Food Science from the University of Wisconsin and a Masters of Business and Administration.</p>||Benjamin Koepsell^https://content.inxpo.com/FileLibrary/882/6/Benjamin_Koepsell_Cropped.jpg^<p class=\"show\">Moderator</p>\r\n<p class=\"show\"><em>Associate Marketing Manager</em></p>\r\n<p class=\"show\"><strong>NSF Health Services</strong></p>\r\n<p class=\"hide\"><br />Benjamin Koepsell works as Associate Marketing Manager for the NSF Health Sciences division based in Germany and handles the European market, especially NSF’s nutritional and dietary supplements programs.</p>||",
     "TZAbbrev": "CET",
-    "IsOnDemand": 0
+    "IsOnDemand": 1
   }, {
     "CompanyKey": 882,
     "ShowKey": 30170,

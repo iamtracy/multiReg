@@ -23,40 +23,37 @@ function formSettings() {
       { labelText: 'Password', fieldType: { inputElem: 'input', type: 'text' }, id: 'Password', required: 'XR' }
     ],
     udfFields: [{
-        labelText: 'Employees',
-        fieldType: { inputElem: 'select', type: 'udf' },
-        name: 'UDF1024',
-        required: '1',
-        id: '',
-        list: [
-          { value: '(select)' },
-          { value: '1-50' },
-          { value: '51-100' },
-          { value: '101-200' },
-        ]
-      },
-      {
-        labelText: 'Job Role',
-        fieldType: { inputElem: 'select', type: 'udf' },
-        name: 'UDF1025',
-        id: '',
-        required: '1',
-        list: [
-          { value: '(select)' },
-          { value: 'Project Manager' },
-          { value: 'Event Producer' },
-          { value: 'Creative Developer' },
-          { value: 'Webcast Engineer' },
-        ]
-      },
-      {
-        labelText: 'UDF Three',
-        fieldType: { inputElem: 'input', type: 'udf' },
-        name: 'UDF1026',
-        id: '',
-        required: '1'
-      },
-    ],
+      labelText: 'Employees',
+      fieldType: { inputElem: 'select', type: 'udf' },
+      name: 'UDF1024',
+      required: '1',
+      id: '',
+      list: [
+        { value: '(select)' },
+        { value: '1-50' },
+        { value: '51-100' },
+        { value: '101-200' },
+      ]
+    }, {
+      labelText: 'Job Role',
+      fieldType: { inputElem: 'select', type: 'udf' },
+      name: 'UDF1025',
+      id: '',
+      required: '1',
+      list: [
+        { value: '(select)' },
+        { value: 'Project Manager' },
+        { value: 'Event Producer' },
+        { value: 'Creative Developer' },
+        { value: 'Webcast Engineer' },
+      ]
+    }, {
+      labelText: 'UDF Three',
+      fieldType: { inputElem: 'input', type: 'udf' },
+      name: 'UDF1026',
+      id: '',
+      required: '1'
+    }, ],
     submit: [
       { labelText: 'REGISTER', fieldType: { inputElem: 'a', type: 'button' }, id: 'RegisterBTN', required: 'XR' }
     ]

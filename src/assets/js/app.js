@@ -4,13 +4,16 @@
   let formFields = formSettings.formFields.concat(formSettings.udfFields).concat(formSettings.submit);
   let data = fakeAjax();
 
-  data.filter(item => item.ShowTypeDesc === showDesc).forEach(item => buildCard(item));
-
-  function buildCard(item) {
-    $('#cardsLive').append(
-      `<div class="column">
+  let showArray = [];
+  data.filter(item => item.ShowTypeDesc === showDesc).forEach((item, index) => {
+    showArray.push({
+      live: item.OpenNow === 1 ? true : false,
+      upcoming: item.OpenNow === 0 ? true : false,
+      onDemand: item.IsOnDemand === 1 ? true : false,
+      isSelected: false,
+      html: `<div class="column">
         <div class="card">
-          <div class="ShowCheckbox">
+          <div class="ShowCheckbox" ${index}>
             <label class="customCheckboxControl customCheckboxTick">
               <input type="checkbox" name="ShowKey" data-showkey="${item.ShowKey}" data-packagekey="${item.ShowPackageKey}">
               <div class="customCheckbox"></div>
@@ -24,8 +27,29 @@
           </div>
         </div>
       </div>`
-    );
-  }
+    });
+    return showArray;
+  });
+
+  console.log(showArray);
+  showArray.forEach(item => {
+    if (item.live) {
+      $('[data-live]').append(
+        item.html
+      );
+    }
+    if (item.upcoming) {
+      $('[data-upcoming]').append(
+        item.html
+      );
+    }
+    if (item.onDemand) {
+      $('[data-ondemand]').append(
+        item.html
+      );
+    }
+  });
+
 
   let udfFielfd = [];
 
@@ -135,6 +159,7 @@
         showPackageKey: item.dataset.packagekey
       });
     });
+    console.log(selected);
     return selected;
   };
 
