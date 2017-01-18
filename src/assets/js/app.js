@@ -2,6 +2,8 @@
   let companyKey = searchSettings.CompanyKey;
   let showDesc = searchSettings.ShowTypeDesc;
   let formFields = formSettings.formFields.concat(formSettings.udfFields).concat(formSettings.submit);
+
+
   data.filter(item => item.ShowTypeDesc === showDesc).forEach(item => buildCard(item));
 
   function buildCard(item) {
@@ -27,11 +29,12 @@
 
   let udfFielfd = [];
 
-  formFields.forEach(item => buildForm(item));
+  formFields.forEach((item, index) => buildForm(item, index));
 
-  function buildForm(item) {
+  function buildForm(item, index) {
     let form = $('#formFields');
-    if (item.id === 'RegisterBTN') {
+    console.log(item.fieldType);
+    if (item.id.toLowerCase() === 'registerbtn') {
       form.append(
         `<div class="small-12">
         <fieldset>
@@ -45,10 +48,35 @@
             fieldname="${item.labelText}"
           >
           ${item.labelText}
-          </a>
+          </${item.fieldType.inputElem}>
           </div>
         </fieldset>
       </div>`);
+    } else if (item.fieldType.inputElem.toLowerCase() === 'select' && item.fieldType.type.toLowerCase() === 'udf') {
+      form.append(
+        `<div class="small-12">
+        <fieldset>
+        <div class="input-group">
+          <label for="right-label" class="small-4">${item.labelText}</label>
+          <${item.fieldType.inputElem} 
+            id="${item.id}"
+            class="small-4" 
+            name="${item.id}"
+            required=${item.required}  
+            fieldname="${item.labelText}"
+          >
+          </${item.fieldType.inputElem}>
+          </div>
+        </fieldset>
+      </div>`);
+      (function() {
+        let optionsBuilder = $(`[fieldname="${item.labelText}"]`);
+        item.list.forEach(item => {
+          optionsBuilder.append(
+            `<option value="${item.value}">${item.value}</option>`
+          )
+        });
+      }())
     } else {
       form.append(
         `<div class="small-12">
@@ -67,6 +95,14 @@
     </div>`);
     }
   }
+  //<option value="${item.udfFields.options[0]}">Customer/Delegate</option>
+  //<option value="${item.list[0].value}">${item.list[0].value}</option>
+  //<option></option>
+  // <option data - options > < /option> +
+  //   item.list.forEach(item => {
+  //     console.log(item.value, $('[data-options]'));
+  //     $('[data-options]').innerHTML += item.value;
+  //   }) +
 
   $(document).ready(function() {
     appendStates();

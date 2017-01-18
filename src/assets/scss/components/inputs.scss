@@ -4,6 +4,10 @@ form {
   border: 1px solid #ddd;
 }
 
+input {
+  resize: none;
+}
+
 .customCheckbox {
   position: absolute;
   width: 20px;
