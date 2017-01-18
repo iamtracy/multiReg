@@ -33,7 +33,7 @@
 
   function buildForm(item, index) {
     let form = $('#formFields');
-    console.log(item.fieldType);
+    console.log(item.id);
     if (item.id.toLowerCase() === 'registerbtn') {
       form.append(
         `<div class="small-12">
@@ -52,16 +52,15 @@
           </div>
         </fieldset>
       </div>`);
-    } else if (item.fieldType.inputElem.toLowerCase() === 'select' && item.fieldType.type.toLowerCase() === 'udf') {
+    } else if (item.fieldType.inputElem.toLowerCase() === 'select' && item.fieldType.type.toLowerCase().startsWith('udf')) {
       form.append(
         `<div class="small-12">
         <fieldset>
         <div class="input-group">
           <label for="right-label" class="small-4">${item.labelText}</label>
-          <${item.fieldType.inputElem} 
-            id="${item.id}"
+          <${item.fieldType.inputElem}
             class="small-4" 
-            name="${item.id}"
+            name="${item.name}"
             required=${item.required}  
             fieldname="${item.labelText}"
           >
@@ -95,14 +94,6 @@
     </div>`);
     }
   }
-  //<option value="${item.udfFields.options[0]}">Customer/Delegate</option>
-  //<option value="${item.list[0].value}">${item.list[0].value}</option>
-  //<option></option>
-  // <option data - options > < /option> +
-  //   item.list.forEach(item => {
-  //     console.log(item.value, $('[data-options]'));
-  //     $('[data-options]').innerHTML += item.value;
-  //   }) +
 
   $(document).ready(function() {
     appendStates();

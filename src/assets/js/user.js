@@ -19,26 +19,33 @@ function formSettings() {
         labelText: 'Employees',
         fieldType: { inputElem: 'select', type: 'udf' },
         name: 'UDF1024',
-        id: 'udf',
         required: '1',
+        id: '',
         list: [
+          { value: '(select)' },
           { value: '1-50' },
           { value: '51-100' },
           { value: '101-200' },
         ]
       },
       {
-        labelText: 'UDF Two',
-        fieldType: { inputElem: 'input', type: 'text' },
+        labelText: 'Job Role',
+        fieldType: { inputElem: 'select', type: 'udf' },
         name: 'UDF1025',
-        id: 'udf',
-        required: '1'
+        id: '',
+        required: '1',
+        list: [
+          { value: '(select)' },
+          { value: 'Project Manager' },
+          { value: 'Event Producer' },
+          { value: 'Creative Developer' },
+        ]
       },
       {
         labelText: 'UDF Three',
         fieldType: { inputElem: 'input', type: 'text' },
         name: 'UDF1026',
-        id: 'udf',
+        id: '',
         required: '1'
       },
     ],

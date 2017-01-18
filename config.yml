@@ -59,5 +59,6 @@ PATHS:
     # Paths to your own project code are here
     - "src/assets/js/!(app).js"
     - "src/assets/js/app.js"
+    - "src/assets/js/polyfills.js"
     - "src/assets/js/mock.js"
     - "src/assets/js/user.js"
