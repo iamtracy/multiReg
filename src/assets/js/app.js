@@ -59,7 +59,7 @@
         <div class="input-group">
           <label for="right-label" class="small-4">${item.labelText}</label>
           <${item.fieldType.inputElem}
-            class="small-4" 
+            class="small-7" 
             name="${item.name}"
             required=${item.required}  
             fieldname="${item.labelText}"
