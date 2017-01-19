@@ -3,14 +3,14 @@
   const showDesc = searchSettings.ShowTypeDesc;
   const formFields = formSettings.formFields.concat(formSettings.udfFields).concat(formSettings.submit);
   const results = fakeAjax();
-  let html = $('#cards')[0];
-  let hidden = $('#hidden');
-  let showArray = [];
+  const html = $('#cards')[0];
+  const hidden = $('#hidden');
+  const showArray = [];
 
-  const initData = function(data, array) {
+  const initData = (data, array) => {
     data.filter(item => item.ShowTypeDesc === showDesc).forEach(item => {
       array.push(
-        `<div class="column" data-live=${item.OpenNow} data-ondemand=${item.IsOnDemand}>
+        `<div class="column cards" data-live=${item.OpenNow} data-ondemand=${item.IsOnDemand}>
         <div class="card">
           <div class="ShowCheckbox">
             <label class="customCheckboxControl customCheckboxTick">
