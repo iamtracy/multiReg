@@ -1,12 +1,9 @@
 <section>
-  <ul class="tabs" data-tabs id="show-tabs">
-    <li class="tabs-title is-active"><a href="#cardsLive" aria-selected="true">Live</a></li>
-    <li class="tabs-title"><a href="#cardsUpcoming">Upcoming</a></li>
-    <li class="tabs-title"><a href="#cardsOnDemand">On Demand</a></li>
-  </ul>
-  <div class="tabs-content" data-tabs-content="show-tabs">
-    <div class="tabs-panel is-active row small-up-1" id="cardsLive" data-live></div>
-    <div class="tabs-panel row small-up-1" id="cardsUpcoming" data-upcoming></div>
-    <div class="tabs-panel row small-up-1" id="cardsOnDemand" data-ondemand></div>
+  <div class="button-group">
+    <a class="button" href="#cardsLive">Live</a>
+    <a class="button" href="#cardsUpcoming">Upcoming</a>
+    <a class="button" href="#cardsOnDemand">On Demand</a>
   </div>
+  <div class="row small-up-1" id="cards"></div>
+  <div id="hidden" style="display: none;"></div>
 </section>

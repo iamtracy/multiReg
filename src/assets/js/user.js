@@ -8,19 +8,19 @@ function searchSettings() {
 function formSettings() {
   return {
     formFields: [
-      { labelText: 'First Name', fieldType: { inputElem: 'input', type: 'text' }, id: 'FirstName', required: 'XR' },
-      { labelText: 'Last Name', fieldType: { inputElem: 'input', type: 'text' }, id: 'LastName', required: 'XR' },
-      { labelText: 'Title', fieldType: { inputElem: 'input', type: 'text' }, id: 'JobTitle', required: 'XR' },
-      { labelText: 'Phone', fieldType: { inputElem: 'input', type: 'text' }, id: 'FirstName', required: 'XR' },
-      { labelText: 'Company Name', fieldType: { inputElem: 'input', type: 'text' }, id: 'CompanyName', required: 'XR' },
-      { labelText: 'Address', fieldType: { inputElem: 'input', type: 'text' }, id: 'Address1', required: 'XR' },
-      { labelText: 'Unit / Apt. / Suite', fieldType: { inputElem: 'input', type: 'text' }, id: 'Address2', required: 'XR' },
-      { labelText: 'City', fieldType: { inputElem: 'input', type: 'text' }, id: 'City', required: 'XR' },
-      { labelText: 'StateProv', fieldType: { inputElem: 'select', type: '' }, id: 'StateProv', required: 'XR' },
-      { labelText: 'Postal Code', fieldType: { inputElem: 'input', type: 'text' }, id: 'PostalCode', required: 'XR' },
-      { labelText: 'Country', fieldType: { inputElem: 'select', type: '' }, id: 'Country', required: 'XR' },
-      { labelText: 'Email Address', fieldType: { inputElem: 'input', type: 'text' }, id: 'EMailAddress', required: 'XR' },
-      { labelText: 'Password', fieldType: { inputElem: 'input', type: 'text' }, id: 'Password', required: 'XR' }
+      { labelText: 'First Name', fieldType: { inputElem: 'input', type: 'text' }, id: 'FirstName', name: 'FirstName', required: 'XR' },
+      { labelText: 'Last Name', fieldType: { inputElem: 'input', type: 'text' }, id: 'LastName', name: 'LastName', required: 'XR' },
+      { labelText: 'Title', fieldType: { inputElem: 'input', type: 'text' }, id: 'JobTitle', name: 'JobTitle', required: 'XR' },
+      { labelText: 'Phone', fieldType: { inputElem: 'input', type: 'text' }, id: 'Phone', name: 'Phone', required: 'XR' },
+      { labelText: 'Company Name', fieldType: { inputElem: 'input', type: 'text' }, id: 'CompanyName', name: 'CompanyName', required: 'XR' },
+      { labelText: 'Address', fieldType: { inputElem: 'input', type: 'text' }, id: 'Address1', name: 'Address1', required: 'XR' },
+      { labelText: 'Unit / Apt. / Suite', fieldType: { inputElem: 'input', type: 'text' }, id: 'Address2', name: 'Address2', required: 'XR' },
+      { labelText: 'City', fieldType: { inputElem: 'input', type: 'text' }, id: 'City', name: 'City', required: 'XR' },
+      { labelText: 'StateProv', fieldType: { inputElem: 'select', type: '' }, id: 'StateProv', name: 'StateProv', required: 'XR' },
+      { labelText: 'Postal Code', fieldType: { inputElem: 'input', type: 'text' }, id: 'PostalCode', name: 'PostalCode', required: 'XR' },
+      { labelText: 'Country', fieldType: { inputElem: 'select', type: '' }, id: 'Country', name: 'Country', required: 'XR' },
+      { labelText: 'Email Address', fieldType: { inputElem: 'input', type: 'text' }, id: 'EMailAddress', name: 'EMailAddress', required: 'XR' },
+      { labelText: 'Password', fieldType: { inputElem: 'input', type: 'text' }, id: 'Password', name: 'Password', required: 'XR' }
     ],
     udfFields: [{
       labelText: 'Employees',
@@ -36,7 +36,7 @@ function formSettings() {
       ]
     }, {
       labelText: 'Job Role',
-      fieldType: { inputElem: 'select', type: 'udf' },
+      fieldType: { inputElem: 'select', type: 'select' },
       name: 'UDF1025',
       id: '',
       required: '1',
@@ -49,7 +49,7 @@ function formSettings() {
       ]
     }, {
       labelText: 'UDF Three',
-      fieldType: { inputElem: 'input', type: 'udf' },
+      fieldType: { inputElem: 'input', type: 'text' },
       name: 'UDF1026',
       id: '',
       required: '1'

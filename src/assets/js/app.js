@@ -1,17 +1,16 @@
 (function(formSettings, searchSettings) {
-  let companyKey = searchSettings.CompanyKey;
-  let showDesc = searchSettings.ShowTypeDesc;
-  let formFields = formSettings.formFields.concat(formSettings.udfFields).concat(formSettings.submit);
-  let data = fakeAjax();
-
+  const companyKey = searchSettings.CompanyKey;
+  const showDesc = searchSettings.ShowTypeDesc;
+  const formFields = formSettings.formFields.concat(formSettings.udfFields).concat(formSettings.submit);
+  const results = fakeAjax();
+  let html = $('#cards')[0];
+  let hidden = $('#hidden');
   let showArray = [];
-  data.filter(item => item.ShowTypeDesc === showDesc).forEach(item => {
-    showArray.push({
-      live: item.OpenNow === 1 ? true : false,
-      upcoming: item.OpenNow === 0 ? true : false,
-      onDemand: item.IsOnDemand === 1 ? true : false,
-      isSelected: false,
-      html: `<div class="column">
+
+  const initData = function(data, array) {
+    data.filter(item => item.ShowTypeDesc === showDesc).forEach(item => {
+      array.push(
+        `<div class="column" data-live=${item.OpenNow} data-ondemand=${item.IsOnDemand}>
         <div class="card">
           <div class="ShowCheckbox">
             <label class="customCheckboxControl customCheckboxTick">
@@ -27,29 +26,21 @@
           </div>
         </div>
       </div>`
+      );
     });
-    return showArray;
-  });
+    return array;
+  }
 
-  console.log(showArray);
-  showArray.forEach(item => {
-    if (item.live) {
-      $('[data-live]').append(
-        item.html
-      );
-    }
-    if (item.upcoming) {
-      $('[data-upcoming]').append(
-        item.html
-      );
-    }
-    if (item.onDemand) {
-      $('[data-ondemand]').append(
-        item.html
-      );
-    }
-  });
+  var data = initData(results, showArray);
 
+  console.log('initial data:', data);
+
+  function init(items) {
+    console.log(items);
+    items.forEach(item => {
+      html.innerHTML += item;
+    });
+  }
 
   let udfFielfd = [];
 
@@ -75,7 +66,7 @@
           </div>
         </fieldset>
       </div>`);
-    } else if (item.fieldType.inputElem.toLowerCase() === 'select' && item.fieldType.type.toLowerCase().startsWith('udf')) {
+    } else if (item.fieldType.inputElem.toLowerCase() === 'select' && item.name.toLowerCase().startsWith('udf')) {
       form.append(
         `<div class="small-12">
         <fieldset>
@@ -84,6 +75,7 @@
           <${item.fieldType.inputElem}
             class="small-7" 
             name="${item.name}"
+            type="${item.type}"
             required=${item.required}  
             fieldname="${item.labelText}"
           >
@@ -121,6 +113,7 @@
   $(document).ready(function() {
     appendStates();
     appendCountry();
+    init(data);
   });
 
   function appendStates() {
