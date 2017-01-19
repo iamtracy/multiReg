@@ -62,3 +62,4 @@ PATHS:
     - "src/assets/js/polyfills.js"
     - "src/assets/js/mock.js"
     - "src/assets/js/user.js"
+    - "src/assets/js/util.js"

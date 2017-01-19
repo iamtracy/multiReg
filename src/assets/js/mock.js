@@ -13,7 +13,7 @@ function fakeAjax() {
     "FromDateTime": "2016-01-31 13:30:00.000",
     "ToDateTime": "2017-01-30 14:00:00.000",
     "OpenNow": 1,
-    "Comments": "<p>Bars or drinks? Weekend warriors or fitness walkers? <br /> <br>The US sports nutrition market is dynamic and diverse beast, valued at an eye-watering <strong>$10 billion for drinks, shots, bars, gels, and supplements.</strong> <br /> But who are the consumers, which products are driving category growth, and what’s next for sports and lifestyle nutrition?</p><p>In this forum we hear from two leading market analysts on the current state-of-play, what challenges lurk on the horizon, and which ingredients and applications present the best opportunities for the US sports and lifestyle nutrition market.</p>",
+    "Comments": "<p>Bars or drinks? Weekend warriors or fitness walkers?</p> <p>The US sports nutrition market is dynamic and diverse beast, valued at an eye-watering <strong>$10 billion for drinks, shots, bars, gels, and supplements.</strong> But who are the consumers, which products are driving category growth, and what’s next for sports and lifestyle nutrition?</p><p>In this forum we hear from two leading market analysts on the current state-of-play, what challenges lurk on the horizon, and which ingredients and applications present the best opportunities for the US sports and lifestyle nutrition market.</p>",
     "ShowImage": "https://vts.inxpo.com/cfr/images/VTS/WCW/WebcastLogoLight.png",
     "ShowPackageKey": 56907,
     "IsRegistrationOpen": 0,
