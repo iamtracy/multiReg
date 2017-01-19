@@ -6,6 +6,9 @@
   const html = $('#cards')[0];
   const hidden = $('#hidden');
   const showArray = [];
+  let cardCheckBoxes;
+  let checkAllCheckbox;
+  let submit;
 
   const initData = (data, array) => {
     data.filter(item => item.ShowTypeDesc === showDesc).forEach(item => {
@@ -22,6 +25,7 @@
           <img src="${item.ShowImage}" alt="">
           <div class="card-section">
             <h4>${item.ShowTitle}</h4>
+            <h6><b>Date</b>: ${item.FromDateTime}</h6>
             <p>${item.Comments}</p>
           </div>
         </div>
@@ -127,9 +131,9 @@
   }
 
   function listeners() {
-    let cardCheckBoxes = $('input[name="ShowKey"]');
-    let checkAllCheckbox = $('input[name="selectAll"]');
-    let submit = $('#RegisterBTN');
+    cardCheckBoxes = $('input[name="ShowKey"]');
+    checkAllCheckbox = $('input[name="selectAll"]');
+    submit = $('#RegisterBTN');
     cardCheckBoxes.change(selectionState);
     checkAllCheckbox.change(checkAll);
     submit.click(onSubmit);
@@ -137,13 +141,13 @@
 
   function checkAll() {
     console.log('check all');
-    //   let selectedListArray = selectedElemList.toArray();
-    //   if (this.checked) {
-    //     selectedListArray.forEach(item => item.checked = true)
-    //   } else {
-    //     selectedListArray.forEach(item => item.checked = false)
-    //   }
-    //   selectionState();
+    let selectedListArray = selectedElemList.toArray();
+    if (this.checked) {
+      selectedListArray.forEach(item => item.checked = true)
+    } else {
+      selectedListArray.forEach(item => item.checked = false)
+    }
+    selectionState();
   }
 
   function selectionState() {
