@@ -3,6 +3,7 @@ const initCards = (data, array) => {
     .filter(item => item.ShowTypeDesc === searchSettings().ShowTypeDesc)
     .map((item, index) => {
       let date = formatTime(item.FromDateTime, item.TZAbbrev);
+      let speakerImg = (item.ShowImage === '' ? '' : `${item.ShowImage}`);
       let speakerDisplay =
         speakerPresent(item.WCSpeakerList)
         .map(item => {
@@ -25,11 +26,13 @@ const initCards = (data, array) => {
                 <span class="select-event">Select this event</span>
               </label>
             </div>
-            <img src="${item.ShowImage}" alt="">
+            <img src="${speakerImg}" alt="${item.ShowTypeDesc} Image">
             <div class="card-section">
-              <h4>${item.ShowTitle}</h4>
-              <h6><b>Date</b>: ${date.year}</h6>
-              <h6><b>Time</b>: ${date.time}</h6>
+              <div class="card-desc">
+                <h4>${item.ShowTitle}</h4>
+                <h6><b>Date</b>: ${date.year}</h6>
+                <h6><b>Time</b>: ${date.time}</h6>
+              </div>
               <p>${item.Comments}</p>
               <section>
                 <div class="dropdown-pane top hide" id="speaker${index}" data-speaker-toggler>
