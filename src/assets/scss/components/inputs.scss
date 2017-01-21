@@ -10,8 +10,8 @@ input {
 
 .customCheckbox {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   background: #fff;
   border: 1px solid #ccc;
   -webkit-transition: background 0.5s;
@@ -37,11 +37,11 @@ input[name="selectAll"] {
 }
 
 .select-event {
-  margin-left: 2rem;
+  margin-left: 1.65rem;
 }
 
 .customCheckboxTick .customCheckbox:after {
-  top: 4px;
+  bottom: 4px;
   left: 8px;
   width: 3px;
   height: 8px;
@@ -71,6 +71,10 @@ label {
   color: $medium-gray;
   font-size: 1.2rem;
   padding-left: 0;
+  &.customCheckboxControl {
+    line-height: 1.5rem;
+    font-size: 1rem;
+  }
 }
 
 .input-group-label {

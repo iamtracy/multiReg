@@ -117,7 +117,7 @@ function fakeAjax() {
     "ExternalID": "",
     "FromDateTime": "2016-11-01 11:00:00.000",
     "ToDateTime": "2017-11-01 12:00:00.000",
-    "OpenNow": 1,
+    "OpenNow": 0,
     "Comments": "** Copied From Winning consumers in a changing non-GMO marketplace **\r\n2016-11-01 04:44:18\r\n** Copied From Template INXPO XPOCAST Prime Webcast Template **\r\n2016-09-07 12:48:12\r\n",
     "ShowImage": "https://vts.inxpo.com/cfr/images/VTS/WCW/WebcastLogoLight.png",
     "ShowPackageKey": 68187,

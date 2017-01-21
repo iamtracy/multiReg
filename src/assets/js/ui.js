@@ -94,7 +94,7 @@ function listeners() {
   cardCheckBoxes = $('input[name="ShowKey"]');
   checkAllCheckbox = $('input[name="selectAll"]');
   speakerButtons = $('[data-speaker]');
-  cardButtons = $('.button-group .button');
+  cardButtons = $('[data-event-group] .button');
   submit = $('#RegisterBTN');
   cardCheckBoxes.change(selectionState);
   checkAllCheckbox.change(checkAll);
