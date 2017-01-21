@@ -20,11 +20,14 @@ function speakerPresent(speaker) {
 }
 
 function readMoreLess() {
-  let text = $(this)[0];
-  if (text.innerText === "View Speakers") {
-    text.innerText = "Hide Speakers"
+  let elem = $(this);
+  let speakerID = $(elem[0].dataset.speakerToggler).selector;
+  let speakerElem = $(`#${speakerID}`);
+  speakerElem.toggleClass('hide');
+  if (elem[0].innerText === "View Speakers") {
+    elem[0].innerText = "Hide Speakers";
   } else {
-    text.innerText = "View Speakers"
+    elem[0].innerText = "View Speakers";
   };
 }
 
