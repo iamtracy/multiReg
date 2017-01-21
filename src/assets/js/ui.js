@@ -3,9 +3,6 @@ let checkAllCheckbox;
 let buttons;
 let submit;
 
-const companyKey = searchSettings.CompanyKey;
-const showDesc = searchSettings.ShowTypeDesc;
-
 function speakerPresent(speaker) {
   let speakers = speaker.split('||');
   let response = speakers.map((item, index) => {
@@ -22,6 +19,7 @@ function speakerPresent(speaker) {
 }
 
 function readMoreLess() {
+  console.log('this', $(this))
   if ($(this)[0].innerText === "View Speakers") {
     $(this)[0].innerText = "Hide Speakers";
   } else {
@@ -68,14 +66,7 @@ function listeners() {
 }
 
 function onSubmit() {
-  console.log('dat boi')
-    //let selected = selectionState();
   let formData = $('#MainForm').serialize();
-  let cUrl = `Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1550&CompanyKey=${companyKey}&${formData}`;
-  console.log(cUrl); //, selected
-  //selected.forEach(item => item);
+  let cUrl = `Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1550&CompanyKey=${searchSettings().CompanyKey}&${formData}`;
+  console.log(cUrl);
 }
-
-$(document).ready(function() {
-  listeners();
-});

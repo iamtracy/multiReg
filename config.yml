@@ -59,9 +59,10 @@ PATHS:
     # Paths to your own project code are here
     - "src/data/mock.js"
     - "src/assets/js/user-config.js"
-    - "src/assets/js/form.js"
     - "src/assets/js/util.js"
     - "src/assets/js/ui.js"
+    - "src/assets/js/form.js"
+    - "src/assets/js/cards.js"
     - "src/assets/js/!(app).js"
     - "src/assets/js/app.js"
     
