@@ -1,7 +1,10 @@
 .button-group {
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   border-bottom: 1px solid map-get($foundation-palette, secondary);
   .button {
     margin-bottom: 0;
+    &.is-active {
+      background: map-get($foundation-palette, primary);
+    }
   }
 }

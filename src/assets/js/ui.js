@@ -27,40 +27,32 @@ function readMoreLess() {
   }
 }
 
-function cardGroupSelect() {
+function cardButtonClick(e) {
+  let activeState = $('[data-event-group] .button');
+  activeState.removeClass('is-active');
+  $(this).addClass('is-active');
+  if ($(this)[0].hash == "#cardsLive") cardSort('live', true, '1');
+  if ($(this)[0].hash == "#cardsUpcoming") cardSort('live', true, '0');
+  if ($(this)[0].hash == "#cardsOnDemand") cardSort('ondemand', false, '1');
+}
+
+function cardSort(dataAttr, boolean, number) {
   const cards = $('.card').toArray();
-  console.log($(this)[0].hash == "#cardsLive")
-  if ($(this)[0].hash == "#cardsLive") {
-    cards.map(item => {
-      if (item.dataset.live === '1') {
+  cards.map(item => {
+    if (boolean) {
+      if (item.dataset[dataAttr] === number) {
         item.classList = "card"
       } else {
         item.classList = "card hide";
       }
-    })
-  }
-
-  if ($(this)[0].hash == "#cardsUpcoming") {
-    cards.map(item => {
-      if (item.dataset.live === '0') {
+    } else {
+      if (item.dataset[dataAttr] === number) {
         item.classList = "card"
       } else {
         item.classList = "card hide";
       }
-    })
-  }
-
-  if ($(this)[0].hash == "#cardsOnDemand") {
-    cards.map(item => {
-      if (item.dataset.ondemand === '1') {
-        item.classList = "card"
-      } else {
-        item.classList = "card hide";
-      }
-    })
-  }
-
-  console.log($(this)[0].hash, cards);
+    }
+  });
 }
 
 function checkAll() {
@@ -99,7 +91,7 @@ function listeners() {
   cardCheckBoxes.change(selectionState);
   checkAllCheckbox.change(checkAll);
   speakerButtons.click(readMoreLess)
-  cardButtons.click(cardGroupSelect);
+  cardButtons.click(cardButtonClick);
   submit.click(onSubmit);
 }
 
