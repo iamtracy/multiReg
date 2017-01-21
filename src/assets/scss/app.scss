@@ -1,29 +1,27 @@
-.card {
-  margin-top: 2.65rem;
-  border-bottom: 1px dotted map-get($foundation-palette, secondary);
-  h4 {
-    margin-bottom: .18rem;
-  }
-  h6 {
-    margin-bottom: .08rem;
-  }
-  .dropdown-pane {
-    max-height: 65vh;
-    overflow-y: scroll;
-    border: 1px solid map-get($foundation-palette, secondary);
-    padding: 0 15px;
-  }
-  .button {
-    margin-bottom: 1.75rem;
-    border-radius: 3px;
-  }
-}
-
-.hide {
-  animation:
-}
-
-/@include foundation-flex-video;
+@charset 'utf-8';
+@import 'settings';
+@import 'foundation';
+//@import 'motion-ui';
+@include foundation-global-styles;
+// @include foundation-grid;
+@include foundation-flex-grid;
+@include foundation-typography;
+@include foundation-button;
+@include foundation-forms;
+// @include foundation-range-input;
+//@include foundation-accordion;
+//@include foundation-accordion-menu;
+//@include foundation-badge;
+//@include foundation-breadcrumbs;
+@include foundation-button-group;
+//@include foundation-callout;
+//@include foundation-close-button;
+@include foundation-menu;
+//@include foundation-menu-icon;
+//@include foundation-drilldown-menu;
+//@include foundation-dropdown;
+//@include foundation-dropdown-menu;
+//@include foundation-flex-video;
 //@include foundation-label;
 //@include foundation-media-object;
 //@include foundation-off-canvas;
