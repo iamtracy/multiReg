@@ -1,3 +1,11 @@
+let cardCheckBoxes;
+let checkAllCheckbox;
+let buttons;
+let submit;
+
+const companyKey = searchSettings.CompanyKey;
+const showDesc = searchSettings.ShowTypeDesc;
+
 function speakerPresent(speaker) {
   let speakers = speaker.split('||');
   let response = speakers.map((item, index) => {
@@ -47,3 +55,27 @@ function selectionState() {
     //   console.log(selected);
     //   return selected;
 }
+
+function listeners() {
+  cardCheckBoxes = $('input[name="ShowKey"]');
+  checkAllCheckbox = $('input[name="selectAll"]');
+  buttons = $('[data-speaker]');
+  submit = $('#RegisterBTN');
+  cardCheckBoxes.change(selectionState);
+  checkAllCheckbox.change(checkAll);
+  buttons.click(readMoreLess)
+  submit.click(onSubmit);
+}
+
+function onSubmit() {
+  console.log('dat boi')
+    //let selected = selectionState();
+  let formData = $('#MainForm').serialize();
+  let cUrl = `Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1550&CompanyKey=${companyKey}&${formData}`;
+  console.log(cUrl); //, selected
+  //selected.forEach(item => item);
+}
+
+$(document).ready(function() {
+  listeners();
+});

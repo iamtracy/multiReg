@@ -2,7 +2,10 @@ function formatTime(date, timeZone) {
   let yearTime = date.split(' ');
   let year = getYear(yearTime[0].split('-'));
   let time = getTime(yearTime[1].split(':'), timeZone);
-  return `${year} ${time} ${timeZone}`;
+  return {
+    year: `${year}`,
+    time: `${time} ${timeZone}`
+  };
 }
 
 function getYear(year) {
@@ -20,8 +23,7 @@ function getYear(year) {
     '11': 'November',
     '12': 'December'
   };
-  let month = year[1];
-  return `${months[month]} ${year[2]}, ${year[0]}`;
+  return `${months[year[1]]} ${year[2]}, ${year[0]}`;
 }
 
 function getTime(time, timeZone) {
@@ -29,10 +31,10 @@ function getTime(time, timeZone) {
   let littleHand = time[1];
   let amPM;
   if (bigHand <= 12) {
-    amPM = 'AM';
+    amPM = 'am';
   } else {
     bigHand = bigHand - 12;
-    amPM = 'PM';
+    amPM = 'pm';
   }
-  return `${bigHand}:${littleHand} ${amPM}`;
+  return `${bigHand}:${littleHand}${amPM}`;
 }

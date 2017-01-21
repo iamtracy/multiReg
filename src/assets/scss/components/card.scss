@@ -1,10 +1,15 @@
-.cards {
-  margin-top: 1.5rem;
-  .card {
-    border-bottom: 1px dotted map-get($foundation-palette, secondary);
+.card {
+  margin-top: 1.75rem;
+  border-bottom: 1px dotted map-get($foundation-palette, secondary);
+  h4 {
+    margin-bottom: .18rem;
   }
-  .button {
-    margin-top: 1rem;
-    border-radius: 3px;
+  h6 {
+    margin-bottom: .08rem;
   }
+}
+
+.button {
+  margin-top: 1rem;
+  border-radius: 3px;
 }

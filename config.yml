@@ -57,11 +57,11 @@ PATHS:
     - "bower_components/foundation-sites/js/foundation.toggler.js"
     #- "bower_components/foundation-sites/js/foundation.tooltip.js"
     # Paths to your own project code are here
-    - "src/assets/js/polyfills.js"
-    - "src/assets/js/mock.js"
-    - "src/assets/js/ui.js"
+    - "src/data/mock.js"
     - "src/assets/js/user-config.js"
+    - "src/assets/js/form.js"
     - "src/assets/js/util.js"
+    - "src/assets/js/ui.js"
     - "src/assets/js/!(app).js"
     - "src/assets/js/app.js"
     
