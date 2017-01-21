@@ -7,9 +7,14 @@
   h6 {
     margin-bottom: .08rem;
   }
-}
-
-.button {
-  margin-top: 1rem;
-  border-radius: 3px;
+  .dropdown-pane {
+    max-height: 65vh;
+    overflow-y: scroll;
+    border: 1px solid map-get($foundation-palette, secondary);
+    padding: 0 15px;
+  }
+  .button {
+    margin-bottom: 1.75rem;
+    border-radius: 3px;
+  }
 }

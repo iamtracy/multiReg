@@ -31,17 +31,17 @@ const initCards = (data, array) => {
               <h6><b>Date</b>: ${date.year}</h6>
               <h6><b>Time</b>: ${date.time}</h6>
               <p>${item.Comments}</p>
+              <section>
+                <div class="dropdown-pane top hide" id="speaker${index}" data-toggler=".hide">
+                  ${speakerDisplay}
+                </div>
+              </section>
               <button 
                 class="hollow button ${(speakerDisplay.length === 0 ? 'hide' : '')}" 
                 type="button" data-toggle="speaker${index}" 
                 data-speaker>
                 View Speakers
               </button>
-              <section>
-                <div class="dropdown-pane top hide" id="speaker${index}" data-toggler=".hide">
-                  ${speakerDisplay}
-                </div>
-              </section>
             </div>
           </div>`);
     });

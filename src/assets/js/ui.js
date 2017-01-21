@@ -7,7 +7,7 @@ function speakerPresent(speaker) {
   let speakers = speaker.split('||');
   let response = speakers.map((item, index) => {
     let ind = item.split('^');
-    if (ind[index] !== '') {
+    if (ind[0] !== "") {
       return {
         name: ind[0],
         img: ind[1],
@@ -19,7 +19,6 @@ function speakerPresent(speaker) {
 }
 
 function readMoreLess() {
-  console.log('this', $(this))
   if ($(this)[0].innerText === "View Speakers") {
     $(this)[0].innerText = "Hide Speakers";
   } else {
