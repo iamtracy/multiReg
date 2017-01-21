@@ -10,6 +10,7 @@
   $(document).ready(function() {
     init(data);
     listeners();
+    trimEmptyTags();
     $(document).foundation();
   });
 

@@ -7,12 +7,12 @@ let submit;
 function speakerPresent(speaker) {
   let speakers = speaker.split('||');
   let response = speakers.map((item, index) => {
-    let ind = item.split('^');
-    if (ind[0] !== "") {
+    let about = item.split('^');
+    if (about[0] !== "") {
       return {
-        name: ind[0],
-        img: ind[1],
-        bio: ind[2]
+        name: about[0],
+        img: about[1],
+        bio: about[2]
       };
     }
   }).filter(item => item !== undefined);
@@ -20,37 +20,32 @@ function speakerPresent(speaker) {
 }
 
 function readMoreLess() {
-  if ($(this)[0].innerText === "View Speakers") {
-    $(this)[0].innerText = "Hide Speakers";
+  let text = $(this)[0];
+  if (text.innerText === "View Speakers") {
+    text.innerText = "Hide Speakers"
   } else {
-    $(this)[0].innerText = "View Speakers";
-  }
+    text.innerText = "View Speakers"
+  };
 }
 
 function cardButtonClick(e) {
   let activeState = $('[data-event-group] .button');
   activeState.removeClass('is-active');
   $(this).addClass('is-active');
-  if ($(this)[0].hash == "#cardsLive") cardSort('live', true, '1');
-  if ($(this)[0].hash == "#cardsUpcoming") cardSort('live', true, '0');
-  if ($(this)[0].hash == "#cardsOnDemand") cardSort('ondemand', false, '1');
+  if ($(this)[0].dataset.status === "live") cardSort('live', true, '1');
+  if ($(this)[0].dataset.status === "upcoming") cardSort('live', true, '0');
+  if ($(this)[0].dataset.status === "ondemand") cardSort('ondemand', false, '1');
 }
 
 function cardSort(dataAttr, boolean, number) {
   const cards = $('.card').toArray();
   cards.map(item => {
     if (boolean) {
-      if (item.dataset[dataAttr] === number) {
-        item.classList = "card"
-      } else {
-        item.classList = "card hide";
-      }
+      if (item.dataset[dataAttr] === number) item.classList = "card"
+      else item.classList = "card hide";
     } else {
-      if (item.dataset[dataAttr] === number) {
-        item.classList = "card"
-      } else {
-        item.classList = "card hide";
-      }
+      if (item.dataset[dataAttr] === number) item.classList = "card"
+      else item.classList = "card hide";
     }
   });
 }

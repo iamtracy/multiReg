@@ -38,3 +38,7 @@ function getTime(time, timeZone) {
   }
   return `${bigHand}:${littleHand}${amPM}`;
 }
+
+function trimEmptyTags() {
+  $('p').filter(function() { return $.trim(this.innerHTML) == "" }).remove();
+}
