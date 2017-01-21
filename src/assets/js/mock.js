@@ -38,7 +38,7 @@ function fakeAjax() {
     "ShowImage": "https://vts.inxpo.com/cfr/images/VTS/WCW/WebcastLogoLight.png",
     "ShowPackageKey": 56909,
     "IsRegistrationOpen": 0,
-    "WCSpeakerList": "David Edwards^https://content.inxpo.com/FileLibrary/882/6/David_Edwards_100x100.jpg^<p>Board member of the CIEH Ltd and advisory board member of TIFSIP.<br /><br /></p>\r\n<p>Respected food safety consultant, executive director of NSF International and founding director of CMi. Non-executive director of the Chartered Institute of Environmental Health.</p>||Lisa Jack^https://content.inxpo.com/FileLibrary/882/6/Lisa_Jack_100x100.jpg^<p>University of Portsmouth &ndash; Food Fraud Group<br />Professor in Accounting at University of Portsmouth<br /><br />Lisa leads the Food Fraud Group the Centre of Counter Fraud Studies where she is carrying out research with Jim Gee into the cost of fraud and resilience to fraud in the food and drink industry.</p>||Carole Payne^https://content.inxpo.com/FileLibrary/882/6/Carole_Payne_100x100.jpg^<p>NSF International<br />NSF Senior Consultant<br /> <br />Global experience in the food safety field having worked for over 25 years&nbsp; in all areas of the food industry, from manufacture, retail, enforcement, compliance auditing and the provision of training &amp; consultancy services.<br /><br /></p>||",
+    "WCSpeakerList": "David Edwards^https://content.inxpo.com/FileLibrary/882/6/David_Edwards_100x100.jpg^<p>Board member of the CIEH Ltd and advisory board member of TIFSIP.</p><p>Respected food safety consultant, executive director of NSF International and founding director of CMi. Non-executive director of the Chartered Institute of Environmental Health.</p>||Lisa Jack^https://content.inxpo.com/FileLibrary/882/6/Lisa_Jack_100x100.jpg^<p>University of Portsmouth &ndash; Food Fraud Group<br />Professor in Accounting at University of Portsmouth<br />Lisa leads the Food Fraud Group the Centre of Counter Fraud Studies where she is carrying out research with Jim Gee into the cost of fraud and resilience to fraud in the food and drink industry.</p>||Carole Payne^https://content.inxpo.com/FileLibrary/882/6/Carole_Payne_100x100.jpg^<p>NSF International<br />NSF Senior Consultant<br /> <br />Global experience in the food safety field having worked for over 25 years&nbsp; in all areas of the food industry, from manufacture, retail, enforcement, compliance auditing and the provision of training &amp; consultancy services.<br /><br /></p>||",
     "TZAbbrev": "CST",
     "IsOnDemand": 1
   }, {
@@ -110,7 +110,7 @@ function fakeAjax() {
     "ShowTitle": "2017 WRBM Template",
     "RegistrationRequired": 1,
     "IsRegistered": 0,
-    "ShowTypeDesc": "Webcast",
+    "ShowTypeDesc": "NutraIngredients",
     "ShowType": 2,
     "IsWebcastBuilderEvent": 1,
     "ShowUserKey": 0,

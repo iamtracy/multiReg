@@ -3,17 +3,33 @@
   const showDesc = searchSettings.ShowTypeDesc;
   const formFields = formSettings.formFields.concat(formSettings.udfFields).concat(formSettings.submit);
   const results = fakeAjax();
-  const html = $('#cards')[0];
-  const hidden = $('#hidden');
+  const cardContainer = $('#cards')[0];
   const showArray = [];
+
   let cardCheckBoxes;
   let checkAllCheckbox;
   let submit;
 
   const initData = (data, array) => {
-    data.filter(item => item.ShowTypeDesc === showDesc).forEach(item => {
+    data.filter(item => item.ShowTypeDesc === showDesc).map((item, index) => {
       let date = formatDate(item.FromDateTime);
-      let speakerDisplay = speakerPresent(item.speaker);
+      let speakerDisplay = speakerPresent(item.WCSpeakerList);
+      console.log('speakerDisplay', speakerDisplay);
+      var ayo = speakerDisplay.map(item => {
+        let foo = ` <div class="media-object">
+                      <div class="media-object-section">
+                        <img src="${item.img}">
+                      </div>
+                      <div class="media-object-section">
+                        <h4>${item.name}</h4>
+                        <p>${item.bio}</p>
+                      </div>
+                    </div>
+                 `
+        return foo;
+      });
+      console.log('yo', ayo.join(' '));
+      var speakerHTML = ayo.join(' ');
       array.push(
         `<article>
           <div class="column cards" data-live=${item.OpenNow} data-ondemand=${item.IsOnDemand}>
@@ -30,6 +46,12 @@
                 <h4>${item.ShowTitle}</h4>
                 <h6><b>Date</b>: ${date}</h6>
                 <p>${item.Comments}</p>
+                <button class="hollow button ${(speakerDisplay.length === 0 ? 'hide' : '')}" type="button" data-toggle="speaker${index}">View Speakers</button>
+                <section>
+                  <div class="dropdown-pane top hide" id="speaker${index}" data-toggler=".hide">
+                    ${speakerHTML}
+                  </div>
+                </section>
               </div>
             </div>
           </div>
@@ -42,11 +64,11 @@
 
   var data = initData(results, showArray);
 
-  console.log('initial data:', data);
+  //console.log('initial data:', data);
 
   function init(items) {
     items.forEach(item => {
-      html.innerHTML += item;
+      cardContainer.innerHTML += item;
     });
   }
 
@@ -123,6 +145,7 @@
     appendCountry();
     init(data);
     listeners();
+    $(document).foundation();
   });
 
   function appendStates() {
@@ -179,7 +202,4 @@
     console.log(cUrl); //, selected
     //selected.forEach(item => item);
   }
-
 })(formSettings(), searchSettings());
-
-$(document).foundation();

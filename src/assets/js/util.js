@@ -8,5 +8,17 @@ function formatDate(date) {
 }
 
 function speakerPresent(speaker) {
-  console.log(speaker);
+  let speakers = speaker.split('||');
+  let response = speakers.map(item => {
+    let ind = item.split('^');
+    if (ind[0] !== '') {
+      //console.log('ind', ind)
+      return {
+        name: ind[0] || '',
+        img: ind[1] || '',
+        bio: ind[2] || ''
+      };
+    }
+  }).filter(item => item !== undefined);
+  return response;
 }
