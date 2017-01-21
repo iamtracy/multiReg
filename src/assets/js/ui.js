@@ -1,6 +1,7 @@
 let cardCheckBoxes;
 let checkAllCheckbox;
-let buttons;
+let speakerButtons;
+let cardButtons;
 let submit;
 
 function speakerPresent(speaker) {
@@ -24,6 +25,42 @@ function readMoreLess() {
   } else {
     $(this)[0].innerText = "View Speakers";
   }
+}
+
+function cardGroupSelect() {
+  const cards = $('.card').toArray();
+  console.log($(this)[0].hash == "#cardsLive")
+  if ($(this)[0].hash == "#cardsLive") {
+    cards.map(item => {
+      if (item.dataset.live === '1') {
+        item.classList = "card"
+      } else {
+        item.classList = "card hide";
+      }
+    })
+  }
+
+  if ($(this)[0].hash == "#cardsUpcoming") {
+    cards.map(item => {
+      if (item.dataset.live === '0') {
+        item.classList = "card"
+      } else {
+        item.classList = "card hide";
+      }
+    })
+  }
+
+  if ($(this)[0].hash == "#cardsOnDemand") {
+    cards.map(item => {
+      if (item.dataset.ondemand === '1') {
+        item.classList = "card"
+      } else {
+        item.classList = "card hide";
+      }
+    })
+  }
+
+  console.log($(this)[0].hash, cards);
 }
 
 function checkAll() {
@@ -56,11 +93,13 @@ function selectionState() {
 function listeners() {
   cardCheckBoxes = $('input[name="ShowKey"]');
   checkAllCheckbox = $('input[name="selectAll"]');
-  buttons = $('[data-speaker]');
+  speakerButtons = $('[data-speaker]');
+  cardButtons = $('.button-group .button');
   submit = $('#RegisterBTN');
   cardCheckBoxes.change(selectionState);
   checkAllCheckbox.change(checkAll);
-  buttons.click(readMoreLess)
+  speakerButtons.click(readMoreLess)
+  cardButtons.click(cardGroupSelect);
   submit.click(onSubmit);
 }
 
