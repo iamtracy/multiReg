@@ -1,13 +1,12 @@
 function formatTime(date, timeZone) {
-  console.log(date);
-  var yearTime = date.split(' ');
-  var year = getYear(yearTime[0].split('-'));
-  var time = getTime(yearTime[1].split(':'), timeZone);
+  let yearTime = date.split(' ');
+  let year = getYear(yearTime[0].split('-'));
+  let time = getTime(yearTime[1].split(':'), timeZone);
   return `${year} ${time} ${timeZone}`;
 }
 
 function getYear(year) {
-  var months = {
+  let months = {
     '01': 'January',
     '02': 'February',
     '03': 'March',
@@ -21,28 +20,28 @@ function getYear(year) {
     '11': 'November',
     '12': 'December'
   };
-  var month = year[1];
-  return months[month] + ' ' + year[2] + ', ' + year[0];
+  let month = year[1];
+  return `${months[month]} ${year[2]}, ${year[0]}`;
 }
 
 function getTime(time, timeZone) {
-  var bigHand = time[0];
-  var littleHand = time[1];
-  var amPM;
+  let bigHand = time[0];
+  let littleHand = time[1];
+  let amPM;
   if (bigHand <= 12) {
-    amPM = 'AM'
+    amPM = 'AM';
   } else {
     bigHand = bigHand - 12;
-    amPM = 'PM'
+    amPM = 'PM';
   }
-  return bigHand + ':' + littleHand + ' ' + amPM;
+  return `${bigHand}:${littleHand} ${amPM}`;
 }
 
 function speakerPresent(speaker) {
   let speakers = speaker.split('||');
-  let response = speakers.map(item => {
+  let response = speakers.map((item, index) => {
     let ind = item.split('^');
-    if (ind[0] !== '') {
+    if (ind[index] !== '') {
       return {
         name: ind[0] || '',
         img: ind[1] || '',
