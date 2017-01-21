@@ -31,7 +31,7 @@
       console.log('yo', ayo.join(' '));
       var speakerHTML = ayo.join(' ');
       array.push(
-        `<article>
+        `
           <div class="column cards" data-live=${item.OpenNow} data-ondemand=${item.IsOnDemand}>
             <div class="card">
               <div class="ShowCheckbox">
@@ -55,7 +55,6 @@
               </div>
             </div>
           </div>
-        </article>
         `
       );
     });
