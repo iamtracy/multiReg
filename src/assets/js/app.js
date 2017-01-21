@@ -8,13 +8,13 @@
 
   let cardCheckBoxes;
   let checkAllCheckbox;
+  let buttons;
   let submit;
 
   const initData = (data, array) => {
     data.filter(item => item.ShowTypeDesc === showDesc).map((item, index) => {
-      let date = formatDate(item.FromDateTime);
+      let date = formatTime(item.FromDateTime, item.TZAbbrev);
       let speakerDisplay = speakerPresent(item.WCSpeakerList);
-      console.log('speakerDisplay', speakerDisplay);
       var ayo = speakerDisplay.map(item => {
         let foo = ` <div class="media-object">
                       <div class="media-object-section">
@@ -28,7 +28,6 @@
                  `
         return foo;
       });
-      console.log('yo', ayo.join(' '));
       var speakerHTML = ayo.join(' ');
       array.push(
         `
@@ -46,7 +45,12 @@
                 <h4>${item.ShowTitle}</h4>
                 <h6><b>Date</b>: ${date}</h6>
                 <p>${item.Comments}</p>
-                <button class="hollow button ${(speakerDisplay.length === 0 ? 'hide' : '')}" type="button" data-toggle="speaker${index}">View Speakers</button>
+                <button 
+                  class="hollow button ${(speakerDisplay.length === 0 ? 'hide' : '')}" 
+                  type="button" data-toggle="speaker${index}" 
+                  data-speaker>
+                  View Speakers
+                  </button>
                 <section>
                   <div class="dropdown-pane top hide" id="speaker${index}" data-toggler=".hide">
                     ${speakerHTML}
@@ -160,10 +164,20 @@
   function listeners() {
     cardCheckBoxes = $('input[name="ShowKey"]');
     checkAllCheckbox = $('input[name="selectAll"]');
+    buttons = $('[data-speaker]');
     submit = $('#RegisterBTN');
     cardCheckBoxes.change(selectionState);
     checkAllCheckbox.change(checkAll);
+    buttons.click(readMoreLess)
     submit.click(onSubmit);
+  }
+
+  function readMoreLess() {
+    if ($(this)[0].innerText === "View Speakers") {
+      $(this)[0].innerText = "Hide Speakers";
+    } else {
+      $(this)[0].innerText = "View Speakers";
+    }
   }
 
   function checkAll() {

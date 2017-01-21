@@ -61,6 +61,7 @@ PATHS:
     - "src/assets/js/mock.js"
     - "src/assets/js/user.js"
     - "src/assets/js/util.js"
+    - "src/assets/js/ui.js"
     - "src/assets/js/!(app).js"
     - "src/assets/js/app.js"
     
