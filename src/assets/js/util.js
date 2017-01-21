@@ -36,18 +36,3 @@ function getTime(time, timeZone) {
   }
   return `${bigHand}:${littleHand} ${amPM}`;
 }
-
-function speakerPresent(speaker) {
-  let speakers = speaker.split('||');
-  let response = speakers.map((item, index) => {
-    let ind = item.split('^');
-    if (ind[index] !== '') {
-      return {
-        name: ind[0] || '',
-        img: ind[1] || '',
-        bio: ind[2] || ''
-      };
-    }
-  }).filter(item => item !== undefined);
-  return response;
-}

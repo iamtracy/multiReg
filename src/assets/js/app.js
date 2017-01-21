@@ -2,21 +2,23 @@
   const companyKey = searchSettings.CompanyKey;
   const showDesc = searchSettings.ShowTypeDesc;
   const formFields = formSettings.formFields.concat(formSettings.udfFields).concat(formSettings.submit);
-  const results = fakeAjax();
   const cardContainer = $('#cards')[0];
-  const showArray = [];
 
   let cardCheckBoxes;
   let checkAllCheckbox;
   let buttons;
   let submit;
 
+  const results = fakeAjax();
   const initData = (data, array) => {
-    data.filter(item => item.ShowTypeDesc === showDesc).map((item, index) => {
-      let date = formatTime(item.FromDateTime, item.TZAbbrev);
-      let speakerDisplay = speakerPresent(item.WCSpeakerList);
-      var ayo = speakerDisplay.map(item => {
-        let foo = ` <div class="media-object">
+    data
+      .filter(item => item.ShowTypeDesc === showDesc)
+      .map((item, index) => {
+        let date = formatTime(item.FromDateTime, item.TZAbbrev);
+        let speakerDisplay =
+          speakerPresent(item.WCSpeakerList)
+          .map(item => {
+            return `<div class="media-object">
                       <div class="media-object-section">
                         <img src="${item.img}">
                       </div>
@@ -24,14 +26,10 @@
                         <h4>${item.name}</h4>
                         <p>${item.bio}</p>
                       </div>
-                    </div>
-                 `
-        return foo;
-      });
-      var speakerHTML = ayo.join(' ');
-      array.push(
-        `
-          <div class="column cards" data-live=${item.OpenNow} data-ondemand=${item.IsOnDemand}>
+                    </div>`
+          }).join(' ');
+        array.push(
+          `<div class="column cards ${(item.OpenNow === 0 ? 'hide' : '')}" data-live=${item.OpenNow} data-ondemand=${item.IsOnDemand}>
             <div class="card">
               <div class="ShowCheckbox">
                 <label class="customCheckboxControl customCheckboxTick">
@@ -50,34 +48,25 @@
                   type="button" data-toggle="speaker${index}" 
                   data-speaker>
                   View Speakers
-                  </button>
+                </button>
                 <section>
                   <div class="dropdown-pane top hide" id="speaker${index}" data-toggler=".hide">
-                    ${speakerHTML}
+                    ${speakerDisplay}
                   </div>
                 </section>
               </div>
             </div>
           </div>
-        `
-      );
-    });
+        `);
+      });
     return array;
   }
 
-  var data = initData(results, showArray);
+  const data = initData(results, []);
 
-  //console.log('initial data:', data);
+  const init = data => data.map(data => cardContainer.innerHTML += data);
 
-  function init(items) {
-    items.forEach(item => {
-      cardContainer.innerHTML += item;
-    });
-  }
-
-  let udfFielfd = [];
-
-  formFields.forEach(item => buildForm(item));
+  formFields.map(item => buildForm(item));
 
   function buildForm(item) {
     let form = $('#formFields');
@@ -143,14 +132,6 @@
     }
   }
 
-  $(document).ready(function() {
-    appendStates();
-    appendCountry();
-    init(data);
-    listeners();
-    $(document).foundation();
-  });
-
   function appendStates() {
     $('#StateProv').html(
       `<option value="" selected="selected">(select)</option> <option value="AL">Alabama</option> <option value="AK">Alaska</option> <option value="AZ">Arizona</option> <option value="AR">Arkansas</option> <option value="CA">California</option> <option value="CO">Colorado</option> <option value="CT">Connecticut</option> <option value="DE">Delaware</option> <option value="DC">District of Columbia</option> <option value="FL">Florida</option> <option value="GA">Georgia</option> <option value="HI">Hawaii</option> <option value="ID">Idaho</option> <option value="IL">Illinois</option> <option value="IN">Indiana</option> <option value="IA">Iowa</option> <option value="KS">Kansas</option> <option value="KY">Kentucky</option> <option value="LA">Louisiana</option> <option value="ME">Maine</option> <option value="MD">Maryland</option> <option value="MA">Massachusetts</option> <option value="MI">Michigan</option> <option value="MN">Minnesota</option> <option value="MS">Mississippi</option> <option value="MO">Missouri</option> <option value="MT">Montana</option> <option value="NE">Nebraska</option> <option value="NV">Nevada</option> <option value="NH">New Hampshire</option> <option value="NJ">New Jersey</option> <option value="NM">New Mexico</option> <option value="NY">New York</option> <option value="NC">North Carolina</option> <option value="ND">North Dakota</option> <option value="OH">Ohio</option> <option value="OK">Oklahoma</option> <option value="OR">Oregon</option> <option value="PA">Pennsylvania</option> <option value="RI">Rhode Island</option> <option value="SC">South Carolina</option> <option value="SD">South Dakota</option> <option value="TN">Tennessee</option> <option value="TX">Texas</option> <option value="UT">Utah</option> <option value="VT">Vermont</option> <option value="VA">Virginia</option> <option value="WA">Washington</option> <option value="WV">West Virginia</option> <option value="WI">Wisconsin</option> <option value="WY">Wyoming</option> <option value="">------</option> <option value="AB">Alberta</option> <option value="BC">British Columbia</option> <option value="MB">Manitoba</option> <option value="NB">New Brunswick</option> <option value="NF">Newfoundland</option> <option value="NT">Northwest Territories and Nanavut</option> <option value="NS">Nova Scotia</option> <option value="NU">Nunavut Territories </option> <option value="ON">Ontario</option> <option value="PE">Prince Edward Island</option> <option value="QC">Quebec</option> <option value="SK">Saskatchewan</option> <option value="YT">Yukon</option> <option value="">------</option> <option value="Outside of USA/Canada">Outside of USA/Canada</option>`
@@ -172,41 +153,6 @@
     submit.click(onSubmit);
   }
 
-  function readMoreLess() {
-    if ($(this)[0].innerText === "View Speakers") {
-      $(this)[0].innerText = "Hide Speakers";
-    } else {
-      $(this)[0].innerText = "View Speakers";
-    }
-  }
-
-  function checkAll() {
-    console.log('check all');
-    let selectedListArray = selectedElemList.toArray();
-    if (this.checked) {
-      selectedListArray.forEach(item => item.checked = true)
-    } else {
-      selectedListArray.forEach(item => item.checked = false)
-    }
-    selectionState();
-  }
-
-  function selectionState() {
-    console.log('selectState')
-      //   let selectedListArray = selectedElemList.toArray();
-      //   selected = [];
-      //   selectedListArray.
-      //   filter(item => item.checked === true).
-      //   forEach(item => {
-      //     selected.push({
-      //       showKey: item.dataset.showkey,
-      //       showPackageKey: item.dataset.packagekey
-      //     });
-      //   });
-      //   console.log(selected);
-      //   return selected;
-  }
-
   function onSubmit() {
     console.log('dat boi')
       //let selected = selectionState();
@@ -215,4 +161,13 @@
     console.log(cUrl); //, selected
     //selected.forEach(item => item);
   }
+
+  $(document).ready(function() {
+    appendStates();
+    appendCountry();
+    init(data);
+    listeners();
+    $(document).foundation();
+  });
+
 })(formSettings(), searchSettings());
