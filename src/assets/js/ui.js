@@ -1,5 +1,6 @@
 let cardCheckBoxes;
 let checkAllCheckbox;
+let selected;
 let speakerButtons;
 let cardButtons;
 let submit;
@@ -55,7 +56,7 @@ function cardSort(dataAttr, boolean, number) {
 
 function checkAll() {
   console.log('check all');
-  let selectedListArray = selectedElemList.toArray();
+  let selectedListArray = cardCheckBoxes.toArray();
   if (this.checked) {
     selectedListArray.forEach(item => item.checked = true)
   } else {
@@ -66,18 +67,18 @@ function checkAll() {
 
 function selectionState() {
   console.log('selectState')
-    //   let selectedListArray = selectedElemList.toArray();
-    //   selected = [];
-    //   selectedListArray.
-    //   filter(item => item.checked === true).
-    //   forEach(item => {
-    //     selected.push({
-    //       showKey: item.dataset.showkey,
-    //       showPackageKey: item.dataset.packagekey
-    //     });
-    //   });
-    //   console.log(selected);
-    //   return selected;
+  let selectedListArray = cardCheckBoxes.toArray();
+  selected = [];
+  selectedListArray.
+  filter(item => item.checked === true).
+  forEach(item => {
+    selected.push({
+      showKey: item.dataset.showkey,
+      showPackageKey: item.dataset.packagekey
+    });
+  });
+  console.log(selected);
+  return selected;
 }
 
 function listeners() {
