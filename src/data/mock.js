@@ -1,4 +1,4 @@
-function fakeAjax() {
+function mockAjax() {
   return [{
     "CompanyKey": 882,
     "ShowKey": 30129,

@@ -1,7 +1,7 @@
 (function(formSettings) {
   const cardsContainer = $('#cards')[0];
 
-  const results = fakeAjax();
+  const results = mockAjax();
 
   const data = initCards(results, []);
 

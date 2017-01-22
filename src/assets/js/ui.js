@@ -32,7 +32,7 @@ function readMoreLess() {
   };
 }
 
-function cardButtonClick(e) {
+function cardClickToSort(e) {
   let activeState = $('[data-event-group] .button');
   activeState.removeClass('is-active');
   $(this).addClass('is-active');
@@ -55,18 +55,13 @@ function cardSort(dataAttr, boolean, number) {
 }
 
 function checkAll() {
-  console.log('check all');
   let selectedListArray = cardCheckBoxes.toArray();
-  if (this.checked) {
-    selectedListArray.forEach(item => item.checked = true)
-  } else {
-    selectedListArray.forEach(item => item.checked = false)
-  }
+  if (this.checked) selectedListArray.forEach(item => item.checked = true);
+  else selectedListArray.forEach(item => item.checked = false);
   selectionState();
 }
 
 function selectionState() {
-  console.log('selectState')
   let selectedListArray = cardCheckBoxes.toArray();
   selected = [];
   selectedListArray.
@@ -90,7 +85,7 @@ function listeners() {
   cardCheckBoxes.change(selectionState);
   checkAllCheckbox.change(checkAll);
   speakerButtons.click(readMoreLess)
-  cardButtons.click(cardButtonClick);
+  cardButtons.click(cardClickToSort);
   submit.click(onSubmit);
 }
 
