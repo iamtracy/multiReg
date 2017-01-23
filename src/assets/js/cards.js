@@ -1,16 +1,3 @@
-const initCards = (data, array) => {
-  data.filter(item => item.ShowTypeDesc === searchSettings().ShowTypeDesc)
-    .map((item, index) => {
-      let date = formatTime(item.FromDateTime, item.TZAbbrev);
-      let speakerImg = (item.ShowImage === '' ? '' : `${item.ShowImage}`);
-      let speakerDisplay = speakerPresent(item.WCSpeakerList)
-        .map((item, index) => buildSpeaker(item, index))
-        .join('');
-      array.push(buildCard(item, index, date, speakerImg, speakerDisplay));
-    });
-  return array;
-}
-
 function buildSpeaker(item, index) {
   return `<div class="media-object-section">
             <div class="thumbnail">
