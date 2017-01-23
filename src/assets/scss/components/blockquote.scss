@@ -1,3 +1,8 @@
 blockquote {
   background: lighten(map-get($foundation-palette, secondary), 15%);
+  margin: 0;
+  padding: 0.625rem 1rem;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
 }

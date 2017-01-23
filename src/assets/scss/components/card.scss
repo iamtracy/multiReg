@@ -1,5 +1,5 @@
 .card {
-  margin-top: 2.65rem;
+  margin-bottom: 1.5rem;
   border-bottom: 1px dotted map-get($foundation-palette, secondary);
   h4 {
     margin-bottom: .18rem;
@@ -12,12 +12,6 @@
   }
   img {
     margin: 1.1rem 0 1.105rem;
-  }
-  .dropdown-pane {
-    max-height: 65vh;
-    overflow-y: scroll;
-    border: 1px solid map-get($foundation-palette, secondary);
-    padding: 0 15px;
   }
   .button {
     margin-bottom: 1.75rem;

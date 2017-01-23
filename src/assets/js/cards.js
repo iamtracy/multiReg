@@ -11,7 +11,7 @@ function buildSpeaker(item, index) {
 }
 
 function buildCard(item, index, date, speakerImg, speakerDisplay) {
-  return `<div class="card ${(item.OpenNow === 0 ? 'hide' : '')}" data-live=${item.OpenNow} data-ondemand=${item.IsOnDemand}>
+  return `<div class="card ${(item.OpenNow === 0 ? 'hide' : '')}" data-live="${item.OpenNow}" data-ondemand="${item.IsOnDemand}">
             <div class="ShowCheckbox">
               <label class="customCheckboxControl customCheckboxTick">
                 <input type="checkbox" name="ShowKey" data-showkey="${item.ShowKey}" data-packagekey="${item.ShowPackageKey}">

@@ -5,7 +5,7 @@
   const initCards = (data, array) => {
     data.filter(item => item.ShowTypeDesc === searchSettings().ShowTypeDesc)
       .map((item, index) => {
-        let date = formatTime(item.FromDateTime, item.TZAbbrev);
+        const date = formatTime(item.FromDateTime, item.TZAbbrev);
         let speakerImg = (item.ShowImage === '' ? '' : `${item.ShowImage}`);
         let speakerDisplay = speakerPresent(item.WCSpeakerList)
           .map((item, index) => buildSpeaker(item, index))
