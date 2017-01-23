@@ -1,8 +1,3 @@
-let speakerHTML = `<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-                    <ul class="orbit-container">
-                      button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-                      <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>`;
-
 const initCards = (data, array) => {
   data.filter(item => item.ShowTypeDesc === searchSettings().ShowTypeDesc)
     .map((item, index) => {
@@ -10,20 +5,22 @@ const initCards = (data, array) => {
       let speakerImg = (item.ShowImage === '' ? '' : `${item.ShowImage}`);
       let speakerDisplay = speakerPresent(item.WCSpeakerList)
         .map((item, index) => buildSpeaker(item, index))
-        .join(' ');
+        .join('');
       array.push(buildCard(item, index, date, speakerImg, speakerDisplay));
     });
   return array;
 }
 
 function buildSpeaker(item, index) {
-  return `<li class="${(index === 0 ? 'is-active' : '')} orbit-slide">
-            <img class="orbit-image" src="${item.img}" alt="Space">
-            <div class="media-object-section">
-              <h4>${item.name}</h4>
-              <p>${item.bio}</p>
+  return `<div class="media-object-section">
+            <div class="thumbnail">
+              <img src="${item.img}" alt="Space">
             </div>
-          </li>`;
+          </div>
+          <div class="media-object-section">
+            <h4>${item.name}</h4>
+            <p>${item.bio}</p>
+          </div>`;
 }
 
 function buildCard(item, index, date, speakerImg, speakerDisplay) {
@@ -48,21 +45,9 @@ function buildCard(item, index, date, speakerImg, speakerDisplay) {
                   ${speakerDisplay}
                 </div>
               </section>
-              <button 
-                class="hollow button ${(speakerDisplay.length === 0 ? 'hide' : '')}" 
-                type="button" data-speaker-toggler="speaker${index}" 
-                data-speaker>
+              <button class="hollow button ${(speakerDisplay.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
                 View Speakers
               </button>
             </div>
           </div>`;
 }
-
-speakerHTML += `</ul>
-                  <nav class="orbit-bullets">
-                    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
-                    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-                    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
-                    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
-                  </nav>
-                </div>`
