@@ -32,7 +32,7 @@ function readMoreLess() {
   };
 }
 
-function cardClickToSort(e) {
+function cardClickToSort() {
   let activeState = $('[data-event-group] .button');
   activeState.removeClass('is-active');
   $(this).addClass('is-active');
