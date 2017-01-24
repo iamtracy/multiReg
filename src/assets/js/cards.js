@@ -1,3 +1,9 @@
+function buildButtons(item) {
+  return `<a class="button is-active" data-status="live">Live</a>
+          <a class="button" data-status="upcoming">Upcoming</a>
+          <a class="button" data-status="ondemand">On Demand</a>`
+}
+
 function buildSpeaker(item, index) {
   return `<div class="media-object-section">
             <div class="thumbnail">

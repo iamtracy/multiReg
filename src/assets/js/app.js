@@ -6,12 +6,10 @@
     data.filter(item => item.ShowTypeDesc === searchSettings().ShowTypeDesc)
       .map((item, index) => {
         const date = formatTime(item.FromDateTime, item.TZAbbrev);
+        const buttons = buildButtons(item);
         let speakerImg = (item.ShowImage === '' ? '' : `${item.ShowImage}`);
         let speakerDisplay = speakerPresent(item.WCSpeakerList)
-          .map((item, index) => {
-            console.log(item);
-            return buildSpeaker(item, index)
-          })
+          .map((item, index) => buildSpeaker(item, index))
           .join('');
         //Iterate through objects to build card(s)
         array.push(buildCard(item, index, date, speakerImg, speakerDisplay));
