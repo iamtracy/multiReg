@@ -1,7 +1,37 @@
-function buildButtons(item) {
-  return `<a class="button is-active" data-status="live">Live</a>
-          <a class="button" data-status="upcoming">Upcoming</a>
-          <a class="button" data-status="ondemand">On Demand</a>`
+let liveIsPresent = false;
+let upcomingIsPresent = false;
+let onDemandIsPresent = false;
+
+function checkItemStatus(item) {
+  if (item.OpenNow === 1) liveIsPresent = true;
+  if (item.OpenNow === 0) upcomingIsPresent = true;
+  if (item.IsOnDemand === 1) onDemandIsPresent = true;
+  return {
+    liveIsPresent: liveIsPresent,
+    upcomingIsPresent: upcomingIsPresent,
+    onDemandIsPresent: onDemandIsPresent
+  }
+}
+
+function buildButton() {
+  return `<a class="button ${(liveIsPresent ? 'is-active' : 'hide')}" data-status="live">Live</a>
+           <a class="button ${(upcomingIsPresent  ? '' : 'hide')}${(liveIsPresent ? '' : 'is-active')}" data-status="upcoming">Upcoming</a>
+           <a class="button ${(onDemandIsPresent ? '' : 'hide')}${(upcomingIsPresent ? '' : 'is-active')}" data-status="ondemand">On Demand</a>`
+}
+
+function speakerPresent(speaker) {
+  let speakers = speaker.split('||');
+  let response = speakers.map((item, index) => {
+    let about = item.split('^');
+    if (about[0] !== "") {
+      return {
+        name: about[0],
+        img: about[1],
+        bio: about[2]
+      };
+    }
+  }).filter(item => item !== undefined);
+  return response;
 }
 
 function buildSpeaker(item, index) {
@@ -17,6 +47,7 @@ function buildSpeaker(item, index) {
 }
 
 function buildCard(item, index, date, speakerImg, speakerDisplay) {
+
   return `<div class="card ${(item.OpenNow === 0 ? 'hide' : '')}" data-live="${item.OpenNow}" data-ondemand="${item.IsOnDemand}">
             <div class="ShowCheckbox">
               <label class="customCheckboxControl customCheckboxTick">

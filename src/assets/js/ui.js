@@ -5,21 +5,6 @@ let speakerButtons;
 let cardButtons;
 let submit;
 
-function speakerPresent(speaker) {
-  let speakers = speaker.split('||');
-  let response = speakers.map((item, index) => {
-    let about = item.split('^');
-    if (about[0] !== "") {
-      return {
-        name: about[0],
-        img: about[1],
-        bio: about[2]
-      };
-    }
-  }).filter(item => item !== undefined);
-  return response;
-}
-
 function readMoreLess() {
   let elem = $(this);
   let speakerID = $(elem[0].dataset.speakerToggler).selector;
