@@ -1,29 +1,25 @@
 let cardCheckBoxes;
-let checkAllCheckbox;
-let selected;
-let speakerButtons;
-let cardButtons;
-let submit;
 
 function readMoreLess() {
-  let elem = $(this);
-  let speakerID = $(elem[0].dataset.speakerToggler).selector;
+  let elem = $(this)[0];
+  let speakerID = $(elem.dataset.speakerToggler).selector;
   let speakerElem = $(`#${speakerID}`);
   speakerElem.toggleClass('hide');
-  if (elem[0].innerText === "View Speakers") {
-    elem[0].innerText = "Hide Speakers";
+  if (elem.innerText === "View Speakers") {
+    elem.innerText = "Hide Speakers";
   } else {
-    elem[0].innerText = "View Speakers";
+    elem.innerText = "View Speakers";
   };
 }
 
 function cardClickToSort() {
+  let elem = $(this)[0];
   let activeState = $('[data-event-group] .button');
   activeState.removeClass('is-active');
   $(this).addClass('is-active');
-  if ($(this)[0].dataset.status === "live") cardSort('live', true, '1');
-  if ($(this)[0].dataset.status === "upcoming") cardSort('live', true, '0');
-  if ($(this)[0].dataset.status === "ondemand") cardSort('ondemand', false, '1');
+  if (elem.dataset.status === "live") cardSort('live', true, '1');
+  if (elem.dataset.status === "upcoming") cardSort('live', true, '0');
+  if (elem.dataset.status === "ondemand") cardSort('ondemand', false, '1');
 }
 
 function cardSort(dataAttr, boolean, number) {
@@ -48,7 +44,7 @@ function checkAll() {
 
 function selectionState() {
   let selectedListArray = cardCheckBoxes.toArray();
-  selected = [];
+  let selected = [];
   selectedListArray.
   filter(item => item.checked === true).
   forEach(item => {
@@ -62,11 +58,11 @@ function selectionState() {
 }
 
 function listeners() {
+  let checkAllCheckbox = $('input[name="selectAll"]');
+  let speakerButtons = $('[data-speaker]');
+  let cardButtons = $('[data-event-group] .button');
+  let submit = $('#RegisterBTN');
   cardCheckBoxes = $('input[name="ShowKey"]');
-  checkAllCheckbox = $('input[name="selectAll"]');
-  speakerButtons = $('[data-speaker]');
-  cardButtons = $('[data-event-group] .button');
-  submit = $('#RegisterBTN');
   cardCheckBoxes.change(selectionState);
   checkAllCheckbox.change(checkAll);
   speakerButtons.click(readMoreLess)
