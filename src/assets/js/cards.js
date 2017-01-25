@@ -2,21 +2,33 @@ let liveIsPresent = false;
 let upcomingIsPresent = false;
 let onDemandIsPresent = false;
 
-function checkItemStatus(item) {
-  if (item.OpenNow === 1) liveIsPresent = true;
-  if (item.OpenNow === 0) upcomingIsPresent = true;
-  if (item.IsOnDemand === 1) onDemandIsPresent = true;
-  return {
-    liveIsPresent: liveIsPresent,
-    upcomingIsPresent: upcomingIsPresent,
-    onDemandIsPresent: onDemandIsPresent
-  }
+function checkItemStatus(data, object, value) {
+  let status = false;
+  data.map(item => {
+    if (object === 'live' && item.OpenNow == 1 || object === 'upcoming' && item.OpenNow == 0 || object === 'ondemand' && item.IsOnDemand == 1) {
+      status = true;
+    }
+  });
+  return status;
 }
 
-function buildButton() {
-  return `<a class="button ${(liveIsPresent ? 'is-active' : 'hide')}" data-status="live">Live</a>
-           <a class="button ${(upcomingIsPresent  ? '' : 'hide')}${(liveIsPresent ? '' : 'is-active')}" data-status="upcoming">Upcoming</a>
-           <a class="button ${(onDemandIsPresent ? '' : 'hide')}${(upcomingIsPresent ? '' : 'is-active')}" data-status="ondemand">On Demand</a>`
+function buildButtons(showStatus) {
+  const buttons = `
+    <div class="button-group">
+      ${showStatus.livePresent ? '<a class="button" data-status="live">Live</a>' : ''}
+      ${showStatus.upcomingPresent ? '<a class="button" data-status="upcoming">Upcoming</a>' : ''}
+      ${showStatus.ondemandPresent ? '<a class="button" data-status="ondemand">On Demand</a>' : ''}
+    </div>
+    <blockquote>
+      <div class="small-12 custom-checkbox">
+        <label class="customCheckboxControl customCheckboxTick">
+            <input type="checkbox" name="selectAll">
+            <div class="customCheckbox"></div>
+            <span class="select-event">Select all events below or check individual events you would like to register for.</span>
+        </label>
+      </div>
+    </blockquote>`;
+  return buttons;
 }
 
 function speakerPresent(speaker) {
