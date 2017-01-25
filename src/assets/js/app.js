@@ -1,6 +1,7 @@
 const cardData = filterData(getData());
 const showStatus = showStatuses(cardData);
-const cardsContainer = $('[data-event-group]');
+const buttonsContainer = $('[data-event-group]');
+const cardsContainer = $('[data-cards]');
 
 function getData() {
   const data = mockAjax();
@@ -28,7 +29,8 @@ function showStatuses(data) {
 
 function initCardSection(data, showStatus, array) {
   const buttons = buildButtons(showStatus);
-  cardsContainer.html(buttons);
+  buttonsContainer.append(buttons);
+  cardsContainer.append('Dat boi');
   $('[data-status]')[0].className += ' is-active'
   data.map((item, index) => {
     item
