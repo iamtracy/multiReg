@@ -1,8 +1,3 @@
-const cardData = filterData(getData());
-const showStatus = showStatuses(cardData);
-const buttonsContainer = $('[data-event-group]');
-const cardsContainer = $('[data-cards]');
-
 function getData() {
   const data = mockAjax();
   return data;
@@ -28,9 +23,10 @@ function showStatuses(data) {
 }
 
 function initCardSection(data, showStatus, array) {
+  const buttonsContainer = $('[data-event-group]');
   const buttons = buildButtons(showStatus);
   buttonsContainer.append(buttons);
-  $('[data-status]')[0].className += ' is-active'
+  $('[data-status]')[0].className += ' is-active';
   data.map((item, index) => {
     const date = formatTime(item.FromDateTime, item.TZAbbrev);
     let speakerDisplay = speakerPresent(item.WCSpeakerList)
@@ -42,10 +38,13 @@ function initCardSection(data, showStatus, array) {
 }
 
 function card(data) {
+  const cardsContainer = $('[data-cards]');
   cardsContainer.html(data.join(''));
 }
 
 $(document).ready(function() {
+  const cardData = filterData(getData());
+  const showStatus = showStatuses(cardData);
   const cardHTML = initCardSection(cardData, showStatus, []);
   card(cardHTML);
   listeners();
