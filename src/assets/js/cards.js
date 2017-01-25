@@ -1,7 +1,3 @@
-let liveIsPresent = false;
-let upcomingIsPresent = false;
-let onDemandIsPresent = false;
-
 function checkItemStatus(data, object, value) {
   let status = false;
   data.map(item => {
