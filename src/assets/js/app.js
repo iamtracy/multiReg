@@ -30,34 +30,24 @@ function showStatuses(data) {
 function initCardSection(data, showStatus, array) {
   const buttons = buildButtons(showStatus);
   buttonsContainer.append(buttons);
-  cardsContainer.append('Dat boi');
   $('[data-status]')[0].className += ' is-active'
   data.map((item, index) => {
-    item
+    const date = formatTime(item.FromDateTime, item.TZAbbrev);
+    let speakerDisplay = speakerPresent(item.WCSpeakerList)
+      .map((item, index) => buildSpeaker(item, index))
+      .join('');
+    array.push(buildCard(item, index, date, speakerDisplay));
   });
+  return array;
 }
 
-//     .map((item, index) => {
-
-//       //const date = formatTime(item.FromDateTime, item.TZAbbrev);
-//       
-//       //const isAvail = 
-//       
-//       const speakerImg = (item.ShowImage === '' ? '' : `${item.ShowImage}`);
-//       let speakerDisplay = speakerPresent(item.WCSpeakerList)
-//         .map((item, index) => {
-//           return buildSpeaker(item, index)
-//         })
-//         .join('');
-//       //Iterate through objects to build card(s)
-//       array.push(buildCard(item, index, date, speakerImg, speakerDisplay));
-//     });
-//   return array;
-// }
-//const data = data => data.map(data => cardsContainer.innerHTML += data);
+function card(data) {
+  cardsContainer.html(data.join(''));
+}
 
 $(document).ready(function() {
-  initCardSection(cardData, showStatus, []);
+  const cardHTML = initCardSection(cardData, showStatus, []);
+  card(cardHTML);
   listeners();
   trimEmptyTags();
   $(document).foundation();

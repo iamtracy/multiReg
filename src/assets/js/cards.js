@@ -58,8 +58,7 @@ function buildSpeaker(item, index) {
           </div>`;
 }
 
-function buildCard(item, index, date, speakerImg, speakerDisplay) {
-
+function buildCard(item, index, date, speakerDisplay) {
   return `<div class="card ${(item.OpenNow === 0 ? 'hide' : '')}" data-live="${item.OpenNow}" data-ondemand="${item.IsOnDemand}">
             <div class="ShowCheckbox">
               <label class="customCheckboxControl customCheckboxTick">
@@ -68,7 +67,7 @@ function buildCard(item, index, date, speakerImg, speakerDisplay) {
                 <span class="select-event">Select this event</span>
               </label>
             </div>
-            <img src="${speakerImg}" alt="${item.ShowTypeDesc} Image">
+            <img src="${item.ShowImage}" alt="${item.ShowTypeDesc} Image">
             <div class="card-section">
               <div class="card-desc">
                 <h4>${item.ShowTitle}</h4>
