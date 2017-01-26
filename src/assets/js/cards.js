@@ -1,3 +1,5 @@
+let itemStatus;
+
 function checkItemStatus(data, keytoMatch, showTypeKey, showTypeValue) {
   let status = false;
   data.map(item => {
@@ -58,8 +60,12 @@ function speakerContent(item, index) {
           </div>`;
 }
 
-function cardContent(item, index, date, speakerData) {
-  return `<div class="card" data-live="${item.OpenNow}" data-ondemand="${item.IsOnDemand}">
+function cardContent(item, index, date, speakerData, initLoadStatus) {
+  if (item.OpenNow === 1) status = 'live';
+  if (item.OpenNow === 0) status = 'upcoming';
+  if (item.IsOnDemand === 1) status = 'ondemand';
+  console.log(item)
+  return `<div class="card ${initLoadStatus === status ? '' : 'hide'}" data-live="${item.OpenNow}" data-ondemand="${item.IsOnDemand}">
             <div class="ShowCheckbox">
               <label class="customCheckboxControl customCheckboxTick">
                 <input type="checkbox" name="ShowKey" data-showkey="${item.ShowKey}" data-packagekey="${item.ShowPackageKey}">

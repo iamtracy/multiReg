@@ -1,3 +1,5 @@
+let firstButton;
+
 function getShowData() {
   const data = mockAjax();
   return data;
@@ -27,13 +29,16 @@ function getCardData(data, showStatus, array) {
   const buttonsContainer = $('[data-event-group]');
   const buttons = buildButtons(showStatus);
   buttonsContainer.append(buttons);
-  $('[data-status]')[0].className += ' is-active';
+  firstButton = $('[data-status]')[0];
+  firstButton.className += ' is-active';
+  const initLoadStatus = firstButton.dataset.status;
+  console.log(initLoadStatus);
   data.map((item, index) => {
     const date = formatTime(item.FromDateTime, item.TZAbbrev);
     let speakerData = speakerPresent(item.WCSpeakerList)
       .map((item, index) => speakerContent(item, index))
       .join('');
-    array.push(cardContent(item, index, date, speakerData));
+    array.push(cardContent(item, index, date, speakerData, initLoadStatus));
   });
   return array;
 }
