@@ -1,15 +1,45 @@
 let firstButton;
+const userSettings = searchSettings();
 
-function getShowData() {
-  const data = mockAjax();
-  return data;
+function getJSON(url) {
+  return new Promise((resolve, reject) => {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.onreadystatechange = handleResponse;
+    xhr.onerror = e => console.log(e);
+    xhr.send();
+
+    function handleResponse() {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          var data = JSON.parse(xhr.responseText);
+          console.log(data.ResultSet[1]);
+          dataInit(data.ResultSet[1]);
+        } else {
+          reject(this.statusText)
+        }
+      }
+    }
+  });
 }
 
+const ajaxPromise = getJSON(
+  `https://vts.inxpo.com/scripts/Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1550&CompanyKey=${userSettings.CompanyKey}${userSettings.IncludeRelatedTenants ? '&IncludeRelatedTenants=1' : '&IncludeRelatedTenants=0'}${'&NumDays='+userSettings.NumDays}${userSettings.SortBySoonest ? '&SortBySoonest=1' : '&SortBySoonest=0'}`);
+// ajaxPromise
+// .then()
+// .then()
+// .catch(e => console.log(e))
+
+
+
+
+//Takes initial JSON object and return filtered array of objects
 function filterShowData(data) {
   const filteredData =
     data.filter(item => {
       return item.ShowTypeDesc === searchSettings().ShowTypeDesc;
     });
+  console.log(filteredData);
   return filteredData;
 }
 
@@ -47,12 +77,12 @@ function buildCards(data) {
   cardsContainer.html(data.join(''));
 }
 
-$(document).ready(function() {
-  const showData = filterShowData(getShowData());
-  const showStatus = getShowStatus(showData);
-  const cardData = getCardData(showData, showStatus, []);
+function dataInit(data) {
+  const filteredData = filterShowData(data)
+  const showStatus = getShowStatus(filteredData);
+  const cardData = getCardData(filteredData, showStatus, []);
   buildCards(cardData);
   listeners();
   trimEmptyPTags();
   $(document).foundation();
-});
+}
