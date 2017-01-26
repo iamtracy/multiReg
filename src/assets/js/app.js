@@ -13,7 +13,6 @@ function getJSON(url) {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           var data = JSON.parse(xhr.responseText);
-          console.log(data.ResultSet[1]);
           dataInit(data.ResultSet[1]);
         } else {
           reject(this.statusText)
@@ -25,15 +24,7 @@ function getJSON(url) {
 
 const ajaxPromise = getJSON(
   `https://vts.inxpo.com/scripts/Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1550&CompanyKey=${userSettings.CompanyKey}${userSettings.IncludeRelatedTenants ? '&IncludeRelatedTenants=1' : '&IncludeRelatedTenants=0'}${'&NumDays='+userSettings.NumDays}${userSettings.SortBySoonest ? '&SortBySoonest=1' : '&SortBySoonest=0'}`);
-// ajaxPromise
-// .then()
-// .then()
-// .catch(e => console.log(e))
 
-
-
-
-//Takes initial JSON object and return filtered array of objects
 function filterShowData(data) {
   const filteredData =
     data.filter(item => {
