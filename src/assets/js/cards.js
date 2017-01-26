@@ -61,11 +61,11 @@ function speakerContent(item, index) {
 }
 
 function cardContent(item, index, date, speakerData, initLoadStatus) {
-  if (item.OpenNow === 1) status = 'live';
-  if (item.OpenNow === 0) status = 'upcoming';
-  if (item.IsOnDemand === 1) status = 'ondemand';
-  console.log(item)
-  return `<div class="card ${initLoadStatus === status ? '' : 'hide'}" data-live="${item.OpenNow}" data-ondemand="${item.IsOnDemand}">
+  let itemStatus;
+  if (item.OpenNow === 1) itemStatus = 'live';
+  if (item.OpenNow === 0) itemStatus = 'upcoming';
+  if (item.IsOnDemand === 1) itemStatus = 'ondemand';
+  return `<div class="card ${initLoadStatus === itemStatus ? '' : 'hide'}" data-live="${item.OpenNow}" data-ondemand="${item.IsOnDemand}">
             <div class="ShowCheckbox">
               <label class="customCheckboxControl customCheckboxTick">
                 <input type="checkbox" name="ShowKey" data-showkey="${item.ShowKey}" data-packagekey="${item.ShowPackageKey}">
