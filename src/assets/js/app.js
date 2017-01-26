@@ -1,17 +1,58 @@
-(function(formSettings) {
-  const cardsContainer = $('#cards')[0];
+let firstButton;
 
-  const results = fakeAjax();
+function getShowData() {
+  const data = mockAjax();
+  return data;
+}
 
-  const data = initCards(results, []);
+function filterShowData(data) {
+  const filteredData =
+    data.filter(item => {
+      return item.ShowTypeDesc === searchSettings().ShowTypeDesc;
+    });
+  return filteredData;
+}
 
-  const init = data => data.map(data => cardsContainer.innerHTML += data);
+function getShowStatus(data) {
+  const showTypeKey = ['live', 'upcoming', 'ondemand'];
+  const livePresent = checkItemStatus(data, 'live', showTypeKey, '1');
+  const upcomingPresent = checkItemStatus(data, 'upcoming', showTypeKey, '0');
+  const ondemandPresent = checkItemStatus(data, 'ondemand', showTypeKey, '1');
+  return {
+    livePresent: livePresent,
+    upcomingPresent: upcomingPresent,
+    ondemandPresent: ondemandPresent
+  }
+}
 
-  $(document).ready(function() {
-    init(data);
-    listeners();
-    trimEmptyTags();
-    $(document).foundation();
+function getCardData(data, showStatus, array) {
+  const buttonsContainer = $('[data-event-group]');
+  const buttons = buildButtons(showStatus);
+  buttonsContainer.append(buttons);
+  firstButton = $('[data-status]')[0];
+  firstButton.className += ' is-active';
+  const initLoadStatus = firstButton.dataset.status;
+  data.map((item, index) => {
+    const date = formatTime(item.FromDateTime, item.TZAbbrev);
+    let speakerData = speakerPresent(item.WCSpeakerList)
+      .map((item, index) => speakerContent(item, index))
+      .join('');
+    array.push(cardContent(item, index, date, speakerData, initLoadStatus));
   });
+  return array;
+}
 
-})(formSettings());
+function buildCards(data) {
+  const cardsContainer = $('[data-cards]');
+  cardsContainer.html(data.join(''));
+}
+
+$(document).ready(function() {
+  const showData = filterShowData(getShowData());
+  const showStatus = getShowStatus(showData);
+  const cardData = getCardData(showData, showStatus, []);
+  buildCards(cardData);
+  listeners();
+  trimEmptyPTags();
+  $(document).foundation();
+});

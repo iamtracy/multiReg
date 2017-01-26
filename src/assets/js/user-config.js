@@ -20,7 +20,7 @@ function formSettings() {
       { labelText: 'Postal Code', fieldType: { inputElem: 'input', type: 'text' }, id: 'PostalCode', name: 'PostalCode', required: 'XR' },
       { labelText: 'Country', fieldType: { inputElem: 'select', type: '' }, id: 'Country', name: 'Country', required: 'XR' },
       { labelText: 'Email Address', fieldType: { inputElem: 'input', type: 'text' }, id: 'EMailAddress', name: 'EMailAddress', required: 'XR' },
-      { labelText: 'Password', fieldType: { inputElem: 'input', type: 'text' }, id: 'Password', name: 'Password', required: 'XR' }
+      { labelText: 'Password', fieldType: { inputElem: 'input', type: 'text' }, id: 'Password', name: 'Password', required: 'XR' },
     ],
     udfFields: [{
       labelText: 'Employees',

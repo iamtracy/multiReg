@@ -1,26 +1,34 @@
 .card {
-  margin-top: 2.65rem;
+  margin-bottom: 1.5rem;
   border-bottom: 1px dotted map-get($foundation-palette, secondary);
+  .media-object-section {
+    h4 {
+      margin-bottom: .18rem;
+      padding: 0;
+      line-height: 1.2rem;
+    }
+  }
   h4 {
-    margin-bottom: .18rem;
+    margin: 0;
   }
   h6 {
     margin-bottom: .08rem;
   }
+  &>img {
+    margin: .825rem 0;
+  }
   .card-desc {
     margin-bottom: 1rem;
-  }
-  img {
-    margin: 1.1rem 0 1.105rem;
-  }
-  .dropdown-pane {
-    max-height: 65vh;
-    overflow-y: scroll;
-    border: 1px solid map-get($foundation-palette, secondary);
-    padding: 0 15px;
   }
   .button {
     margin-bottom: 1.75rem;
     border-radius: 3px;
+  }
+  .thumbnail {
+    float: left;
+    padding: 0 15px 0 0;
+  }
+  .media-object-section {
+    margin: 1rem 0 3rem;
   }
 }

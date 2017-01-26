@@ -1,24 +1,71 @@
-const initCards = (data, array) => {
-  data
-    .filter(item => item.ShowTypeDesc === searchSettings().ShowTypeDesc)
-    .map((item, index) => {
-      let date = formatTime(item.FromDateTime, item.TZAbbrev);
-      let speakerImg = (item.ShowImage === '' ? '' : `${item.ShowImage}`);
-      let speakerDisplay =
-        speakerPresent(item.WCSpeakerList)
-        .map(item => {
-          return `<div class="media-object">
-                      <div class="media-object-section">
-                        <img src="${item.img}">
-                      </div>
-                      <div class="media-object-section">
-                        <h4>${item.name}</h4>
-                        <p>${item.bio}</p>
-                      </div>
-                    </div>`
-        }).join(' ');
-      array.push(
-        `<div class="card ${(item.OpenNow === 0 ? 'hide' : '')}" data-live=${item.OpenNow} data-ondemand=${item.IsOnDemand}>
+let itemStatus;
+
+function checkItemStatus(data, keytoMatch, showTypeKey, showTypeValue) {
+  let status = false;
+  data.map(item => {
+    if (
+      keytoMatch === showTypeKey[0] && item.OpenNow == showTypeValue ||
+      keytoMatch === showTypeKey[1] && item.OpenNow == showTypeValue ||
+      keytoMatch === showTypeKey[2] && item.IsOnDemand == showTypeValue
+    ) {
+      status = true;
+    }
+  });
+  return status;
+}
+
+function buildButtons(showStatus) {
+  const buttons = `
+    <div class="button-group">
+      ${showStatus.livePresent ? '<a class="button" data-status="live">Live</a>' : ''}
+      ${showStatus.upcomingPresent ? '<a class="button" data-status="upcoming">Upcoming</a>' : ''}
+      ${showStatus.ondemandPresent ? '<a class="button" data-status="ondemand">On Demand</a>' : ''}
+    </div>
+    <blockquote>
+      <div class="small-12 custom-checkbox">
+        <label class="customCheckboxControl customCheckboxTick">
+            <input type="checkbox" name="selectAll">
+            <div class="customCheckbox"></div>
+            <span class="select-event">Select all events below or check individual events you would like to register for.</span>
+        </label>
+      </div>
+    </blockquote>`;
+  return buttons;
+}
+
+function speakerPresent(data) {
+  let speakers = data.split('||');
+  let speaker = speakers.map((item, index) => {
+    let about = item.split('^');
+    if (about[0] !== "") {
+      return {
+        name: about[0],
+        img: about[1],
+        bio: about[2]
+      };
+    }
+  }).filter(item => item !== undefined);
+  return speaker;
+}
+
+function speakerContent(item, index) {
+  return `<div class="media-object-section">
+            <div class="thumbnail">
+              <img src="${item.img}" alt="Space">
+            </div>
+          </div>
+          <div class="media-object-section">
+            <h4>${item.name}</h4>
+            <p>${item.bio}</p>
+          </div>`;
+}
+
+function cardContent(item, index, date, speakerData, initLoadStatus) {
+  let itemStatus;
+  if (item.OpenNow === 1) itemStatus = 'live';
+  if (item.OpenNow === 0) itemStatus = 'upcoming';
+  if (item.IsOnDemand === 1) itemStatus = 'ondemand';
+  return `<div class="card ${initLoadStatus === itemStatus ? '' : 'hide'}" data-live="${item.OpenNow}" data-ondemand="${item.IsOnDemand}">
             <div class="ShowCheckbox">
               <label class="customCheckboxControl customCheckboxTick">
                 <input type="checkbox" name="ShowKey" data-showkey="${item.ShowKey}" data-packagekey="${item.ShowPackageKey}">
@@ -26,7 +73,7 @@ const initCards = (data, array) => {
                 <span class="select-event">Select this event</span>
               </label>
             </div>
-            <img src="${speakerImg}" alt="${item.ShowTypeDesc} Image">
+            <img src="${item.ShowImage}" alt="${item.ShowTypeDesc} Image">
             <div class="card-section">
               <div class="card-desc">
                 <h4>${item.ShowTitle}</h4>
@@ -36,33 +83,12 @@ const initCards = (data, array) => {
               <p>${item.Comments}</p>
               <section>
                 <div class="dropdown-pane top hide" id="speaker${index}" data-speaker-toggler>
-                  ${speakerDisplay}
+                  ${speakerData}
                 </div>
               </section>
-              <button 
-                class="hollow button ${(speakerDisplay.length === 0 ? 'hide' : '')}" 
-                type="button" data-speaker-toggler="speaker${index}" 
-                data-speaker>
+              <button class="hollow button ${(speakerData.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
                 View Speakers
               </button>
             </div>
-          </div>`);
-    });
-  return array;
+          </div>`;
 }
-
-// return `<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-//                   <ul class="orbit-container">
-//                   <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-//                   <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-//                   <li class="orbit-slide">
-//                   <img class="orbit-image" src="${item.img}" alt="Space">
-//                   <figcaption class="orbit-caption"><h4>${item.name}</h4></figcaption>
-//                   <div class="media-object-section">
-//                         <h4>${item.name}</h4>
-//                         <p>${item.bio}</p>
-//                       </div>
-//                 </li>
-//                       </div>
-
-//                     </div>`

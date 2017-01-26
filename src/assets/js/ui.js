@@ -1,46 +1,29 @@
 let cardCheckBoxes;
-let checkAllCheckbox;
-let speakerButtons;
-let cardButtons;
-let submit;
-
-function speakerPresent(speaker) {
-  let speakers = speaker.split('||');
-  let response = speakers.map((item, index) => {
-    let about = item.split('^');
-    if (about[0] !== "") {
-      return {
-        name: about[0],
-        img: about[1],
-        bio: about[2]
-      };
-    }
-  }).filter(item => item !== undefined);
-  return response;
-}
 
 function readMoreLess() {
-  let elem = $(this);
-  let speakerID = $(elem[0].dataset.speakerToggler).selector;
+  let elem = $(this)[0];
+  let speakerID = $(elem.dataset.speakerToggler).selector;
   let speakerElem = $(`#${speakerID}`);
   speakerElem.toggleClass('hide');
-  if (elem[0].innerText === "View Speakers") {
-    elem[0].innerText = "Hide Speakers";
+  if (elem.innerText === "View Speakers") {
+    elem.innerText = "Hide Speakers";
   } else {
-    elem[0].innerText = "View Speakers";
-  };
+    elem.innerText = "View Speakers";
+  }
 }
 
-function cardButtonClick(e) {
+function cardClickToSort() {
+  let elem = $(this)[0];
   let activeState = $('[data-event-group] .button');
   activeState.removeClass('is-active');
   $(this).addClass('is-active');
-  if ($(this)[0].dataset.status === "live") cardSort('live', true, '1');
-  if ($(this)[0].dataset.status === "upcoming") cardSort('live', true, '0');
-  if ($(this)[0].dataset.status === "ondemand") cardSort('ondemand', false, '1');
+  if (elem.dataset.status === "live") cardSort('live', true, '1');
+  if (elem.dataset.status === "upcoming") cardSort('live', true, '0');
+  if (elem.dataset.status === "ondemand") cardSort('ondemand', false, '1');
 }
 
 function cardSort(dataAttr, boolean, number) {
+  console.log('sort')
   const cards = $('.card').toArray();
   cards.map(item => {
     if (boolean) {
@@ -54,43 +37,38 @@ function cardSort(dataAttr, boolean, number) {
 }
 
 function checkAll() {
-  console.log('check all');
-  let selectedListArray = selectedElemList.toArray();
-  if (this.checked) {
-    selectedListArray.forEach(item => item.checked = true)
-  } else {
-    selectedListArray.forEach(item => item.checked = false)
-  }
+  let selectedListArray = cardCheckBoxes.toArray();
+  if (this.checked) selectedListArray.forEach(item => item.checked = true);
+  else selectedListArray.forEach(item => item.checked = false);
   selectionState();
 }
 
 function selectionState() {
-  console.log('selectState')
-    //   let selectedListArray = selectedElemList.toArray();
-    //   selected = [];
-    //   selectedListArray.
-    //   filter(item => item.checked === true).
-    //   forEach(item => {
-    //     selected.push({
-    //       showKey: item.dataset.showkey,
-    //       showPackageKey: item.dataset.packagekey
-    //     });
-    //   });
-    //   console.log(selected);
-    //   return selected;
+  let selectedListArray = cardCheckBoxes.toArray();
+  let selected = [];
+  selectedListArray.
+  filter(item => item.checked === true).
+  forEach(item => {
+    selected.push({
+      showKey: item.dataset.showkey,
+      showPackageKey: item.dataset.packagekey
+    });
+  });
+  console.log(selected);
+  return selected;
 }
 
 function listeners() {
-  cardCheckBoxes = $('input[name="ShowKey"]');
-  checkAllCheckbox = $('input[name="selectAll"]');
-  speakerButtons = $('[data-speaker]');
-  cardButtons = $('[data-event-group] .button');
-  submit = $('#RegisterBTN');
-  cardCheckBoxes.change(selectionState);
+  const checkAllCheckbox = $('input[name="selectAll"]');
   checkAllCheckbox.change(checkAll);
+  const speakerButtons = $('[data-speaker]');
   speakerButtons.click(readMoreLess)
-  cardButtons.click(cardButtonClick);
+  const cardButtons = $('[data-event-group] .button');
+  cardButtons.click(cardClickToSort);
+  const submit = $('#RegisterBTN');
   submit.click(onSubmit);
+  cardCheckBoxes = $('input[name="ShowKey"]');
+  cardCheckBoxes.change(selectionState);
 }
 
 function onSubmit() {
