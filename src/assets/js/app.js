@@ -1,20 +1,21 @@
-function getData() {
+function getShowData() {
   const data = mockAjax();
   return data;
 }
 
-function filterData(data) {
+function filterShowData(data) {
   const filteredData =
     data.filter(item => {
-      return item.ShowTypeDesc === searchSettings().ShowTypeDesc
+      return item.ShowTypeDesc === searchSettings().ShowTypeDesc;
     });
   return filteredData;
 }
 
-function showStatuses(data) {
-  const livePresent = checkItemStatus(data, 'live', '1');
-  const upcomingPresent = checkItemStatus(data, 'upcoming', '0');
-  const ondemandPresent = checkItemStatus(data, 'ondemand', '1');
+function getShowStatus(data) {
+  const showTypeKey = ['live', 'upcoming', 'ondemand'];
+  const livePresent = checkItemStatus(data, 'live', showTypeKey, '1');
+  const upcomingPresent = checkItemStatus(data, 'upcoming', showTypeKey, '0');
+  const ondemandPresent = checkItemStatus(data, 'ondemand', showTypeKey, '1');
   return {
     livePresent: livePresent,
     upcomingPresent: upcomingPresent,
@@ -22,32 +23,32 @@ function showStatuses(data) {
   }
 }
 
-function initCardSection(data, showStatus, array) {
+function getCardData(data, showStatus, array) {
   const buttonsContainer = $('[data-event-group]');
   const buttons = buildButtons(showStatus);
   buttonsContainer.append(buttons);
   $('[data-status]')[0].className += ' is-active';
   data.map((item, index) => {
     const date = formatTime(item.FromDateTime, item.TZAbbrev);
-    let speakerDisplay = speakerPresent(item.WCSpeakerList)
-      .map((item, index) => buildSpeaker(item, index))
+    let speakerData = speakerPresent(item.WCSpeakerList)
+      .map((item, index) => speakerContent(item, index))
       .join('');
-    array.push(buildCard(item, index, date, speakerDisplay));
+    array.push(cardContent(item, index, date, speakerData));
   });
   return array;
 }
 
-function card(data) {
+function buildCards(data) {
   const cardsContainer = $('[data-cards]');
   cardsContainer.html(data.join(''));
 }
 
 $(document).ready(function() {
-  const cardData = filterData(getData());
-  const showStatus = showStatuses(cardData);
-  const cardHTML = initCardSection(cardData, showStatus, []);
-  card(cardHTML);
+  const showData = filterShowData(getShowData());
+  const showStatus = getShowStatus(showData);
+  const cardData = getCardData(showData, showStatus, []);
+  buildCards(cardData);
   listeners();
-  trimEmptyTags();
+  trimEmptyPTags();
   $(document).foundation();
 });

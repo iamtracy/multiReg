@@ -1,7 +1,11 @@
-function checkItemStatus(data, object, value) {
+function checkItemStatus(data, keytoMatch, showTypeKey, showTypeValue) {
   let status = false;
   data.map(item => {
-    if (object === 'live' && item.OpenNow == 1 || object === 'upcoming' && item.OpenNow == 0 || object === 'ondemand' && item.IsOnDemand == 1) {
+    if (
+      keytoMatch === showTypeKey[0] && item.OpenNow == showTypeValue ||
+      keytoMatch === showTypeKey[1] && item.OpenNow == showTypeValue ||
+      keytoMatch === showTypeKey[2] && item.IsOnDemand == showTypeValue
+    ) {
       status = true;
     }
   });
@@ -27,9 +31,9 @@ function buildButtons(showStatus) {
   return buttons;
 }
 
-function speakerPresent(speaker) {
-  let speakers = speaker.split('||');
-  let response = speakers.map((item, index) => {
+function speakerPresent(data) {
+  let speakers = data.split('||');
+  let speaker = speakers.map((item, index) => {
     let about = item.split('^');
     if (about[0] !== "") {
       return {
@@ -39,10 +43,10 @@ function speakerPresent(speaker) {
       };
     }
   }).filter(item => item !== undefined);
-  return response;
+  return speaker;
 }
 
-function buildSpeaker(item, index) {
+function speakerContent(item, index) {
   return `<div class="media-object-section">
             <div class="thumbnail">
               <img src="${item.img}" alt="Space">
@@ -54,7 +58,7 @@ function buildSpeaker(item, index) {
           </div>`;
 }
 
-function buildCard(item, index, date, speakerDisplay) {
+function cardContent(item, index, date, speakerData) {
   return `<div class="card ${(item.OpenNow === 0 ? 'hide' : '')}" data-live="${item.OpenNow}" data-ondemand="${item.IsOnDemand}">
             <div class="ShowCheckbox">
               <label class="customCheckboxControl customCheckboxTick">
@@ -73,10 +77,10 @@ function buildCard(item, index, date, speakerDisplay) {
               <p>${item.Comments}</p>
               <section>
                 <div class="dropdown-pane top hide" id="speaker${index}" data-speaker-toggler>
-                  ${speakerDisplay}
+                  ${speakerData}
                 </div>
               </section>
-              <button class="hollow button ${(speakerDisplay.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
+              <button class="hollow button ${(speakerData.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
                 View Speakers
               </button>
             </div>
