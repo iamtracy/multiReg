@@ -19,7 +19,7 @@ function mockAjax() {
     "IsRegistrationOpen": 0,
     "WCSpeakerList": "Mark Wright^https://content.inxpo.com/FileLibrary/882/6/mark-wright-100X100.jpg^<p><strong>President<br />Health Wright</strong></p><p>Since 1995, Mark Wright has led HWP on an intentional growth pattern, building its operations to the point where HWP successfully manages the needs of more than 100 active brands and thousands of unique formulas, with room for more.</p>||Brad Pyatt^https://content.inxpo.com/FileLibrary/882/6/Brad_Pyatt-100X100.jpg^<p><strong>CEO</strong><br/>Muscle Pharm<br />Brad Pyatt, CEO and Chairman, founded MusclePharm® in 2008 after playing professional football for seven years. He spent the majority of his career with the Indianapolis Colts and has firsthand experience with the taking of supplements to better performance. Pyatt was frustrated with his results and saw the need for safe, effective and scientifically produced sports nutritional supplements. His background in Kinesiology and Exercise Science coupled with knowledge he acquired from his mentor, renowned Sports Nutrition Doctor Eric Serrano served as the cornerstone of MusclePharm®. In five years, Pyatt has built MusclePharm® into one of today’s leading nutritional supplement companies worldwide.</p>||Dr. Richard Kreider^https://content.inxpo.com/FileLibrary/882/6/Richard-Kreider-100X100.jpg^<p><strong>Professor of Health &amp; Kinesiology</strong><br />Texas A&amp;M University<br /><br />Dr. Kreider serves as Professor and Head of the Department of Health &amp; Kinesiology at Texas A&amp;M University.&nbsp; Dr. Kreider has published three books and more than 150 peer-reviewed articles and book chapters.&nbsp; Dr. Kreider is a Fellow of the American College of Sport Medicine (ACSM); an active member of the National Strength and Conditioning Association (NSCA); a co-founder, board member and Fellow of the International Society of Sports Nutrition; founding Editor-In-Chief of the Journal of the International Society of Sports Nutrition. Dr Kreider continues to conduct research into the role of exercise and nutrition on health, disease, rehabilitation, and performance.</p>||Chris Schmidt^https://content.inxpo.com/FileLibrary/882/6/Chris_Schmidt_100x100.jpg^<p><strong>Industry Analyst – Consumer Health<br /></strong>Euromonitor<strong><br /></strong><br />In his role as Consumer Health Company Analyst, Chris Schmidt is responsible for Euromonitor International’s global coverage of the industry’s leading players. His work centres on profiling the industry’s top sellers and analysis of corporate strategy.<strong><br /></strong></p>||Hank Schultz^https://content.inxpo.com/FileLibrary/882/6/hank2-100x100.jpg^<p><strong>Senior Correspondant</strong><br /> NutraIngredients-USA.com</p><p>Hank Schultz is the Senior Correspondent for NutraIngredients-USA and FoodNavigator-USA. He has experience in the dietary supplements and food business and also in the daily newspaper industry, where he was an editor with the Rocky Mountain News in Denver, Colorado.</p>||",
     "TZAbbrev": "CST",
-    "IsOnDemand": 1
+    "IsOnDemand": 0
   }, {
     "CompanyKey": 882,
     "ShowKey": 30130,
@@ -33,7 +33,7 @@ function mockAjax() {
     "ExternalID": "",
     "FromDateTime": "2016-01-31 15:45:00.000",
     "ToDateTime": "2017-01-30 16:45:00.000",
-    "OpenNow": 1,
+    "OpenNow": 0,
     "Comments": "<p>Discover the latest practical approaches to minimising food fraud. This session looks at the potential economic impact to your business and how best to mitigate the risks by holistic solutions that include the new BRC FoodV7. and the effective use of food fraud awareness training within your business.<br /><br />Who should attend?  <br /><br />All stakeholders in the business interested in mitigating risks to food fraud, reducing the potential damage to brand/company reputation and improving profitability.</p><p><strong>Company Summary:</strong></p><p>The leading provider of brand protection services to the food manufacturing, foodservice and retail sectors in EMEA. NSF can help with risk management solutions throughout the supply network.</p>",
     "ShowImage": "http://placehold.it/750x150",
     "ShowPackageKey": 56909,
@@ -54,14 +54,14 @@ function mockAjax() {
     "ExternalID": "",
     "FromDateTime": "2016-01-31 17:45:00.000",
     "ToDateTime": "2017-01-30 18:45:00.000",
-    "OpenNow": 1,
+    "OpenNow": 0,
     "Comments": "<p>This webinar will inform about the Disinfection management in pharmaceutical cleanrooms. You will learn about regulations related to cleaning and disinfection, the selection of detergents and disinfectants and how disinfectants can kill microorganisms. Furthermore, the webinar will inform about the rotation and qualification of disinfectants. In the second part of the webinar you will learn about the choice of culture media and suitable neutralizers for the sampling of sanitized surfaces.</p><p> <br /><strong>Company summary:</strong> <br /> As part of the global Life Science business of Merck KGaA, Darmstadt Germany, EMD Millipore offers a broad range of innovative products, services and business relationships that enable our customers' success in research, development and production of biotech and pharmaceutical drug therapies.</p>",
     "ShowImage": "http://placehold.it/750x150",
     "ShowPackageKey": 56913,
     "IsRegistrationOpen": 0,
     "WCSpeakerList": "Tim Sandle^https://content.inxpo.com/FileLibrary/882/6/Tim_Sandle_100x100.jpg^<p><em>Bio Products Laboratory (U.K.), Head of Microbiology </em></p>\r\n<p>Dr. Sandle serves on several national and international committees relating to pharmaceutical microbiology and cleanroom contamination control. He is a committee member of the Pharmaceutical Microbiology Interest Group (Pharmig) and a member of several editorials boards for scientific journals.</p>||Anne-Grit Klees^https://content.inxpo.com/FileLibrary/882/6/Annie.jpg^<p>Global Product Manager<br />Merck Millipore (Merck Millipore is a business of Merck KGaA, Darmstadt, Germany)<br /><br />Anne-Grit Klees is Global Product Manager at Merck Millipore. She is responsible for culture media for use in environmental monitoring of air and surfaces. Anne holds a Ph. D. in Microbiology from Phillipps-University Marburg, Germany.</p>||",
     "TZAbbrev": "CST",
-    "IsOnDemand": 1
+    "IsOnDemand": 0
   }, {
     "CompanyKey": 882,
     "ShowKey": 30688,
@@ -75,14 +75,14 @@ function mockAjax() {
     "ExternalID": "",
     "FromDateTime": "2016-03-01 14:15:00.000",
     "ToDateTime": "2017-03-01 14:45:00.000",
-    "OpenNow": 1,
+    "OpenNow": 0,
     "Comments": "<p>Bars or drinks? Weekend warriors or fitness walkers? <br /> <br>The US sports nutrition market is dynamic and diverse beast, valued at an eye-watering <strong>$10 billion for drinks, shots, bars, gels, and supplements.</strong> <br /><br> But who are the consumers, which products are driving category growth, and what’s next for sports and lifestyle nutrition?</p><p>In this forum we hear from two leading market analysts on the current state-of-play, what challenges lurk on the horizon, and which ingredients and applications present the best opportunities for the US sports and lifestyle nutrition market.</p>",
     "ShowImage": "",
     "ShowPackageKey": 58080,
     "IsRegistrationOpen": 0,
     "WCSpeakerList": "Mark Wright^https://content.inxpo.com/FileLibrary/882/6/mark-wright-100X100.jpg^<p><strong>President<br /></strong>Health Wright</p><p>Since 1995, Mark Wright has led HWP on an intentional growth pattern, building its operations to the point where HWP successfully manages the needs of more than 100 active brands and thousands of unique formulas, with room for more.</p>||Brad Pyatt^https://content.inxpo.com/FileLibrary/882/6/Brad_Pyatt-100X100.jpg^<p><strong>CEO</strong><br/>Muscle Pharm<br />Brad Pyatt, CEO and Chairman, founded MusclePharm® in 2008 after playing professional football for seven years. He spent the majority of his career with the Indianapolis Colts and has firsthand experience with the taking of supplements to better performance. Pyatt was frustrated with his results and saw the need for safe, effective and scientifically produced sports nutritional supplements. His background in Kinesiology and Exercise Science coupled with knowledge he acquired from his mentor, renowned Sports Nutrition Doctor Eric Serrano served as the cornerstone of MusclePharm®. In five years, Pyatt has built MusclePharm® into one of today’s leading nutritional supplement companies worldwide.</p>||Dr. Richard Kreider^https://content.inxpo.com/FileLibrary/882/6/Richard-Kreider-100X100.jpg^<p><strong>Professor of Health &amp; Kinesiology</strong><br />Texas A&amp;M University<br /><br />Dr. Kreider serves as Professor and Head of the Department of Health &amp; Kinesiology at Texas A&amp;M University.&nbsp; Dr. Kreider has published three books and more than 150 peer-reviewed articles and book chapters.&nbsp; Dr. Kreider is a Fellow of the American College of Sport Medicine (ACSM); an active member of the National Strength and Conditioning Association (NSCA); a co-founder, board member and Fellow of the International Society of Sports Nutrition; founding Editor-In-Chief of the Journal of the International Society of Sports Nutrition. Dr Kreider continues to conduct research into the role of exercise and nutrition on health, disease, rehabilitation, and performance.</p>||Chris Schmidt^https://content.inxpo.com/FileLibrary/882/6/Chris_Schmidt_100x100.jpg^<p><strong>Industry Analyst – Consumer Health<br /></strong>Euromonitor<strong><br /></strong>In his role as Consumer Health Company Analyst, Chris Schmidt is responsible for Euromonitor International’s global coverage of the industry’s leading players. His work centres on profiling the industry’s top sellers and analysis of corporate strategy.<strong><br /></strong></p>||Hank Schultz^https://content.inxpo.com/FileLibrary/882/6/hank2-100x100.jpg^<p><strong>Senior Correspondant</strong><br /> NutraIngredients-USA.com</p><p>Hank Schultz is the Senior Correspondent for NutraIngredients-USA and FoodNavigator-USA. He has experience in the dietary supplements and food business and also in the daily newspaper industry, where he was an editor with the Rocky Mountain News in Denver, Colorado.</p>||",
     "TZAbbrev": "CST",
-    "IsOnDemand": 1
+    "IsOnDemand": 0
   }, {
     "CompanyKey": 882,
     "ShowKey": 35879,
@@ -96,7 +96,7 @@ function mockAjax() {
     "ExternalID": "",
     "FromDateTime": "2016-12-13 14:00:00.000",
     "ToDateTime": "2017-12-13 15:00:00.000",
-    "OpenNow": 1,
+    "OpenNow": 0,
     "Comments": "<p>Snack options now cater to more lifestyles, health-focused observances, and dietary restrictions than ever before. And with global new products continually evolving to keep up, it&rsquo;s more important than ever to be innovating ahead of the curve. In this free, 40-minute webinar presented by the Almond Board of California (ABC) - join Lu Ann Williams, Director of Innovation at Innova Market Insights, and Chef Rob Corliss, Founder of All Things Epicurean (ATE) as they lead an exploration of new formats and opportunities in snacking.</p>\r\n<p>&nbsp;</p>\r\n<p>Lu Ann Williams will forecast key 2017 snacking trends with real-world examples of how manufacturers are bringing them to life. Chef Rob Corliss will then showcase innovative almond-centric snack concepts to demonstrate how almonds, in their various forms, offer myriad opportunities aligned with these trends.</p>\r\n<p>&nbsp;</p>\r\n<p>Join the Almond Board of California, Lu Ann, and Chef Rob in an exploration of new formats and opportunities in snacking and learn tips and tricks for developing cutting edge concepts that take the trends a step further to exceed consumer expectations.</p>\r\n<p>&nbsp;</p>\r\n<p>Sign up now and be sure to take advantage of the live 10-minute Q&amp;A session after the presentation.</p>",
     "ShowImage": "http://placehold.it/750x150",
     "ShowPackageKey": 68481,
@@ -117,7 +117,7 @@ function mockAjax() {
     "ExternalID": "",
     "FromDateTime": "2016-11-01 11:00:00.000",
     "ToDateTime": "2017-11-01 12:00:00.000",
-    "OpenNow": 1,
+    "OpenNow": 0,
     "Comments": "<p>** Copied From Winning consumers in a changing non-GMO marketplace **\r\n2016-11-01 04:44:18\r\n** Copied From Template INXPO XPOCAST Prime Webcast Template **\r\n2016-09-07 12:48:12\r\n</p>",
     "ShowImage": "http://placehold.it/750x150",
     "ShowPackageKey": 68187,
@@ -138,7 +138,7 @@ function mockAjax() {
     "ExternalID": "",
     "FromDateTime": "2016-03-22 09:00:00.000",
     "ToDateTime": "2017-03-22 10:00:00.000",
-    "OpenNow": 1,
+    "OpenNow": 0,
     "Comments": "<p>The UK meat industry may have bounced back from horsemeat, but the scandal&rsquo;s impact continues to linger as consumer awareness of supply chain issues has grown.&nbsp; As a result, the sector is under pressure to ensure it keeps meat free from adulteration, whether deliberate or accidental.<br /><br /></p>\r\n<p>This <em>Meat Trades Journal</em> webinar will consider the new practices being adopted by retailers and processors in the light of horsegate and similar problems and the role of the Food Standards Agency in that process. It will also consider the latest innovations in traceability, testing and detection to eradicate adulteration in the context of a global supply network.</p>",
     "ShowImage": "http://placehold.it/750x150",
     "ShowPackageKey": 57242,
@@ -159,14 +159,14 @@ function mockAjax() {
     "ExternalID": "",
     "FromDateTime": "2017-02-08 15:00:00.000",
     "ToDateTime": "2018-02-08 16:00:00.000",
-    "OpenNow": 1,
+    "OpenNow": 0,
     "Comments": "<p>Sports nutrition supplements are one of the fastest growing and most innovative categories in the dietary supplement industry, but this growth and innovation can create significant risk. What’s stopping unscrupulous suppliers from marketing untested ingredients as the “next hot thing”? Can these ingredients be safely used in a sports nutrition supplement? Could the ingredient cause your customers to test positive for banned substances? We will explore these issues and some of the solutions NSF International has to offer.</p>",
     "ShowImage": "http://placehold.it/750x150",
     "ShowPackageKey": 70466,
     "IsRegistrationOpen": 1,
     "WCSpeakerList": "John Travis^https://content.inxpo.com/FileLibrary/882/6/John_Travis_Cropped.jpg^<p class=\"show\"><em>Senior Research Scientist</em></p><p class=\"show\"><strong>NSF International</strong></p><p class=\"hide\"><br />John Travis has more than 20 years of experience as an analytical chemist. As Senior Research Scientist at NSF International, Travis analyzes hundreds of dietary supplement products each year for contaminants, emerging drugs and harmful compounds.</p> Food Science from the University of Wisconsin and a Masters of Business and Administration.</p>||Benjamin Koepsell^https://content.inxpo.com/FileLibrary/882/6/Benjamin_Koepsell_Cropped.jpg^<p class=\"show\">Moderator</p><p class=\"show\"><em>Associate Marketing Manager</em></p><p class=\"show\"><strong>NSF Health Services</strong></p><p class=\"hide\"><br />Benjamin Koepsell works as Associate Marketing Manager for the NSF Health Sciences division based in Germany and handles the European market, especially NSF’s nutritional and dietary supplements programs.</p>||",
     "TZAbbrev": "CET",
-    "IsOnDemand": 1
+    "IsOnDemand": 0
   }, {
     "CompanyKey": 882,
     "ShowKey": 30170,
@@ -180,7 +180,7 @@ function mockAjax() {
     "ExternalID": "",
     "FromDateTime": "2016-03-08 09:30:00.000",
     "ToDateTime": "2017-03-08 10:30:00.000",
-    "OpenNow": 1,
+    "OpenNow": 0,
     "Comments": "<p>The global beer market is expected to reach <strong>$688 billion by 2020,</strong> according to Allied Market Research. Innovations are coming from all directions &ndash; but which ones will really thrive and drive the category forward? <br /><br /><br /> With the <strong>craft beer phenomenon</strong> showing no signs of slowing down, what strategies are multinationals embracing in this changing market environment? <br /> What implication does the <strong>health and wellness trend</strong> have for the sector, and how can brewers meet new consumer demands?<br /><br /></p>\r\n<p>Emerging markets are showing strong growth in beer consumption, yet the picture is different in mature markets. <br /> In this <strong>free-to-attend online forum</strong>, moderated by BeverageDaily, <strong>beer experts also look at the challenges &ndash; and how they can be turned into opportunities.</strong></p>",
     "ShowImage": "http://placehold.it/750x150",
     "ShowPackageKey": 56988,
@@ -201,7 +201,7 @@ function mockAjax() {
     "ExternalID": "",
     "FromDateTime": "2016-09-15 09:30:00.000",
     "ToDateTime": "2017-09-15 10:30:00.000",
-    "OpenNow": 1,
+    "OpenNow": 0,
     "Comments": "<p>In the last few years there has been an <strong>increased emphasis on sourcing ingredients sustainably in the cosmetics industry</strong> driven by the rise in ethical consumerism, customer demand, and CSR/ sustainability strategies.</p>\r\n<p> </p>\r\n<p>Sustainable development or sustainability is generally accepted as an <strong>unavoidable path for future product development.</strong></p>\r\n<p> </p>\r\n<p>This forum brings <strong>together experts in the natural and organic world</strong> to discuss sustainable sourcing of natural ingredients – what the current playing field is and what to expect in the future.</p>",
     "ShowImage": "http://placehold.it/750x150",
     "ShowPackageKey": 56876,

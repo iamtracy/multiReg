@@ -9,7 +9,7 @@ function readMoreLess() {
     elem.innerText = "Hide Speakers";
   } else {
     elem.innerText = "View Speakers";
-  };
+  }
 }
 
 function cardClickToSort() {
@@ -23,6 +23,7 @@ function cardClickToSort() {
 }
 
 function cardSort(dataAttr, boolean, number) {
+  console.log('sort')
   const cards = $('.card').toArray();
   cards.map(item => {
     if (boolean) {
@@ -58,16 +59,16 @@ function selectionState() {
 }
 
 function listeners() {
-  let checkAllCheckbox = $('input[name="selectAll"]');
-  let speakerButtons = $('[data-speaker]');
-  let cardButtons = $('[data-event-group] .button');
-  let submit = $('#RegisterBTN');
+  const checkAllCheckbox = $('input[name="selectAll"]');
+  checkAllCheckbox.change(checkAll);
+  const speakerButtons = $('[data-speaker]');
+  speakerButtons.click(readMoreLess)
+  const cardButtons = $('[data-event-group] .button');
+  cardButtons.click(cardClickToSort);
+  const submit = $('#RegisterBTN');
+  submit.click(onSubmit);
   cardCheckBoxes = $('input[name="ShowKey"]');
   cardCheckBoxes.change(selectionState);
-  checkAllCheckbox.change(checkAll);
-  speakerButtons.click(readMoreLess)
-  cardButtons.click(cardClickToSort);
-  submit.click(onSubmit);
 }
 
 function onSubmit() {
