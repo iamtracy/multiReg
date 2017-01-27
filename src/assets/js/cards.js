@@ -60,6 +60,7 @@ function speakerContent(item, index) {
 
 function cardContent(item, index, date, speakerData, initLoadStatus) {
   let itemStatus;
+  let showImage;
   console.log(typeof item.OpenNow);
   switch (item.OpenNow) {
     case 1:
@@ -78,6 +79,12 @@ function cardContent(item, index, date, speakerData, initLoadStatus) {
       }
   }
 
+  if (item.ShowImage === '') {
+    showImage = ''
+  } else {
+    showImage = `<img src="${item.ShowImage}" alt="${item.ShowTypeDesc} Image">`
+  }
+
   console.log('item.OpenNow: ' + item.OpenNow, initLoadStatus, itemStatus);
   return `<div class="card ${initLoadStatus === itemStatus ? '' : 'hide'}" data-live="${item.OpenNow}" data-ondemand="${item.IsOnDemand}">
             <div class="ShowCheckbox">
@@ -87,7 +94,7 @@ function cardContent(item, index, date, speakerData, initLoadStatus) {
                 <span class="select-event">Select this event</span>
               </label>
             </div>
-            <img src="${item.ShowImage}" alt="${item.ShowTypeDesc} Image">
+            ${showImage}
             <div class="card-section">
               <div class="card-desc">
                 <h4>${item.ShowTitle}</h4>
