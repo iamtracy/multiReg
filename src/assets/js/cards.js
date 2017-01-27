@@ -24,7 +24,7 @@ function buildButtons(showStatus) {
         <label class="customCheckboxControl customCheckboxTick">
             <input type="checkbox" name="selectAll">
             <div class="customCheckbox"></div>
-            <span class="select-event">Select all events below or check individual events you would like to register for.</span>
+            <div class="select-event">Select all events below or check individual events you would like to register for.</div>
         </label>
       </div>
     </blockquote>`;
