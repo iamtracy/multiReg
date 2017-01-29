@@ -24,26 +24,26 @@ function cardClickToSort() {
 
 function cardSort(type) {
   const cards = $('.card').toArray();
-  cards.map(item => {
+  $.map(cards, function(item) {
     if (type === 'live') {
       if (item.dataset.live === '1' && item.dataset.ondemand === '0') {
-        item.classList = "card";
+        $(item).removeClass("hide");
       } else {
-        item.classList = "card hide";
+        $(item).addClass('hide');
       }
     }
     if (type === 'upcoming') {
       if (item.dataset.live === '0' && item.dataset.ondemand === '0') {
-        item.classList = "card";
+        $(item).removeClass("hide");
       } else {
-        item.classList = "card hide";
+        $(item).addClass('hide');
       }
     }
     if (type === 'ondemand') {
       if (item.dataset.ondemand === '1') {
-        item.classList = "card";
+        $(item).removeClass("hide");
       } else {
-        item.classList = "card hide";
+        $(item).addClass('hide');
       }
     }
   });
