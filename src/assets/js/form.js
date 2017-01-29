@@ -7,12 +7,11 @@
     let form = $('#formFields');
     if (item.id.toLowerCase() === 'registerbtn') {
       form.append(
-        `<div class="medium-6 columns">
+        `<div class="small-12 columns">
         <fieldset>
-          <div class="input-group">
           <${item.fieldType.inputElem} 
             id="${item.id}"
-            class="button primary small-4" 
+            class="button primary"
             name="${item.id}"
             type="${item.fieldType.type}"
             required=${item.required}  
@@ -20,17 +19,14 @@
           >
           ${item.labelText}
           </${item.fieldType.inputElem}>
-          </div>
         </fieldset>
       </div>`);
     } else if (item.fieldType.inputElem.toLowerCase() === 'select' && item.name.toLowerCase().startsWith('udf')) {
       form.append(
-        `<div class="medium-6 columns">
+        `<div class="small-12 columns">
         <fieldset>
-        <div class="input-group">
           <label for="right-label">${item.labelText}
             <${item.fieldType.inputElem}
-              class="small-7" 
               name="${item.name}"
               type="${item.type}"
               required=${item.required}  
@@ -38,7 +34,6 @@
             >
             </${item.fieldType.inputElem}>
           </label>
-          </div>
         </fieldset>
       </div>`);
       (function() {
@@ -51,19 +46,18 @@
       }())
     } else {
       form.append(
-        `<div class="medium-6 columns">
+        `
+      <div class="small-12 columns">
       <fieldset>
-        <div class="input-group">
           <label for="right-label">${item.labelText}
             <${item.fieldType.inputElem} 
               id="${item.id}"
-              class="small-7" 
+              class="" 
               name="${item.id}"
               type="${item.fieldType.type}"
               required=${item.required}  
               fieldname="${item.labelText}">
           </label>
-        </div>  
       </fieldset>
     </div>`);
     }

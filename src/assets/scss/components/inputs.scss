@@ -1,7 +1,12 @@
 form {
   background: #fafafa;
-  padding: 2rem 2.5rem 0;
+  padding: 1.25rem 2rem 2rem;
   border: 1px solid #ddd;
+}
+
+[name="RegisterBTN"] {
+  margin-top: 1.2rem;
+  border-radius: 3px;
 }
 
 input {
