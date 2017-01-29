@@ -17,21 +17,34 @@ function cardClickToSort() {
   let activeState = $('[data-event-group] .button');
   activeState.removeClass('is-active');
   $(this).addClass('is-active');
-  if (elem.dataset.status === "live") cardSort('live', true, '1');
-  if (elem.dataset.status === "upcoming") cardSort('live', true, '0');
-  if (elem.dataset.status === "ondemand") cardSort('ondemand', false, '1');
+  if (elem.dataset.status === "live") cardSort('live');
+  if (elem.dataset.status === "upcoming") cardSort('upcoming');
+  if (elem.dataset.status === "ondemand") cardSort('ondemand');
 }
 
-function cardSort(dataAttr, boolean, number) {
-  console.log('sort')
+function cardSort(type) {
   const cards = $('.card').toArray();
   cards.map(item => {
-    if (boolean) {
-      if (item.dataset[dataAttr] === number) item.classList = "card"
-      else item.classList = "card hide";
-    } else {
-      if (item.dataset[dataAttr] === number) item.classList = "card"
-      else item.classList = "card hide";
+    if (type === 'live') {
+      if (item.dataset.live === '1' && item.dataset.ondemand === '0') {
+        item.classList = "card";
+      } else {
+        item.classList = "card hide";
+      }
+    }
+    if (type === 'upcoming') {
+      if (item.dataset.live === '0' && item.dataset.ondemand === '0') {
+        item.classList = "card";
+      } else {
+        item.classList = "card hide";
+      }
+    }
+    if (type === 'ondemand') {
+      if (item.dataset.ondemand === '1') {
+        item.classList = "card";
+      } else {
+        item.classList = "card hide";
+      }
     }
   });
 }

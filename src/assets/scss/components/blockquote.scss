@@ -1,7 +1,7 @@
 blockquote {
-  background: lighten(map-get($foundation-palette, secondary), 15%);
-  margin: 0;
-  padding: 1rem 0rem 1.9rem;
+  padding: 0.825rem 0rem 0.2rem;
+  background: transparent;
+  margin: 0 0 1.2rem;
   border-left: none;
   border-top: 1px solid map-get($foundation-palette, secondary);
 }

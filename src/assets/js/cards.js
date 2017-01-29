@@ -1,17 +1,3 @@
-function checkItemStatus(data, keytoMatch, showTypeKey, showTypeValue) {
-  let status = false;
-  data.map(item => {
-    if (
-      keytoMatch === showTypeKey[0] && item.OpenNow == showTypeValue ||
-      keytoMatch === showTypeKey[1] && item.OpenNow == showTypeValue ||
-      keytoMatch === showTypeKey[2] && item.IsOnDemand == showTypeValue
-    ) {
-      status = true;
-    }
-  });
-  return status;
-}
-
 function buildButtons(showStatus) {
   const buttons = `
     <div class="button-group">
@@ -31,7 +17,66 @@ function buildButtons(showStatus) {
   return buttons;
 }
 
-function speakerPresent(data) {
+function checkItemStatus(data, type) {
+  let status = false;
+  data.map(item => {
+    if (type === 'live') {
+      if (item.OpenNow === 1 && item.IsOnDemand === 0) {
+        status = true;
+      }
+    } else if (type === 'upcoming') {
+      if (item.OpenNow === 0 && item.IsOnDemand === 0) {
+        status = true;
+      }
+    } else if (type === 'ondemand') {
+      if (item.IsOnDemand === 1) {
+        status = true;
+      }
+    }
+  });
+  return status;
+}
+
+function getImage(imageUrl, desc) {
+  let img;
+  if (imageUrl === '') {
+    img = '';
+  } else {
+    img = `<img src="${imageUrl}" alt="${desc} Image">`;
+  }
+  return img;
+}
+
+function getStatus(openStatus, onDemandStatus) {
+  let itemStatus;
+  if (openStatus === 1 && onDemandStatus === 0) {
+    itemStatus = 'live';
+  } else if (openStatus === 0) {
+    itemStatus = 'upcoming';
+  } else if (onDemandStatus === 1) {
+    itemStatus = 'ondemand';
+  }
+  console.log(openStatus, onDemandStatus);
+  return itemStatus;
+}
+
+function getcheckBox(data) {
+  if (data.IsRegistrationOpen === 1) {
+    return `
+      <div class="ShowCheckbox">
+        <label class="customCheckboxControl customCheckboxTick">
+          <input type="checkbox" name="ShowKey" data-showkey="${data.ShowKey}" data-packagekey="${data.ShowPackageKey}">
+          <div class="customCheckbox"></div>
+          <span class="select-event">Select this event</span>
+        </label>
+      </div>
+    `;
+  } else {
+    return '';
+  }
+}
+
+function speakerData(data) {
   let speakers = data.split('||');
   let speaker = speakers.map((item, index) => {
     let about = item.split('^');
@@ -59,41 +104,11 @@ function speakerContent(item, index) {
 }
 
 function cardContent(item, index, date, speakerData, initLoadStatus) {
-  let itemStatus;
-  let showImage;
-  console.log(typeof item.OpenNow);
-  switch (item.OpenNow) {
-    case 1:
-      itemStatus = 'live';
-      break;
-    case 0:
-      itemStatus = 'upcoming';
-      break;
-    default:
-      switch (item.IsOnDemand) {
-        case 1:
-          itemStatus = 'ondemand';
-          break;
-        default:
-          break;
-      }
-  }
-
-  if (item.ShowImage === '') {
-    showImage = ''
-  } else {
-    showImage = `<img src="${item.ShowImage}" alt="${item.ShowTypeDesc} Image">`
-  }
-
-  console.log('item.OpenNow: ' + item.OpenNow, initLoadStatus, itemStatus);
+  const itemStatus = getStatus(item.OpenNow, item.IsOnDemand);
+  const showImage = getImage(item.ShowImage, item.ShowTypeDesc);
+  const checkBoxToDisplay = getcheckBox(item);
   return `<div class="card ${initLoadStatus === itemStatus ? '' : 'hide'}" data-live="${item.OpenNow}" data-ondemand="${item.IsOnDemand}">
-            <div class="ShowCheckbox">
-              <label class="customCheckboxControl customCheckboxTick">
-                <input type="checkbox" name="ShowKey" data-showkey="${item.ShowKey}" data-packagekey="${item.ShowPackageKey}">
-                <div class="customCheckbox"></div>
-                <span class="select-event">Select this event</span>
-              </label>
-            </div>
+            ${checkBoxToDisplay}
             ${showImage}
             <div class="card-section">
               <div class="card-desc">
@@ -107,9 +122,12 @@ function cardContent(item, index, date, speakerData, initLoadStatus) {
                   ${speakerData}
                 </div>
               </section>
-              <button class="hollow button ${(speakerData.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
+              <a class="hollow button ${(speakerData.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
                 View Speakers
-              </button>
+              </a>
+              <a class="hollow button success ${(itemStatus === 'live' || itemStatus === 'ondemand' ? '' : 'hide')}" type="button" href="https://vts.inxpo.com/Launch/QReg.htm?ShowKey=${item.ShowKey}" target="_blank">
+                Login
+              </a>
             </div>
           </div>`;
 }

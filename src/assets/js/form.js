@@ -7,7 +7,7 @@
     let form = $('#formFields');
     if (item.id.toLowerCase() === 'registerbtn') {
       form.append(
-        `<div class="small-12">
+        `<div class="medium-6 columns">
         <fieldset>
           <div class="input-group">
           <${item.fieldType.inputElem} 
@@ -25,18 +25,19 @@
       </div>`);
     } else if (item.fieldType.inputElem.toLowerCase() === 'select' && item.name.toLowerCase().startsWith('udf')) {
       form.append(
-        `<div class="small-12">
+        `<div class="medium-6 columns">
         <fieldset>
         <div class="input-group">
-          <label for="right-label" class="small-4">${item.labelText}</label>
-          <${item.fieldType.inputElem}
-            class="small-7" 
-            name="${item.name}"
-            type="${item.type}"
-            required=${item.required}  
-            fieldname="${item.labelText}"
-          >
-          </${item.fieldType.inputElem}>
+          <label for="right-label">${item.labelText}
+            <${item.fieldType.inputElem}
+              class="small-7" 
+              name="${item.name}"
+              type="${item.type}"
+              required=${item.required}  
+              fieldname="${item.labelText}"
+            >
+            </${item.fieldType.inputElem}>
+          </label>
           </div>
         </fieldset>
       </div>`);
@@ -50,17 +51,18 @@
       }())
     } else {
       form.append(
-        `<div class="small-12">
+        `<div class="medium-6 columns">
       <fieldset>
         <div class="input-group">
-          <label for="right-label" class="small-4">${item.labelText}</label>
-          <${item.fieldType.inputElem} 
-            id="${item.id}"
-            class="small-7" 
-            name="${item.id}"
-            type="${item.fieldType.type}"
-            required=${item.required}  
-            fieldname="${item.labelText}">
+          <label for="right-label">${item.labelText}
+            <${item.fieldType.inputElem} 
+              id="${item.id}"
+              class="small-7" 
+              name="${item.id}"
+              type="${item.fieldType.type}"
+              required=${item.required}  
+              fieldname="${item.labelText}">
+          </label>
         </div>  
       </fieldset>
     </div>`);
