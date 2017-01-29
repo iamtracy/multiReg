@@ -37,7 +37,7 @@ PATHS:
     - "bower_components/foundation-sites/js/foundation.util.*.js"
     # Individual Foundation components
     # If you aren't using a component, just remove it from the list
-    - "bower_components/foundation-sites/js/foundation.abide.js"
+    #- "bower_components/foundation-sites/js/foundation.abide.js"
     #- "bower_components/foundation-sites/js/foundation.accordion.js"
     #- "bower_components/foundation-sites/js/foundation.accordionMenu.js"
     #- "bower_components/foundation-sites/js/foundation.drilldown.js"
@@ -47,7 +47,7 @@ PATHS:
     #- "bower_components/foundation-sites/js/foundation.interchange.js"
     #- "bower_components/foundation-sites/js/foundation.magellan.js"
     #- "bower_components/foundation-sites/js/foundation.offcanvas.js"
-    - "bower_components/foundation-sites/js/foundation.orbit.js"
+    #- "bower_components/foundation-sites/js/foundation.orbit.js"
     #- "bower_components/foundation-sites/js/foundation.responsiveMenu.js"
     #- "bower_components/foundation-sites/js/foundation.responsiveToggle.js"
     #- "bower_components/foundation-sites/js/foundation.reveal.js"
@@ -57,8 +57,9 @@ PATHS:
     #- "bower_components/foundation-sites/js/foundation.toggler.js"
     #- "bower_components/foundation-sites/js/foundation.tooltip.js"
     # Paths to your own project code are here
-    - "src/data/mock.js"
-    - "src/assets/js/user-config.js"
+    #- "src/data/mock.js"
+    #- "src/assets/js/user-config.js"
+    - "src/assets/js/polyfills.js"
     - "src/assets/js/util.js"
     - "src/assets/js/ui.js"
     - "src/assets/js/form.js"

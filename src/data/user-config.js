@@ -1,7 +1,10 @@
 function searchSettings() {
   return {
     CompanyKey: 882,
-    ShowTypeDesc: 'NutraIngredients'
+    ShowTypeDesc: 'NutraIngredients',
+    IncludeRelatedTenants: true,
+    NumDays: '270',
+    SortBySoonest: true
   }
 }
 

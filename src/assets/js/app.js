@@ -1,23 +1,60 @@
+const userSettings = searchSettings();
 let firstButton;
 
-function getShowData() {
-  const data = mockAjax();
-  return data;
+function getJSON(url) {
+  return new Promise((resolve, reject) => {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.onreadystatechange = handleResponse;
+    xhr.onerror = e => console.log(e);
+    xhr.send();
+
+    function handleResponse() {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          var data = JSON.parse(xhr.responseText);
+          dataInit(data.ResultSet[1]);
+        } else {
+          reject(this.statusText)
+        }
+      }
+    }
+  });
+}
+
+const ajaxPromise = getJSON(`
+   https://vts.inxpo.com/scripts/
+   Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1550
+   &CompanyKey=${userSettings.CompanyKey}
+   ${userSettings.IncludeRelatedTenants ? '&IncludeRelatedTenants=1' : '&IncludeRelatedTenants=0'}
+   ${'&NumDays='+userSettings.NumDays}
+   ${userSettings.SortBySoonest ? '&SortBySoonest=1' : '&SortBySoonest=0'}
+`);
+
+function dataInit(data) {
+  const filteredData = filterShowData(data)
+  const showStatus = getShowStatus(filteredData);
+  const cardData = getCardData(filteredData, showStatus, []);
+  buildCards(cardData);
+  listeners();
+  trimEmptyPTags();
+  $(document).foundation();
 }
 
 function filterShowData(data) {
   const filteredData =
     data.filter(item => {
-      return item.ShowTypeDesc === searchSettings().ShowTypeDesc;
+      return item.ShowTypeDesc === userSettings.ShowTypeDesc;
     });
+  console.log(filteredData);
   return filteredData;
 }
 
 function getShowStatus(data) {
-  const showTypeKey = ['live', 'upcoming', 'ondemand'];
-  const livePresent = checkItemStatus(data, 'live', showTypeKey, '1');
-  const upcomingPresent = checkItemStatus(data, 'upcoming', showTypeKey, '0');
-  const ondemandPresent = checkItemStatus(data, 'ondemand', showTypeKey, '1');
+  const livePresent = checkItemStatus(data, 'live');
+  const upcomingPresent = checkItemStatus(data, 'upcoming');
+  const ondemandPresent = checkItemStatus(data, 'ondemand');
+  console.log(livePresent, upcomingPresent, ondemandPresent);
   return {
     livePresent: livePresent,
     upcomingPresent: upcomingPresent,
@@ -32,12 +69,15 @@ function getCardData(data, showStatus, array) {
   firstButton = $('[data-status]')[0];
   firstButton.className += ' is-active';
   const initLoadStatus = firstButton.dataset.status;
+  console.log(initLoadStatus);
   data.map((item, index) => {
     const date = formatTime(item.FromDateTime, item.TZAbbrev);
-    let speakerData = speakerPresent(item.WCSpeakerList)
+    let speakerArray = speakerData(item.WCSpeakerList)
       .map((item, index) => speakerContent(item, index))
       .join('');
-    array.push(cardContent(item, index, date, speakerData, initLoadStatus));
+    array.push(
+      cardContent(item, index, date, speakerArray, initLoadStatus)
+    );
   });
   return array;
 }
@@ -46,13 +86,3 @@ function buildCards(data) {
   const cardsContainer = $('[data-cards]');
   cardsContainer.html(data.join(''));
 }
-
-$(document).ready(function() {
-  const showData = filterShowData(getShowData());
-  const showStatus = getShowStatus(showData);
-  const cardData = getCardData(showData, showStatus, []);
-  buildCards(cardData);
-  listeners();
-  trimEmptyPTags();
-  $(document).foundation();
-});
