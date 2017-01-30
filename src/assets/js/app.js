@@ -1,26 +1,32 @@
 const userSettings = searchSettings();
 let firstButton;
+let devMode = true;
+const mockData = mockAjax();
+if (devMode) {
+  dataInit(mockData);
+} else {
+  function getJSON(url) {
+    return new Promise((resolve, reject) => {
+      let xhr = new XMLHttpRequest();
+      xhr.open('GET', url);
+      xhr.onreadystatechange = handleResponse;
+      xhr.onerror = e => console.log(e);
+      xhr.send();
 
-function getJSON(url) {
-  return new Promise((resolve, reject) => {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', url);
-    xhr.onreadystatechange = handleResponse;
-    xhr.onerror = e => console.log(e);
-    xhr.send();
-
-    function handleResponse() {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          var data = JSON.parse(xhr.responseText);
-          dataInit(data.ResultSet[1]);
-        } else {
-          reject(this.statusText)
+      function handleResponse() {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            dataInit(data.ResultSet[1]);
+          } else {
+            reject(console.log(this.statusText))
+          }
         }
       }
-    }
-  });
+    });
+  }
 }
+
 
 const ajaxPromise = getJSON(`
    https://vts.inxpo.com/scripts/
