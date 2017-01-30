@@ -57,8 +57,10 @@
         let checkBoxOptions = `<label>${text}</label>`;
         item.list.forEach(item => {
           checkBoxOptions +=
-            `<input name="${item.name}" type="checkbox">
-             <label for="${item.name}">${item.value}</label>`
+            `<div>
+              <input name="${item.name}" type="checkbox">
+              <label for="${item.name}">${item.value}</label>
+             </div>`
         });
         checkboxBuilder.append(checkBoxOptions);
       }())
