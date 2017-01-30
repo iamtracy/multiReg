@@ -1,9 +1,9 @@
 (function(formSettings) {
   const formFields = formSettings.formFields.concat(formSettings.udfFields).concat(formSettings.submit);
 
-  formFields.map(item => buildForm(item));
+  formFields.map((item, index) => buildForm(item, index));
 
-  function buildForm(item) {
+  function buildForm(item, index) {
     let form = $('#formFields');
     if (item.id.toLowerCase() === 'registerbtn') {
       form.append(
@@ -63,6 +63,38 @@
              </div>`
         });
         checkboxBuilder.append(checkBoxOptions);
+      }())
+    } else if (item.fieldType.type === 'textarea') {
+      form.append(
+        `<div class="small-12 columns">
+          <fieldset>
+            <label>
+              ${item.labelText}
+              <textarea placeholder="${item.placeholder}"></textarea>
+            </label>
+          </fieldset>
+        </div>`
+      )
+    } else if (item.fieldType.type === 'radio') {
+      let name = item.name;
+      let text = item.labelText;
+      let position = index;
+      form.append(
+        `<div class="small-12 columns">
+          <fieldset id="${item.name}">          
+          </fieldset>
+         </div>`);
+      (function() {
+        let radioBuilder = $(`#${item.name}`);
+        let radioOptions = `<label>${text}</label>`;
+        item.list.forEach(item => {
+          radioOptions +=
+            `<div>
+              <input name="radio${position}" type="radio">
+              <label for="${item.name}">${item.value}</label>
+             </div>`
+        });
+        radioBuilder.append(radioOptions);
       }())
     } else {
       form.append(
