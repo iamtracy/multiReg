@@ -44,10 +44,27 @@
           )
         });
       }())
+    } else if (item.fieldType.type === 'checkbox') {
+      let name = item.name;
+      let text = item.labelText;
+      form.append(
+        `<div class="small-12 columns">
+        <fieldset id="${item.name}">          
+        </fieldset>
+      </div>`);
+      (function() {
+        let checkboxBuilder = $(`#${item.name}`);
+        let checkBoxOptions = `<label>${text}</label>`;
+        item.list.forEach(item => {
+          checkBoxOptions +=
+            `<input name="${item.name}" type="checkbox">
+             <label for="${item.name}">${item.value}</label>`
+        });
+        checkboxBuilder.append(checkBoxOptions);
+      }())
     } else {
       form.append(
-        `
-      <div class="small-12 columns">
+        `<div class="small-12 columns">
       <fieldset>
           <label for="right-label">${item.labelText}
             <${item.fieldType.inputElem} 
