@@ -45,57 +45,56 @@
         });
       }())
     } else if (item.fieldType.type === 'checkbox') {
-      let name = item.name;
-      let text = item.labelText;
+      const checkboxId = `checkbox${index}`;
       form.append(
         `<div class="small-12 columns">
-        <fieldset id="${item.name}">          
-        </fieldset>
-      </div>`);
-      (function() {
-        let checkboxBuilder = $(`#${item.name}`);
-        let checkBoxOptions = `<label>${text}</label>`;
+          <fieldset id="${checkboxId}">          
+          </fieldset>
+        </div>`);
+      (function(item, checkboxId) {
+        let checkboxBuilder = $(`#${checkboxId}`);
+        let checkBoxOptions = `<label>${item.labelText}</label>`;
         item.list.forEach(item => {
           checkBoxOptions +=
             `<div>
+              <div class="customCheckbox"></div>
               <input name="${item.name}" type="checkbox">
               <label for="${item.name}">${item.value}</label>
              </div>`
         });
         checkboxBuilder.append(checkBoxOptions);
-      }())
+      }(item, checkboxId))
     } else if (item.fieldType.type === 'textarea') {
       form.append(
         `<div class="small-12 columns">
           <fieldset>
             <label>
               ${item.labelText}
-              <textarea placeholder="${item.placeholder}"></textarea>
+              <textarea name="${item.name}" placeholder="${item.placeholder}" required=${item.required}></textarea>
             </label>
           </fieldset>
         </div>`
       )
     } else if (item.fieldType.type === 'radio') {
-      let name = item.name;
-      let text = item.labelText;
-      let position = index;
+      const radioId = `checkbox${index}`;
       form.append(
         `<div class="small-12 columns">
-          <fieldset id="${item.name}">          
+          <fieldset id="${radioId}">          
           </fieldset>
          </div>`);
-      (function() {
-        let radioBuilder = $(`#${item.name}`);
-        let radioOptions = `<label>${text}</label>`;
-        item.list.forEach(item => {
+      (function(item, radioId) {
+        let radioBuilder = $(`#${radioId}`);
+        let radioOptions = `<label>${item.labelText}</label>`;
+        item.list.forEach((item, index) => {
           radioOptions +=
             `<div>
-              <input name="radio${position}" type="radio">
+              <div class="customRadio"></div>
+              <input name="radio${index}" type="radio">
               <label for="${item.name}">${item.value}</label>
              </div>`
         });
         radioBuilder.append(radioOptions);
-      }())
+      }(item, radioId))
     } else {
       form.append(
         `<div class="small-12 columns">

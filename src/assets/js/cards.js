@@ -122,12 +122,14 @@ function cardContent(item, index, date, speakerData, initLoadStatus) {
                   ${speakerData}
                 </div>
               </section>
-              <a class="hollow button ${(speakerData.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
-                View Speakers
-              </a>
-              <a class="hollow button success ${(itemStatus === 'live' || itemStatus === 'ondemand' ? '' : 'hide')}" type="button" href="https://vts.inxpo.com/Launch/QReg.htm?ShowKey=${item.ShowKey}" target="_blank">
-                Login
-              </a>
+              <div class="button-group">
+                <a class="hollow button ${(speakerData.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
+                  View Speakers
+                </a>
+                <a class="hollow button success ${(itemStatus === 'live' || itemStatus === 'ondemand' ? '' : 'hide')}" type="button" href="https://vts.inxpo.com/Launch/QReg.htm?ShowKey=${item.ShowKey}" target="_blank">
+                  Login
+                </a>
+              </div>
             </div>
           </div>`;
 }
