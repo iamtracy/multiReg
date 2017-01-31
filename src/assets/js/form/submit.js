@@ -27,29 +27,15 @@ function getRVARes(url, showKey, showPackageKey) {
   });
 }
 
-// exec ::{Database}..RegistrationSessionCheckUser
-//   ::{RegistrationVisitActivityKey},
-//   ::{UserType},
-//   ::{ExhibitorKey},
-//   N'::{EMailAddress}',
-//   N'::{FirstName}',
-//   N'::{LastName}',
-//   N'::{CompanyName}',
-//   N'::{Phone}',
-//   N'::{LoginID}',
-//   N'::{Password}',
-//   N'::{VerificationCode}',
-//   ::{LangLocaleID} 
-
 function postUI(showKey, regStatus) {
   const elem = $(`[data-showkey="${showKey}"]`);
   console.log(elem);
   if (regStatus === 'error') {
-    elem.before(messages.error);
+    elem.parent().html(messages.error);
   } else if (regStatus === 'success') {
-    elem.before(messages.success);
+    elem.parent().html(messages.success);
   } else if (regStatus === 'alreadyRegistered') {
-    elem.before(messages.alreadyRegistered);
+    elem.parent().html(messages.alreadyRegistered);
   }
 }
 
