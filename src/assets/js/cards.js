@@ -100,7 +100,6 @@ function speakerContent(item, index) {
 }
 
 function cardContent(item, index, date, speakerData, initLoadStatus) {
-  console.log('speakerData:', speakerData);
   const itemStatus = getStatus(item.OpenNow, item.IsOnDemand);
   const showImage = getImage(item.ShowImage, item.ShowTypeDesc);
   const checkBoxToDisplay = getcheckBox(item);

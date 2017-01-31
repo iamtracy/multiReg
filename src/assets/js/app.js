@@ -24,7 +24,6 @@ function getJSON(url) {
   });
 }
 
-
 const ajaxPromise = getJSON(`
    https://vts.inxpo.com/scripts/
    Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1550
@@ -39,6 +38,7 @@ function dataInit(data) {
   const showStatus = getShowStatus(filteredData);
   const cardData = getCardData(filteredData, showStatus, []);
   buildCards(cardData);
+  $('#RegisterBTN').removeAttr("disabled");
   listeners();
   trimEmptyPTags();
   $(document).foundation();

@@ -2,6 +2,12 @@ form {
   background: #fafafa;
   padding: 1.25rem 2rem 2rem;
   border: 1px solid #ddd;
+  blockquote {
+    padding: 0rem 0.5rem;
+    background: transparent;
+    margin-top: 1rem;
+    border-left: 1px solid map-get($foundation-palette, secondary);
+  }
 }
 
 [name="RegisterBTN"] {

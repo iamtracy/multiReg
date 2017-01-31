@@ -50,24 +50,30 @@ function cardSort(type) {
 }
 
 function checkAll() {
-  let selectedListArray = cardCheckBoxes.toArray();
-  if (this.checked) selectedListArray.forEach(item => item.checked = true);
-  else selectedListArray.forEach(item => item.checked = false);
-  selectionState();
+  let selectedListArray
+  if (cardCheckBoxes !== "undefined") {
+    selectedListArray = cardCheckBoxes.toArray();
+    if (this.checked) selectedListArray.forEach(item => item.checked = true);
+    else selectedListArray.forEach(item => item.checked = false);
+    selectionState();
+  }
 }
 
 function selectionState() {
-  let selectedListArray = cardCheckBoxes.toArray();
+  let selectedListArray;
   let selected = [];
-  selectedListArray.
-  filter(item => item.checked === true).
-  forEach(item => {
-    selected.push({
-      showKey: item.dataset.showkey,
-      showPackageKey: item.dataset.packagekey
+  if (cardCheckBoxes !== "undefined") {
+    selectedListArray = cardCheckBoxes.toArray();
+    selectedListArray.
+    filter(item => item.checked === true).
+    forEach(item => {
+      selected.push({
+        showKey: item.dataset.showkey,
+        showPackageKey: item.dataset.packagekey
+      });
     });
-  });
-  return selected;
+    return selected;
+  }
 }
 
 function listeners() {

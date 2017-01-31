@@ -10,12 +10,13 @@
         `<div class="small-12 columns">
         <fieldset>
           <${item.fieldType.inputElem} 
-            id="${item.id}"
+            id="RegisterBTN"
             class="button primary"
             name="${item.id}"
             type="submit"
             required=${item.required}  
             fieldname="${item.labelText}"
+            disabled
           >
           ${item.labelText}
           </${item.fieldType.inputElem}>
@@ -130,77 +131,3 @@
     submit.click(onSubmit);
   });
 })(formSettings());
-
-function onSubmit() {
-  let formData = $('#MainForm').serialize();
-  let cUrl = `Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1550&CompanyKey=${searchSettings().CompanyKey}&${formData}`;
-  console.log(cUrl);
-  registerUser();
-}
-
-function registerUser() {
-  //get selected shows;
-  const selectedShows = selectionState();
-  console.log('selectedShows', selectedShows);
-  // GetSelectedShows();
-  // if (g_aShowsSelected.length == 0) {
-  //   window.alert(g_oMsgs.NoShowsSelected);
-  //   return false;
-  // }
-
-  // DisablePage(g_oMsgs.Register, g_cImageDir + "/VTS/SBTV/SBTVProgressBar.gif");
-
-  // var oForm = document.getElementById("MainForm");
-  // var oData = ReturnFormJSON(oForm); // formats data
-  // var cStdParams = "LASCmd=AI:4;F:REG!1500;F:LBSEXPORT!JSON&SQLID=1010&";
-  // cStdParams += ObjectToURL(oData);
-
-  // var iRVAKey;
-  // var cParams;
-  // var cErrMsg;
-  // var bError;
-  // now, spin through selected events and register for them...
-  // for (var iLup = 0; iLup < g_aShowsSelected.length; iLup++) {
-  //   if (!IsUserRegisteredForShow(g_aShowsSelected[iLup].ShowKey)) {
-  //     iRVAKey = GetRVAKey(g_aShowsSelected[iLup].ShowKey, oData.LangLocaleID);
-  //     if (iRVAKey > 0) {
-  //       cParams = cStdParams + "&ShowKey=" + g_aShowsSelected[iLup].ShowKey;
-  //       cParams += "&ShowPackageKey=" + g_aShowsSelected[iLup].SPK;
-  //       cParams += "&RegistrationVisitActivityKey=" + iRVAKey;
-  //       if (g_cAffiliateData != "")
-  //         cParams += "&AffiliateData=" + URLEncode(g_cAffiliateData);
-
-  //       g_oAjax.Abort();
-  //       g_oAjax.OnError = null;
-  //       g_oAjax.OnComplete = null;
-  //       g_oAjax.SendSyncRequest("POST", g_cServerPath + "Server.nxp", cParams);
-
-  //       cErrMsg = "";
-  //       bError = false;
-  //       var oResponse = EvalResponse(g_oAjax.m_oXMLHTTPReqObj.responseText);
-  //       if (oResponse.Status == 0) {
-  //         if (oResponse.ResultSet[0][0].ShowRegistrationKey == "0") {
-  //           // cErrMsg = "[SK: " + g_aShowsSelected[iLup].ShowKey + "]";
-  //           // bError = true;                      
-  //           ToggleShowError(g_aShowsSelected[iLup].ShowKey, "You were not registered for this event!", "ErrorMsg")
-  //           RegistrationErrorComplete();
-  //         } else
-  //           ToggleShowError(g_aShowsSelected[iLup].ShowKey, "You have successfully registered for this event!", "SuccessMsg")
-  //         RegistrationComplete();
-  //       } else {
-  //         // var iIndex = oResponse.Diag.lastIndexOf("]");
-  //         // cErrMsg = oResponse.Diag.substr(iIndex+1);
-  //         // bError = true;
-  //         ToggleShowError(g_aShowsSelected[iLup].ShowKey, "You are already registered for this event!", "ErrorMsg")
-  //         RegistrationErrorComplete();
-  //       }
-  //     }
-  //   } else {
-  //     ToggleShowError(g_aShowsSelected[iLup].ShowKey, "You are already registered for this event!", "ErrorMsg")
-  //     RegistrationErrorComplete();
-  //   }
-  // }
-
-  // if (window.RegistrationComplete)
-  //   window.RegistrationComplete();
-}
