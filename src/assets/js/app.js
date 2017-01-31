@@ -17,6 +17,8 @@ function getJSON(url) {
         } else {
           reject(console.log(this.statusText))
         }
+      } else {
+        //Do Something
       }
     }
   });

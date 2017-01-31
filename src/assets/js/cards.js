@@ -39,11 +39,8 @@ function checkItemStatus(data, type) {
 
 function getImage(imageUrl, desc) {
   let img;
-  if (imageUrl === '') {
-    img = '';
-  } else {
-    img = `<img src="${imageUrl}" alt="${desc} Image">`;
-  }
+  if (imageUrl === '') img = '';
+  else img = `<img src="${imageUrl}" alt="${desc} Image">`;
   return img;
 }
 
@@ -56,7 +53,6 @@ function getStatus(openStatus, onDemandStatus) {
   } else if (onDemandStatus === 1) {
     itemStatus = 'ondemand';
   }
-  console.log(openStatus, onDemandStatus);
   return itemStatus;
 }
 
@@ -104,6 +100,7 @@ function speakerContent(item, index) {
 }
 
 function cardContent(item, index, date, speakerData, initLoadStatus) {
+  console.log('speakerData:', speakerData);
   const itemStatus = getStatus(item.OpenNow, item.IsOnDemand);
   const showImage = getImage(item.ShowImage, item.ShowTypeDesc);
   const checkBoxToDisplay = getcheckBox(item);

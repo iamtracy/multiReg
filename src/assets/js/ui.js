@@ -67,7 +67,6 @@ function selectionState() {
       showPackageKey: item.dataset.packagekey
     });
   });
-  console.log(selected);
   return selected;
 }
 
@@ -78,14 +77,6 @@ function listeners() {
   speakerButtons.click(readMoreLess)
   const cardButtons = $('[data-event-group] .button');
   cardButtons.click(cardClickToSort);
-  const submit = $('#RegisterBTN');
-  submit.click(onSubmit);
   cardCheckBoxes = $('input[name="ShowKey"]');
   cardCheckBoxes.change(selectionState);
-}
-
-function onSubmit() {
-  let formData = $('#MainForm').serialize();
-  let cUrl = `Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1550&CompanyKey=${searchSettings().CompanyKey}&${formData}`;
-  console.log(cUrl);
 }
