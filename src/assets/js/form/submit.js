@@ -1,3 +1,4 @@
+const g_oAjax = new InxpoAJAXObject();
 const messages = {
   success: 'Dat Boi',
   error: `<div>No Shows Were Selected</div>`
@@ -26,11 +27,14 @@ function getRVARes(url, showKey, showPackageKey) {
 
 function doRegistration(iRetval, showKey, showPackageKey) {
   let formData = $('#MainForm').serialize();
-  let cUrl = `?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1010&ShowKey=${showKey}&ShowPackageKey=${showPackageKey}&RegistrationVisitActivityKey=${iRetval}&${formData}`;
+  let cUrl = `LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1010&ShowKey=${showKey}&ShowPackageKey=${showPackageKey}&RegistrationVisitActivityKey=${iRetval}&${formData}`;
   if (iRetval > 0) {
-    g_oAjax.SendSyncRequest("POST", "Server.nxp", cUrl);
+    g_oAjax.SendSyncRequest("POST", "https://vts.inxpo.com/scripts/Server.nxp?", cUrl);
     const oResponse = EvalResponse(g_oAjax.m_oXMLHTTPReqObj.responseText);
     console.log(iRetval, oResponse);
+    if (oResponse.Diag === "OK") {
+      console.log('registered');
+    }
   }
 }
 
