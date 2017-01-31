@@ -1,7 +1,9 @@
 const g_oAjax = new InxpoAJAXObject();
 const messages = {
-  success: 'Dat Boi',
-  error: `<div>No Shows Were Selected</div>`
+  success: '<div>Success</div>',
+  error: `<div>There was an error during registration</div>`,
+  alreadyRegistered: `<div>You are already registered for this show</div>`,
+  submitError: `<div>No Shows Were Selected</div>`
 }
 
 function getRVARes(url, showKey, showPackageKey) {
@@ -25,22 +27,54 @@ function getRVARes(url, showKey, showPackageKey) {
   });
 }
 
+// exec ::{Database}..RegistrationSessionCheckUser
+//   ::{RegistrationVisitActivityKey},
+//   ::{UserType},
+//   ::{ExhibitorKey},
+//   N'::{EMailAddress}',
+//   N'::{FirstName}',
+//   N'::{LastName}',
+//   N'::{CompanyName}',
+//   N'::{Phone}',
+//   N'::{LoginID}',
+//   N'::{Password}',
+//   N'::{VerificationCode}',
+//   ::{LangLocaleID} 
+
+function postUI(showKey, regStatus) {
+  const elem = $(`[data-showkey="${showKey}"]`);
+  console.log(elem);
+  if (regStatus === 'error') {
+    elem.before(messages.error);
+  } else if (regStatus === 'success') {
+    elem.before(messages.success);
+  } else if (regStatus === 'alreadyRegistered') {
+    elem.before(messages.alreadyRegistered);
+  }
+}
+
 function doRegistration(iRetval, showKey, showPackageKey) {
   let formData = $('#MainForm').serialize();
-  let cUrl = `LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1010&ShowKey=${showKey}&ShowPackageKey=${showPackageKey}&RegistrationVisitActivityKey=${iRetval}&${formData}`;
+  let cUrl = `LASCmd=AI:4;F:REG!1500;F:LBSEXPORT!JSON&SQLID=1010&ShowKey=${showKey}&ShowPackageKey=${showPackageKey}&RegistrationVisitActivityKey=${iRetval}&${formData}`;
   if (iRetval > 0) {
     g_oAjax.SendSyncRequest("POST", "https://vts.inxpo.com/scripts/Server.nxp?", cUrl);
     const oResponse = EvalResponse(g_oAjax.m_oXMLHTTPReqObj.responseText);
-    console.log(iRetval, oResponse);
-    if (oResponse.Diag === "OK") {
-      console.log('registered');
+    console.log(cUrl, iRetval, oResponse);
+    if (oResponse.Status === 0) {
+      if ((oResponse.ResultSet[0][0].ShowRegistrationKey == "0")) {
+        postUI(showKey, 'error');
+      } else {
+        postUI(showKey, 'success');
+      }
+    } else {
+      postUI(showKey, 'alreadyRegistered');
     }
   }
 }
 
 function getRVAKey(showKey, showPackageKey) {
   const g_cAffiliateData = '';
-  const cUrl = `Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1000&ShowKey=${showKey}${g_cAffiliateData !== '' ? '&AffiliateData=' + affliData : ''}${false ? '&LangLocaleID=' + cLangLocaleID : ''}`;
+  const cUrl = `https://vts.inxpo.com/scripts/Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1000&ShowKey=${showKey}${g_cAffiliateData !== '' ? '&AffiliateData=' + affliData : ''}${false ? '&LangLocaleID=' + cLangLocaleID : ''}`;
   getRVARes(cUrl, showKey, showPackageKey);
 }
 
@@ -56,7 +90,7 @@ function isUserRegisteredForShow(data, selectedShows) {
 function registerUser() {
   const selectedShows = selectionState();
   if (selectedShows.length === 0) {
-    $('#RegisterBTN').after(messages.error); //handle more elegantly
+    $('#RegisterBTN').after(messages.submitError); //handle more elegantly
   } else {
     selectedShows.map(item => {
       if (!isUserRegisteredForShow(item, selectedShows)) {
