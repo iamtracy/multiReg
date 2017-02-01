@@ -17,7 +17,7 @@ function getJSON(url) {
         } else {
           reject(console.log(this.statusText))
         }
-      } 
+      }
     }
   });
 }
@@ -47,7 +47,6 @@ function filterShowData(data) {
     data.filter(item => {
       return item.ShowTypeDesc === userSettings.ShowTypeDesc;
     });
-  console.log(filteredData);
   return filteredData;
 }
 
@@ -70,7 +69,6 @@ function getCardData(data, showStatus, array) {
   firstButton = $('[data-status]')[0];
   firstButton.className += ' is-active';
   const initLoadStatus = firstButton.dataset.status;
-  console.log(initLoadStatus);
   data.map((item, index) => {
     const date = formatTime(item.FromDateTime, item.TZAbbrev);
     let speakerArray = speakerData(item.WCSpeakerList)

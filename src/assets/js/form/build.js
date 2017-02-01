@@ -8,35 +8,35 @@
     if (item.id.toLowerCase() === 'registerbtn') {
       form.append(
         `<div class="small-12 columns">
-        <fieldset>
-          <${item.fieldType.inputElem} 
-            id="RegisterBTN"
-            class="button primary"
-            name="${item.id}"
-            type="submit"
-            required=${item.required}  
-            fieldname="${item.labelText}"
-            disabled
-          >
-          ${item.labelText}
-          </${item.fieldType.inputElem}>
-        </fieldset>
-      </div>`);
+          <fieldset>
+            <${item.fieldType.inputElem} 
+              id="RegisterBTN"
+              class="button primary"
+              name="${item.id}"
+              type="submit"
+              required=${item.required}  
+              fieldname="${item.labelText}"
+              disabled
+            >
+            ${item.labelText}
+            </${item.fieldType.inputElem}>
+          </fieldset>
+        </div>`);
     } else if (item.fieldType.inputElem.toLowerCase() === 'select' && item.name.toLowerCase().startsWith('udf')) {
       form.append(
         `<div class="small-12 columns">
-        <fieldset>
-          <label for="right-label">${item.labelText}
-            <${item.fieldType.inputElem}
-              name="${item.name}"
-              type="${item.type}"
-              required=${item.required}  
-              fieldname="${item.labelText}"
-            >
-            </${item.fieldType.inputElem}>
-          </label>
-        </fieldset>
-      </div>`);
+          <fieldset>
+            <label for="right-label">${item.labelText}
+              <${item.fieldType.inputElem}
+                name="${item.name}"
+                type="${item.type}"
+                required=${item.required}  
+                fieldname="${item.labelText}"
+              >
+              </${item.fieldType.inputElem}>
+            </label>
+          </fieldset>
+        </div>`);
       (function() {
         let optionsBuilder = $(`[fieldname="${item.labelText}"]`);
         item.list.map(item => {
@@ -51,7 +51,7 @@
         `<div class="small-12 columns">
           <fieldset id="${checkboxId}">          
           </fieldset>
-        </div>`);
+         </div>`);
       (function(item, checkboxId) {
         let checkboxBuilder = $(`#${checkboxId}`);
         let checkBoxOptions = `<label>${item.labelText}</label>`;
@@ -99,18 +99,18 @@
     } else {
       form.append(
         `<div class="small-12 columns">
-      <fieldset>
-          <label for="right-label">${item.labelText}
-            <${item.fieldType.inputElem} 
-              id="${item.id}"
-              class="" 
-              name="${item.id}"
-              type="${item.fieldType.type}"
-              required=${item.required}  
-              fieldname="${item.labelText}">
-          </label>
-      </fieldset>
-    </div>`);
+          <fieldset>
+              <label for="right-label">${item.labelText}
+                <${item.fieldType.inputElem} 
+                  id="${item.id}"
+                  class="" 
+                  name="${item.id}"
+                  type="${item.fieldType.type}"
+                  required=${item.required}  
+                  fieldname="${item.labelText}">
+              </label>
+          </fieldset>
+        </div>`);
     }
   }
 

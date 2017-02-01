@@ -45,9 +45,8 @@ function doRegistration(iRetval, showKey, showPackageKey) {
   if (iRetval > 0) {
     g_oAjax.SendSyncRequest("POST", "https://vts.inxpo.com/scripts/Server.nxp?", cUrl);
     const oResponse = EvalResponse(g_oAjax.m_oXMLHTTPReqObj.responseText);
-    console.log(cUrl, iRetval, oResponse);
-    if (oResponse.Status === 0) {
-      if ((oResponse.ResultSet[0][0].ShowRegistrationKey == "0")) {
+    if (oResponse.Status == '0') {
+      if ((oResponse.ResultSet[0][0].ShowRegistrationKey == '0')) {
         postUI(showKey, 'error');
       } else {
         postUI(showKey, 'success');
@@ -66,14 +65,12 @@ function getRVAKey(showKey, showPackageKey) {
 
 function isUserRegisteredForShow(data, selectedShows) {
   selectedShows.map(item => {
-    if (item.showKey === data.showKey) {
-      return true;
-    }
+    if (item.showKey === data.showKey) return true;
   });
   return false;
 }
 
-function registerUser() {
+function onSubmit() {
   const selectedShows = selectionState();
   if (selectedShows.length === 0) {
     $('#RegisterBTN').after(messages.submitError); //handle more elegantly
@@ -84,8 +81,4 @@ function registerUser() {
       }
     });
   }
-}
-
-function onSubmit() {
-  registerUser();
 }

@@ -11,7 +11,7 @@ function readMoreLess() {
     elem.innerText = "View Speakers";
   }
 }
-
+//consult down to single cardSort() function
 function cardClickToSort() {
   let elem = $(this)[0];
   let activeState = $('[data-event-group] .button');
@@ -50,7 +50,7 @@ function cardSort(type) {
 }
 
 function checkAll() {
-  let selectedListArray
+  let selectedListArray;
   if (cardCheckBoxes !== "undefined") {
     selectedListArray = cardCheckBoxes.toArray();
     if (this.checked) selectedListArray.forEach(item => item.checked = true);
@@ -80,7 +80,7 @@ function listeners() {
   const checkAllCheckbox = $('input[name="selectAll"]');
   checkAllCheckbox.change(checkAll);
   const speakerButtons = $('[data-speaker]');
-  speakerButtons.click(readMoreLess)
+  speakerButtons.click(readMoreLess);
   const cardButtons = $('[data-event-group] .button');
   cardButtons.click(cardClickToSort);
   cardCheckBoxes = $('input[name="ShowKey"]');

@@ -1,5 +1,5 @@
 function buildButtons(showStatus) {
-  const buttons = `
+  return `
     <div class="button-group">
       ${showStatus.livePresent ? '<a class="button" data-status="live">Live</a>' : ''}
       ${showStatus.upcomingPresent ? '<a class="button" data-status="upcoming">Upcoming</a>' : ''}
@@ -14,9 +14,8 @@ function buildButtons(showStatus) {
         </label>
       </div>
     </blockquote>`;
-  return buttons;
 }
-
+//compare to getStatus() function; may be redundant
 function checkItemStatus(data, type) {
   let status = false;
   data.map(item => {
@@ -37,16 +36,6 @@ function checkItemStatus(data, type) {
   return status;
 }
 
-function getImage(imageUrl, desc) {
-  let img;
-  if (imageUrl === '') {
-    img = '';
-  } else {
-    img = `<img src="${imageUrl}" alt="${desc} Image">`;
-  }
-  return img;
-}
-
 function getStatus(openStatus, onDemandStatus) {
   let itemStatus;
   if (openStatus === 1 && onDemandStatus === 0) {
@@ -57,6 +46,12 @@ function getStatus(openStatus, onDemandStatus) {
     itemStatus = 'ondemand';
   }
   return itemStatus;
+}
+
+function getImage(imageUrl, desc) {
+  let img = '';
+  if (imageUrl !== '') img = `<img src="${imageUrl}" alt="${desc} Image">`;
+  return img;
 }
 
 function getcheckBox(data) {
