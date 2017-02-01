@@ -2,7 +2,7 @@ const userSettings = searchSettings();
 let firstButton;
 const devMode = true;
 
-if (!devMode) {
+if (window.location.hostname === 'vts.inxpo.com') {
   function getJSON(url) {
     return new Promise((resolve, reject) => {
       let xhr = new XMLHttpRequest();
@@ -53,6 +53,9 @@ function filterShowData(data) {
     data.filter(item => {
       return item.ShowTypeDesc === userSettings.ShowTypeDesc;
     });
+  if (filteredData.length === 0) {
+
+  }
   return filteredData;
 }
 

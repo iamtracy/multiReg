@@ -14,7 +14,7 @@
               class="button primary"
               name="${item.id}"
               type="submit"
-              required=${item.required}  
+              inputtype=${item.required}  
               fieldname="${item.labelText}"
               disabled
             >
@@ -30,7 +30,7 @@
               <${item.fieldType.inputElem}
                 name="${item.name}"
                 type="${item.type}"
-                required=${item.required}  
+                inputtype=${item.required}  
                 fieldname="${item.labelText}"
               >
               </${item.fieldType.inputElem}>
@@ -106,7 +106,7 @@
                   class="" 
                   name="${item.id}"
                   type="${item.fieldType.type}"
-                  required=${item.required}  
+                  inputtype=${item.required}  
                   fieldname="${item.labelText}">
               </label>
           </fieldset>
