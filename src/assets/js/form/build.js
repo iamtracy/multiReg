@@ -1,71 +1,116 @@
 (function(formSettings) {
   const formFields = formSettings.formFields.concat(formSettings.udfFields).concat(formSettings.submit);
 
-  formFields.map(item => buildForm(item));
+  formFields.map((item, index) => buildForm(item, index));
 
-  function buildForm(item) {
+  function buildForm(item, index) {
     let form = $('#formFields');
     if (item.id.toLowerCase() === 'registerbtn') {
       form.append(
-        `<div class="medium-6 columns">
-        <fieldset>
-          <div class="input-group">
-          <${item.fieldType.inputElem} 
-            id="${item.id}"
-            class="button primary small-4" 
-            name="${item.id}"
-            type="${item.fieldType.type}"
-            required=${item.required}  
-            fieldname="${item.labelText}"
-          >
-          ${item.labelText}
-          </${item.fieldType.inputElem}>
-          </div>
-        </fieldset>
-      </div>`);
+        `<div class="small-12 columns">
+          <fieldset>
+            <${item.fieldType.inputElem} 
+              id="RegisterBTN"
+              class="button primary"
+              name="${item.id}"
+              type="submit"
+              inputtype=${item.required}  
+              fieldname="${item.labelText}"
+              disabled
+            >
+            ${item.labelText}
+            </${item.fieldType.inputElem}>
+          </fieldset>
+        </div>`);
     } else if (item.fieldType.inputElem.toLowerCase() === 'select' && item.name.toLowerCase().startsWith('udf')) {
       form.append(
-        `<div class="medium-6 columns">
-        <fieldset>
-        <div class="input-group">
-          <label for="right-label">${item.labelText}
-            <${item.fieldType.inputElem}
-              class="small-7" 
-              name="${item.name}"
-              type="${item.type}"
-              required=${item.required}  
-              fieldname="${item.labelText}"
-            >
-            </${item.fieldType.inputElem}>
-          </label>
-          </div>
-        </fieldset>
-      </div>`);
+        `<div class="small-12 columns">
+          <fieldset>
+            <label for="right-label">${item.labelText}
+              <${item.fieldType.inputElem}
+                name="${item.name}"
+                type="${item.type}"
+                inputtype=${item.required}  
+                fieldname="${item.labelText}"
+              >
+              </${item.fieldType.inputElem}>
+            </label>
+          </fieldset>
+        </div>`);
       (function() {
         let optionsBuilder = $(`[fieldname="${item.labelText}"]`);
-        item.list.forEach(item => {
+        item.list.map(item => {
           optionsBuilder.append(
             `<option value="${item.value}">${item.value}</option>`
           )
         });
       }())
+    } else if (item.fieldType.type === 'checkbox') {
+      const checkboxId = `checkbox${index}`;
+      form.append(
+        `<div class="small-12 columns">
+          <fieldset id="${checkboxId}">          
+          </fieldset>
+         </div>`);
+      (function(item, checkboxId) {
+        let checkboxBuilder = $(`#${checkboxId}`);
+        let checkBoxOptions = `<label>${item.labelText}</label>`;
+        item.list.map(item => {
+          checkBoxOptions +=
+            `<div>
+              <div class="customCheckbox"></div>
+              <input name="${item.name}" type="checkbox">
+              <label for="${item.name}">${item.value}</label>
+             </div>`
+        });
+        checkboxBuilder.append(checkBoxOptions);
+      }(item, checkboxId))
+    } else if (item.fieldType.type === 'textarea') {
+      form.append(
+        `<div class="small-12 columns">
+          <fieldset>
+            <label>
+              ${item.labelText}
+              <textarea name="${item.name}" placeholder="${item.placeholder}" required=${item.required}></textarea>
+            </label>
+          </fieldset>
+        </div>`
+      )
+    } else if (item.fieldType.type === 'radio') {
+      const radioId = `checkbox${index}`;
+      form.append(
+        `<div class="small-12 columns">
+          <fieldset id="${radioId}">          
+          </fieldset>
+         </div>`);
+      (function(item, radioId) {
+        let radioBuilder = $(`#${radioId}`);
+        let radioOptions = `<label>${item.labelText}</label>`;
+        item.list.forEach((item, index) => {
+          radioOptions +=
+            `<div>
+              <div class="customRadio"></div>
+              <input name="radio${index}" type="radio">
+              <label for="${item.name}">${item.value}</label>
+             </div>`
+        });
+        radioBuilder.append(radioOptions);
+      }(item, radioId))
     } else {
       form.append(
-        `<div class="medium-6 columns">
-      <fieldset>
-        <div class="input-group">
-          <label for="right-label">${item.labelText}
-            <${item.fieldType.inputElem} 
-              id="${item.id}"
-              class="small-7" 
-              name="${item.id}"
-              type="${item.fieldType.type}"
-              required=${item.required}  
-              fieldname="${item.labelText}">
-          </label>
-        </div>  
-      </fieldset>
-    </div>`);
+        `<div class="small-12 columns">
+          <fieldset>
+              <label for="right-label">${item.labelText}
+                <${item.fieldType.inputElem} 
+                  id="${item.id}"
+                  class="" 
+                  name="${item.id}"
+                  type="${item.fieldType.type}"
+                  inputtype=${item.required}  
+                  fieldname="${item.labelText}">
+              </label>
+          </fieldset>
+        </div>`);
     }
   }
 
@@ -82,5 +127,7 @@
   $(document).ready(function() {
     appendStates();
     appendCountry();
+    const submit = $('#RegisterBTN');
+    submit.click(onSubmit);
   });
 })(formSettings());

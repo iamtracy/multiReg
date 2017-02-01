@@ -28,7 +28,17 @@
     float: left;
     padding: 0 15px 0 0;
   }
+  .button-group {
+    margin-bottom: 1.4rem;
+  }
   .media-object-section {
     margin: 1rem 0 3rem;
   }
+}
+
+blockquote {
+  padding: 0rem 0.5rem;
+  background: transparent;
+  margin-top: 1rem;
+  border-left: 1px solid map-get($foundation-palette, secondary);
 }

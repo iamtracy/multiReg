@@ -1,8 +1,8 @@
 <script>
   function searchSettings() {
     return {
-      CompanyKey: 838,
-      ShowTypeDesc: 'LIVE',
+      CompanyKey: 882,
+      ShowTypeDesc: 'NutraIngredients',
       IncludeRelatedTenants: true,
       NumDays: '270',
       SortBySoonest: true
@@ -171,12 +171,55 @@
         labelText: 'Favorite Sport',
         fieldType: {
           inputElem: 'input',
-          type: 'text'
+          type: 'checkbox'
         },
-        name: 'UDF1026',
+        list: [{
+          value: 'Football',
+          name: 'UDF1025',
+        }, {
+          value: 'Basketball',
+          name: 'UDF1026',
+        }, {
+          value: 'Golf',
+          name: 'UDF1027',
+        }, {
+          value: 'Baseball',
+          name: 'UDF1028',
+        }, ],
         id: '',
         required: '1'
-      }, ],
+      }, {
+        labelText: 'Years in the industry',
+        fieldType: {
+          inputElem: 'input',
+          type: 'radio'
+        },
+        list: [{
+          value: '0-1',
+          name: 'UDF1030',
+        }, {
+          value: '1-3',
+          name: 'UDF1031',
+        }, {
+          value: '3-5',
+          name: 'UDF1032',
+        }, {
+          value: '+5',
+          name: 'UDF1033',
+        }, ],
+        id: '',
+        required: '1'
+      }, {
+        labelText: 'Short Bio',
+        fieldType: {
+          inputElem: 'textarea',
+          type: 'textarea'
+        },
+        name: 'UDF1029',
+        placeholder: '',
+        id: '',
+        required: '1'
+      }],
       submit: [{
         labelText: 'REGISTER',
         fieldType: {

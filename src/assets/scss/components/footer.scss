@@ -1,10 +1,21 @@
 footer {
   padding: 1.75rem 0;
+  margin: 1rem 0 0;
   border-top: 1px solid $light-gray;
   background: $black;
+  .row:first-child {
+    @include breakpoint(medium) {
+      margin-bottom: .7rem;
+    }
+  }
   a {
     color: rgba(255, 255, 255, 0.4);
     margin-right: 1rem;
+    @include breakpoint(small down) {
+      display: block;
+      width: 100%;
+      margin-top: 1.55rem;
+    }
     &:last-child {
       margin-right: 0;
     }

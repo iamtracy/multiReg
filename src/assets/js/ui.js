@@ -11,7 +11,7 @@ function readMoreLess() {
     elem.innerText = "View Speakers";
   }
 }
-
+//consult down to single cardSort() function
 function cardClickToSort() {
   let elem = $(this)[0];
   let activeState = $('[data-event-group] .button');
@@ -24,68 +24,65 @@ function cardClickToSort() {
 
 function cardSort(type) {
   const cards = $('.card').toArray();
-  cards.map(item => {
+  $.map(cards, function(item) {
     if (type === 'live') {
       if (item.dataset.live === '1' && item.dataset.ondemand === '0') {
-        item.classList = "card";
+        $(item).removeClass("hide");
       } else {
-        item.classList = "card hide";
+        $(item).addClass('hide');
       }
     }
     if (type === 'upcoming') {
       if (item.dataset.live === '0' && item.dataset.ondemand === '0') {
-        item.classList = "card";
+        $(item).removeClass("hide");
       } else {
-        item.classList = "card hide";
+        $(item).addClass('hide');
       }
     }
     if (type === 'ondemand') {
       if (item.dataset.ondemand === '1') {
-        item.classList = "card";
+        $(item).removeClass("hide");
       } else {
-        item.classList = "card hide";
+        $(item).addClass('hide');
       }
     }
   });
 }
 
 function checkAll() {
-  let selectedListArray = cardCheckBoxes.toArray();
-  if (this.checked) selectedListArray.forEach(item => item.checked = true);
-  else selectedListArray.forEach(item => item.checked = false);
-  selectionState();
+  let selectedListArray;
+  if (cardCheckBoxes !== "undefined") {
+    selectedListArray = cardCheckBoxes.toArray();
+    if (this.checked) selectedListArray.forEach(item => item.checked = true);
+    else selectedListArray.forEach(item => item.checked = false);
+    selectionState();
+  }
 }
 
 function selectionState() {
-  let selectedListArray = cardCheckBoxes.toArray();
+  let selectedListArray;
   let selected = [];
-  selectedListArray.
-  filter(item => item.checked === true).
-  forEach(item => {
-    selected.push({
-      showKey: item.dataset.showkey,
-      showPackageKey: item.dataset.packagekey
+  if (cardCheckBoxes !== "undefined") {
+    selectedListArray = cardCheckBoxes.toArray();
+    selectedListArray.
+    filter(item => item.checked === true).
+    forEach(item => {
+      selected.push({
+        showKey: item.dataset.showkey,
+        showPackageKey: item.dataset.packagekey
+      });
     });
-  });
-  console.log(selected);
-  return selected;
+    return selected;
+  }
 }
 
 function listeners() {
   const checkAllCheckbox = $('input[name="selectAll"]');
   checkAllCheckbox.change(checkAll);
   const speakerButtons = $('[data-speaker]');
-  speakerButtons.click(readMoreLess)
+  speakerButtons.click(readMoreLess);
   const cardButtons = $('[data-event-group] .button');
   cardButtons.click(cardClickToSort);
-  const submit = $('#RegisterBTN');
-  submit.click(onSubmit);
   cardCheckBoxes = $('input[name="ShowKey"]');
   cardCheckBoxes.change(selectionState);
-}
-
-function onSubmit() {
-  let formData = $('#MainForm').serialize();
-  let cUrl = `Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1550&CompanyKey=${searchSettings().CompanyKey}&${formData}`;
-  console.log(cUrl);
 }

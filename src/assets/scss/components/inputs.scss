@@ -1,7 +1,18 @@
 form {
   background: #fafafa;
-  padding: 2rem 2.5rem 0;
+  padding: 1.25rem 2rem 2rem;
   border: 1px solid #ddd;
+  blockquote {
+    padding: 0rem 0.5rem;
+    background: transparent;
+    margin-top: 1rem;
+    border-left: 1px solid map-get($foundation-palette, secondary);
+  }
+}
+
+[name="RegisterBTN"] {
+  margin-top: 1.2rem;
+  border-radius: 3px;
 }
 
 input {
@@ -18,29 +29,7 @@ input {
   transition: background 0.5s;
 }
 
-.ShowCheckbox {
-  margin-bottom: 0.75rem;
-}
-
-#ShowList label {
-  width: 100%;
-  height: 30px;
-  margin: 0 0 0 2rem;
-  cursor: pointer;
-}
-
-input[name="ShowKey"],
-input[name="selectAll"] {
-  position: absolute;
-  z-index: -999;
-  opacity: 0;
-}
-
-.select-event {
-  margin-left: 1.65rem;
-}
-
-.customCheckboxTick .customCheckbox:after {
+.customCheckbox:after {
   bottom: 4px;
   left: 8px;
   width: 3px;
@@ -50,20 +39,63 @@ input[name="selectAll"] {
   border-width: 0 2px 2px 0;
 }
 
-.customCheckbox:after,
-.customRadio:after {
+input:checked~.customCheckbox:after,
+input:checked~.customRadio:after {
+  display: block;
+}
+
+.ShowCheckbox {
+  margin-bottom: 0.75rem;
+}
+
+input[name="ShowKey"],
+input[type="checkbox"],
+input[name="selectAll"],
+input[type="radio"] {
+  position: absolute;
+  z-index: -999;
+  opacity: 0;
+}
+
+input[name="ShowKey"]:after,
+input[type="checkbox"]:after,
+input[name="selectAll"]:after,
+input[type="radio"]:after {
   position: absolute;
   display: none;
   content: '';
 }
 
-.customCheckboxControl input:checked~.customCheckbox:after,
-.customRadioControl input:checked~.customRadio:after {
-  display: block;
+.select-event {
+  margin-left: 1.65rem;
 }
 
-.customCheckboxControl input:checked~.customCheckbox,
-.customRadioControl input:checked~.customRadio {
+.customRadio {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  margin-bottom: 0.5rem;
+  margin-right: 1.55556rem;
+  border: 1px solid #ccc;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  border-radius: 50%;
+}
+
+[type='checkbox']+label,
+[type='radio']+label {
+  display: inline-block;
+  margin-left: 1.55556rem;
+  margin-right: 1.11111rem;
+  margin-bottom: 0.5rem;
+  vertical-align: baseline;
+  line-height: 1.45rem;
+  font-size: 1.1rem;
+}
+
+input:checked~.customCheckbox,
+input:checked~.customRadio {
   background: #f0f0f0;
 }
 

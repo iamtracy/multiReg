@@ -1,5 +1,5 @@
 function buildButtons(showStatus) {
-  const buttons = `
+  return `
     <div class="button-group">
       ${showStatus.livePresent ? '<a class="button" data-status="live">Live</a>' : ''}
       ${showStatus.upcomingPresent ? '<a class="button" data-status="upcoming">Upcoming</a>' : ''}
@@ -14,9 +14,8 @@ function buildButtons(showStatus) {
         </label>
       </div>
     </blockquote>`;
-  return buttons;
 }
-
+//compare to getStatus() function; may be redundant
 function checkItemStatus(data, type) {
   let status = false;
   data.map(item => {
@@ -37,16 +36,6 @@ function checkItemStatus(data, type) {
   return status;
 }
 
-function getImage(imageUrl, desc) {
-  let img;
-  if (imageUrl === '') {
-    img = '';
-  } else {
-    img = `<img src="${imageUrl}" alt="${desc} Image">`;
-  }
-  return img;
-}
-
 function getStatus(openStatus, onDemandStatus) {
   let itemStatus;
   if (openStatus === 1 && onDemandStatus === 0) {
@@ -56,8 +45,13 @@ function getStatus(openStatus, onDemandStatus) {
   } else if (onDemandStatus === 1) {
     itemStatus = 'ondemand';
   }
-  console.log(openStatus, onDemandStatus);
   return itemStatus;
+}
+
+function getImage(imageUrl, desc) {
+  let img = '';
+  if (imageUrl !== '') img = `<img src="${imageUrl}" alt="${desc} Image">`;
+  return img;
 }
 
 function getcheckBox(data) {
@@ -71,9 +65,8 @@ function getcheckBox(data) {
         </label>
       </div>
     `;
-  } else {
-    return '';
   }
+  return '';
 }
 
 function speakerData(data) {
@@ -91,7 +84,7 @@ function speakerData(data) {
   return speaker;
 }
 
-function speakerContent(item, index) {
+function speakerContent(item) {
   return `<div class="media-object-section">
             <div class="thumbnail">
               <img src="${item.img}" alt="Space">
@@ -122,12 +115,14 @@ function cardContent(item, index, date, speakerData, initLoadStatus) {
                   ${speakerData}
                 </div>
               </section>
-              <a class="hollow button ${(speakerData.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
-                View Speakers
-              </a>
-              <a class="hollow button success ${(itemStatus === 'live' || itemStatus === 'ondemand' ? '' : 'hide')}" type="button" href="https://vts.inxpo.com/Launch/QReg.htm?ShowKey=${item.ShowKey}" target="_blank">
-                Login
-              </a>
+              <div class="button-group">
+                <a class="hollow button ${(speakerData.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
+                  View Speakers
+                </a>
+                <a class="hollow button success ${(itemStatus === 'live' || itemStatus === 'ondemand' ? '' : 'hide')}" type="button" href="https://vts.inxpo.com/Launch/QReg.htm?ShowKey=${item.ShowKey}" target="_blank">
+                  Login
+                </a>
+              </div>
             </div>
           </div>`;
 }
