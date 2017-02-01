@@ -1,12 +1,6 @@
 .card {
   margin-bottom: 1.5rem;
   border-bottom: 1px dotted map-get($foundation-palette, secondary);
-  blockquote {
-    padding: 0rem 0.5rem;
-    background: transparent;
-    margin-top: 1rem;
-    border-left: 1px solid map-get($foundation-palette, secondary);
-  }
   .media-object-section {
     h4 {
       margin-bottom: .18rem;
@@ -40,4 +34,11 @@
   .media-object-section {
     margin: 1rem 0 3rem;
   }
+}
+
+blockquote {
+  padding: 0rem 0.5rem;
+  background: transparent;
+  margin-top: 1rem;
+  border-left: 1px solid map-get($foundation-palette, secondary);
 }

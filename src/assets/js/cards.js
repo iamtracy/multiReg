@@ -39,8 +39,11 @@ function checkItemStatus(data, type) {
 
 function getImage(imageUrl, desc) {
   let img;
-  if (imageUrl === '') img = '';
-  else img = `<img src="${imageUrl}" alt="${desc} Image">`;
+  if (imageUrl === '') {
+    img = '';
+  } else {
+    img = `<img src="${imageUrl}" alt="${desc} Image">`;
+  }
   return img;
 }
 
@@ -67,9 +70,8 @@ function getcheckBox(data) {
         </label>
       </div>
     `;
-  } else {
-    return '';
   }
+  return '';
 }
 
 function speakerData(data) {
@@ -87,7 +89,7 @@ function speakerData(data) {
   return speaker;
 }
 
-function speakerContent(item, index) {
+function speakerContent(item) {
   return `<div class="media-object-section">
             <div class="thumbnail">
               <img src="${item.img}" alt="Space">
