@@ -1,28 +1,30 @@
 const userSettings = searchSettings();
 let firstButton;
+const devMode = true;
 
-function getJSON(url) {
-  return new Promise((resolve, reject) => {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', url);
-    xhr.onreadystatechange = handleResponse;
-    xhr.onerror = e => console.log(e);
-    xhr.send();
+if (!devMode) {
+  function getJSON(url) {
+    return new Promise((resolve, reject) => {
+      let xhr = new XMLHttpRequest();
+      xhr.open('GET', url);
+      xhr.onreadystatechange = handleResponse;
+      xhr.onerror = e => console.log(e);
+      xhr.send();
 
-    function handleResponse() {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          const data = JSON.parse(xhr.responseText);
-          dataInit(data.ResultSet[1]);
-        } else {
-          reject(console.log(this.statusText))
+      function handleResponse() {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText);
+            dataInit(data.ResultSet[1]);
+          } else {
+            reject(console.log(this.statusText))
+          }
         }
       }
-    }
-  });
-}
+    });
+  }
 
-const ajaxPromise = getJSON(`
+  const ajaxPromise = getJSON(`
    https://vts.inxpo.com/scripts/
    Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1550
    &CompanyKey=${userSettings.CompanyKey}
@@ -30,6 +32,10 @@ const ajaxPromise = getJSON(`
    ${'&NumDays='+userSettings.NumDays}
    ${userSettings.SortBySoonest ? '&SortBySoonest=1' : '&SortBySoonest=0'}
 `);
+} else {
+  dataInit(mockAjax());
+}
+
 
 function dataInit(data) {
   const filteredData = filterShowData(data)
