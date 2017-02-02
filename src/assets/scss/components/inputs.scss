@@ -15,101 +15,103 @@ form {
   border-radius: 3px;
 }
 
-input {
-  resize: none;
-}
-
-.customCheckbox {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  background: #fff;
-  border: 1px solid #ccc;
-  -webkit-transition: background 0.5s;
-  transition: background 0.5s;
-}
-
-.customCheckbox:after {
-  bottom: 4px;
-  left: 8px;
-  width: 3px;
-  height: 8px;
-  transform: rotate(45deg);
-  border: solid #666;
-  border-width: 0 2px 2px 0;
-}
-
-input:checked~.customCheckbox:after,
-input:checked~.customRadio:after {
-  display: block;
-}
-
-.ShowCheckbox {
-  margin-bottom: 0.75rem;
-}
-
-input[name="ShowKey"],
-input[type="checkbox"],
-input[name="selectAll"],
-input[type="radio"] {
-  position: absolute;
-  z-index: -999;
-  opacity: 0;
-}
-
-input[name="ShowKey"]:after,
-input[type="checkbox"]:after,
-input[name="selectAll"]:after,
-input[type="radio"]:after {
-  position: absolute;
-  display: none;
-  content: '';
-}
-
 .select-event {
   margin-left: 1.65rem;
-}
-
-.customRadio {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: #fff;
-  margin-bottom: 0.5rem;
-  margin-right: 1.55556rem;
-  border: 1px solid #ccc;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  border-radius: 50%;
-}
-
-[type='checkbox']+label,
-[type='radio']+label {
-  display: inline-block;
-  margin-left: 1.55556rem;
-  margin-right: 1.11111rem;
-  margin-bottom: 0.5rem;
-  vertical-align: baseline;
-  line-height: 1.45rem;
-  font-size: 1.1rem;
-}
-
-input:checked~.customCheckbox,
-input:checked~.customRadio {
-  background: #f0f0f0;
 }
 
 label {
   color: $medium-gray;
   font-size: 1.2rem;
   padding-left: 0;
-  &.customCheckboxControl {
-    line-height: 1.45rem;
-    font-size: 1rem;
-  }
 }
 
 .input-group-label {
   background: transparent;
   border: none;
+}
+
+fieldset{
+  border: none;
+}
+
+.polymer{
+    /* basic css */
+  position: relative;
+  .form-group{
+    position: relative;
+  }
+  input[type=checkbox]   { display:none; }
+  label, p               { padding-left:50px; }
+  #check-awesome         { position:relative; }
+
+  /* checkbox css */
+  label                  { cursor:pointer; }
+  label span             { display:block; position:absolute; left:0; 
+    -webkit-transition-duration:0.3s; -moz-transition-duration:0.3s; transition-duration:0.3s;
+  }
+  label .circle          {
+    background:#FFF;
+    left:-30px;
+    top:-30px;
+    height:80px;
+    width:80px;
+    z-index:-1;
+    border-radius:50%; -moz-border-radius:50%; -webkit-border-radius:50%;
+  }
+  label .box     {
+    border:2px solid #000;
+    height:20px; 
+    width:20px;
+    z-index:888;
+    -webkit-transition-delay:0.2s; -moz-transition-delay:0.2s; transition-delay:0.2s;
+  }
+  label .check         {
+    top: -7px;
+    left: 6px;
+    width: 12px;
+    height: 24px;
+    border:2px solid #0f9d58;  
+    border-top: none;
+    border-left: none;
+    opacity:0; 
+    z-index:888;
+    -webkit-transform:rotate(180deg); -moz-transform:rotate(180deg); transform:rotate(180deg);
+    -webkit-transition-delay:0.3s; -moz-transition-delay:0.3s; transition-delay:0.3s;
+  }
+
+  /* handling click events */
+
+  /* when checkbox is checked */
+  label .circle {
+    -webkit-animation   :growCircle 0.3s ease;
+    -moz-animation      :growCircle 0.3s ease;
+    animation           :growCircle 0.3s ease;
+  }
+  input[type=checkbox]:checked ~ label .box { 
+    opacity:0;
+    -webkit-transform   :scale(0) rotate(-180deg);
+    -moz-transform        :scale(0) rotate(-180deg);
+    transform                 :scale(0) rotate(-180deg);
+  }
+  input[type=checkbox]:checked ~ label .check {
+    opacity:1; 
+    -webkit-transform   :scale(1) rotate(45deg);
+    -moz-transform      :scale(1) rotate(45deg);
+    transform           :scale(1) rotate(45deg);
+  }
+
+  /* bubble animation */
+
+  @-webkit-keyframes growCircle {
+    0%, 100%   { -webkit-transform:scale(0); }
+    70%        { background:#DDD; -webkit-transform:scale(1.25); }
+  }
+  @-moz-keyframes growCircle {
+    0%, 100%   { -moz-transform:scale(0); }
+    70%        { background:#DDD; -moz-transform:scale(1.25); }
+  }
+  @keyframes growCircle {
+    0%, 100%   { transform:scale(0); }
+    70%        { background:#DDD; transform:scale(1.25); }
+  }
 }

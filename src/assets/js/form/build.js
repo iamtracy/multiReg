@@ -24,8 +24,7 @@
         </div>`);
     } else if (item.fieldType.inputElem.toLowerCase() === 'select' && item.name.toLowerCase().startsWith('udf')) {
       form.append(
-        `<div class="small-12 columns">
-          <fieldset>
+        `<div class="small-12 columns input-control select">
             <label for="right-label">${item.labelText}
               <${item.fieldType.inputElem}
                 name="${item.name}"
@@ -35,7 +34,6 @@
               >
               </${item.fieldType.inputElem}>
             </label>
-          </fieldset>
         </div>`);
       (function() {
         let optionsBuilder = $(`[fieldname="${item.labelText}"]`);
@@ -48,20 +46,30 @@
     } else if (item.fieldType.type === 'checkbox') {
       const checkboxId = `checkbox${index}`;
       form.append(
-        `<div class="small-12 columns">
-          <fieldset id="${checkboxId}">          
-          </fieldset>
-         </div>`);
+        `<div id="${checkboxId}" class="small-12 columns polymer"></div>`
+        );
       (function(item, checkboxId) {
         let checkboxBuilder = $(`#${checkboxId}`);
         let checkBoxOptions = `<label>${item.labelText}</label>`;
-        item.list.map(item => {
+        item.list.map((item, checkIndex) => {
+          console.log(index, checkIndex)
+          let boxIndex = index + checkIndex + 1;
           checkBoxOptions +=
-            `<div>
-              <div class="customCheckbox"></div>
-              <input name="${item.name}" type="checkbox">
-              <label for="${item.name}">${item.value}</label>
-             </div>`
+            `<div id="check-awesome${boxIndex}" class="form-group">    
+              <input type="checkbox" id="check-me${boxIndex}">  
+              <label for="check-me${boxIndex}">
+                <span></span>
+                <span class="check"></span>
+                <span class="box"></span>
+                ${item.value}
+              </label>
+            </div>`
+          // checkBoxOptions +=
+          //   `<label class="input-control checkbox small-check" for="${item.name}">
+          //     <input name="${item.name}" type="checkbox">
+          //     <span class="check" checked></span>
+          //     <span class="caption">${item.value}</span>
+          //    </label>`
         });
         checkboxBuilder.append(checkBoxOptions);
       }(item, checkboxId))
@@ -100,9 +108,7 @@
       }(item, radioId))
     } else {
       form.append(
-        `<div class="small-12 columns">
-          <fieldset>
-              <label for="right-label">${item.labelText}
+        `<div class="small-12 columns input-control modern text">
                 <${item.fieldType.inputElem} 
                   id="${item.id}"
                   class="" 
@@ -110,8 +116,8 @@
                   type="${item.fieldType.type}"
                   inputtype=${item.required}  
                   fieldname="${item.labelText}">
-              </label>
-          </fieldset>
+                  <span class="label">Please Enter ${item.labelText}</span>
+                  <span class="placeholder">${item.labelText}</span>
         </div>`);
     }
   }
