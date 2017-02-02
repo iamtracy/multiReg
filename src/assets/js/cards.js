@@ -6,16 +6,16 @@ function buildButtons(showStatus) {
       ${showStatus.ondemandPresent ? '<a class="button" data-status="ondemand">On Demand</a>' : ''}
     </div>
     <blockquote>
-      <div class="small-12 custom-checkbox">
-        <label class="customCheckboxControl customCheckboxTick">
+      <div class="small-12">
+        <label class="switch">
             <input type="checkbox" name="selectAll">
-            <div class="customCheckbox"></div>
-            <div class="select-event">Select all events below or check individual events you would like to register for.</div>
+            <span class="check"></span>
+            <span class="select-event">Select all events below or check individual events you would like to register for.</span>
         </label>
       </div>
     </blockquote>`;
 }
-//compare to getStatus() function; may be redundant
+
 function checkItemStatus(data, type) {
   let status = false;
   data.map(item => {
@@ -58,9 +58,9 @@ function getcheckBox(data) {
   if (data.IsRegistrationOpen === 1) {
     return `
       <div class="ShowCheckbox">
-        <label class="customCheckboxControl customCheckboxTick">
+        <label class="switch">
           <input type="checkbox" name="ShowKey" data-showkey="${data.ShowKey}" data-packagekey="${data.ShowPackageKey}">
-          <div class="customCheckbox"></div>
+          <span class="check"></span>
           <span class="select-event">Select this event</span>
         </label>
       </div>

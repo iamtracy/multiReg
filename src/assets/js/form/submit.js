@@ -45,15 +45,11 @@ function doRegistration(iRetval, showKey, showPackageKey) {
   if (iRetval > 0) {
     g_oAjax.SendSyncRequest("POST", "https://vts.inxpo.com/scripts/Server.nxp?", cUrl);
     const oResponse = EvalResponse(g_oAjax.m_oXMLHTTPReqObj.responseText);
-    if (oResponse.Status == '0') {
       if ((oResponse.ResultSet[0][0].ShowRegistrationKey == '0')) {
         postUI(showKey, 'error');
       } else {
         postUI(showKey, 'success');
       }
-    } else {
-      postUI(showKey, 'alreadyRegistered');
-    }
   }
 }
 

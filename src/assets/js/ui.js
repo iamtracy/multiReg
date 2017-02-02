@@ -11,7 +11,7 @@ function readMoreLess() {
     elem.innerText = "View Speakers";
   }
 }
-//consult down to single cardSort() function
+
 function cardClickToSort() {
   let elem = $(this)[0];
   let activeState = $('[data-event-group] .button');
@@ -85,4 +85,8 @@ function listeners() {
   cardButtons.click(cardClickToSort);
   cardCheckBoxes = $('input[name="ShowKey"]');
   cardCheckBoxes.change(selectionState);
+}
+
+function trimEmptyPTags() {
+  $('p').filter(function() { return $.trim(this.innerHTML) == "" }).remove();
 }

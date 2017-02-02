@@ -1,6 +1,5 @@
 const userSettings = searchSettings();
 let firstButton;
-const devMode = true;
 
 if (window.location.hostname === 'vts.inxpo.com') {
   function getJSON(url) {
@@ -35,7 +34,6 @@ if (window.location.hostname === 'vts.inxpo.com') {
 } else {
   dataInit(mockAjax());
 }
-
 
 function dataInit(data) {
   const filteredData = filterShowData(data)

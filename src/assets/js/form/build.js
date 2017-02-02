@@ -67,7 +67,9 @@
       }(item, checkboxId))
     } else if (item.fieldType.type === 'textarea') {
       form.append(
-        `<div class="small-12 columns">
+        `<div class="small-12 columns input-control textarea"
+          data-role="input" 
+          data-text-auto-resize="true">
           <fieldset>
             <label>
               ${item.labelText}
