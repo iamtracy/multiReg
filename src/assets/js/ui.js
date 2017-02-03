@@ -80,6 +80,7 @@ function selectionState() {
   if(selected.length === selectedListArray.length) {
     $('input[name="selectAll"]').prop('checked', true);
   }
+  console.log(selected);
   return selected;
 }
 

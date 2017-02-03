@@ -1016,6 +1016,7 @@ input {
     }
     &:disabled ~ .check {
       background-color: #D5D5D5;
+      cursor: not-allowed;
       &:before {
         background-color: #BDBDBD;
       }
@@ -1041,7 +1042,7 @@ input {
     &:after {
       position: absolute;
       left: -1px;
-      top: -1px;
+      top: 0;
       display: block;
       content: "";
       height: 1rem;

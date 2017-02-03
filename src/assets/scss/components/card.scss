@@ -37,6 +37,12 @@
   }
 }
 
+section.cards{
+  > div:first-child {
+    margin-top: 2.25rem;
+  }
+} 
+
 blockquote {
   padding: 0;
   background: transparent;

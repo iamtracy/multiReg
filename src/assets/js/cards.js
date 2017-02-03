@@ -65,8 +65,16 @@ function getcheckBox(data) {
         </label>
       </div>
     `;
+  } else {
+    return `<div class="ShowCheckbox">
+              <label class="switch">
+                <input disabled type="checkbox">
+                <span class="check"></span>
+                <span class="select-event">Registration Closed</span>
+              </label>
+            </div>`;
   }
-  return '';
+  
 }
 
 function speakerData(data) {
