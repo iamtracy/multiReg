@@ -8,6 +8,7 @@
     if (item.id.toLowerCase() === 'registerbtn') {
       form.append(
         `<div class="small-12 columns">
+          <fieldset>
             <${item.fieldType.inputElem} 
               id="RegisterBTN"
               class="button primary"
@@ -19,19 +20,22 @@
             >
             ${item.labelText}
             </${item.fieldType.inputElem}>
+          </fieldset>
         </div>`);
     } else if (item.fieldType.inputElem.toLowerCase() === 'select' && item.name.toLowerCase().startsWith('udf')) {
       form.append(
         `<div class="small-12 columns">
-          <div class="input-control modern text form-text">
-              <select
+          <fieldset>
+            <label for="right-label">${item.labelText}
+              <${item.fieldType.inputElem}
                 name="${item.name}"
                 type="${item.type}"
                 inputtype=${item.required}  
                 fieldname="${item.labelText}"
               >
-              </select}>
-          </div>
+              </${item.fieldType.inputElem}>
+            </label>
+          </fieldset>
         </div>`);
       (function() {
         let optionsBuilder = $(`[fieldname="${item.labelText}"]`);
@@ -42,20 +46,22 @@
         });
       }())
     } else if (item.fieldType.type === 'checkbox') {
-      const checkboxId = `dynamicCont${index}`;
+      const checkboxId = `checkbox${index}`;
       form.append(
-        `<div id="${checkboxId}" class="small-12 columns udf-cont form-text"></div>`
-        );
+        `<div class="small-12 columns">
+          <fieldset id="${checkboxId}">          
+          </fieldset>
+         </div>`);
       (function(item, checkboxId) {
         let checkboxBuilder = $(`#${checkboxId}`);
         let checkBoxOptions = `<label>${item.labelText}</label>`;
-        item.list.map((item, checkIndex) => {
+        item.list.map(item => {
           checkBoxOptions +=
-            `<div>  
-              <label class="input-control checkbox small-check">
-                <input type="checkbox" name="${item.name}"> 
+            `<div class="ShowCheckbox">
+              <label class="input-control checkbox small-check" name="${item.name}">
+                <input type="checkbox" name="${item.name}">
                 <span class="check"></span>
-                <span class="caption">${item.value}</span>
+                <span class="select-event caption">${item.value}</span>
               </label>
             </div>`
         });
@@ -63,52 +69,50 @@
       }(item, checkboxId))
     } else if (item.fieldType.type === 'textarea') {
       form.append(
-        `<div class="small-12 columns form-text">
+        `<div class="small-12 columns">
+          <fieldset>
             <label>
               ${item.labelText}
-              <div>
               <textarea name="${item.name}" placeholder="${item.placeholder}" required=${item.required}></textarea>
-              </div>
             </label>
-          </div>
+          </fieldset>
         </div>`
       )
     } else if (item.fieldType.type === 'radio') {
-      const radioId = `dynamicCont${index}`;
+      const radioId = `checkbox${index}`;
       form.append(
-        `<div id="${radioId}" class="small-12 columns udf-cont form-text"></div>`
-        );
+        `<div class="small-12 columns">
+          <fieldset id="${radioId}">          
+          </fieldset>
+         </div>`);
       (function(item, radioId) {
         let radioBuilder = $(`#${radioId}`);
         let radioOptions = `<label>${item.labelText}</label>`;
         item.list.forEach((item, index) => {
           radioOptions +=
             `<div>
-              <label for="${item.name}" class="input-control radio small-check">
-                <input type="radio" name="radioId" value="${item.value}">
-                <span class="check"></span>
-                <span class="caption">${item.value}</span>
-              </label>
-            </div>`
+              <div class="customRadio"></div>
+              <input name="radio${index}" type="radio">
+              <label for="${item.name}">${item.value}</label>
+             </div>`
         });
         radioBuilder.append(radioOptions);
       }(item, radioId))
     } else {
       form.append(
         `<div class="small-12 columns">
-          <div class="input-control modern text form-text">
-                  <${item.fieldType.inputElem} 
-                    id="${item.id}"
-                    class="form-text" 
-                    name="${item.id}"
-                    type="${item.fieldType.type}"
-                    inputtype=${item.required}  
-                    fieldname="${item.labelText}">
-                    <span class="label">Please Enter ${item.labelText}</span>
-                    <span class="placeholder">${item.labelText}</span>
-          </div>
-         </div>`
-        );
+          <fieldset>
+              <label for="right-label">${item.labelText}
+                <${item.fieldType.inputElem} 
+                  id="${item.id}"
+                  class="" 
+                  name="${item.id}"
+                  type="${item.fieldType.type}"
+                  inputtype=${item.required}  
+                  fieldname="${item.labelText}">
+              </label>
+          </fieldset>
+        </div>`);
     }
   }
 

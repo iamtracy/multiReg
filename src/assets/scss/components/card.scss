@@ -1,5 +1,5 @@
 .card {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   border-bottom: 1px dotted map-get($foundation-palette, secondary);
   .media-object-section {
     h4 {
@@ -30,16 +30,21 @@
     padding: 0 15px 0 0;
   }
   .button-group {
-    margin-bottom: 1.4rem;
+    margin-bottom: 0.75rem;
   }
   .media-object-section {
     margin: 1rem 0 3rem;
   }
 }
 
+label.select-all {
+  position: absolute;
+  right: 0;
+}
+
 section.cards{
   > div:first-child {
-    margin-top: 2.25rem;
+    margin-top: 0.25rem;
   }
 } 
 

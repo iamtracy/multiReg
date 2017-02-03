@@ -4,16 +4,12 @@ function buildButtons(showStatus) {
       ${showStatus.livePresent ? '<a class="button" data-status="live">Live</a>' : ''}
       ${showStatus.upcomingPresent ? '<a class="button" data-status="upcoming">Upcoming</a>' : ''}
       ${showStatus.ondemandPresent ? '<a class="button" data-status="ondemand">On Demand</a>' : ''}
-    </div>
-    <blockquote>
-      <div class="small-12">
-        <label class="switch-original">
-            <input type="checkbox" name="selectAll">
-            <span class="check"></span>
-            <span class="select-event">Select all events below or check individual events you would like to register for.</span>
-        </label>
-      </div>
-    </blockquote>`;
+      <label class="switch align-self-middle select-all">
+        <input type="checkbox" name="selectAll">
+        <span class="check"></span>
+        <span class="select-event">Select all events</span>
+      </label>
+    </div>`;
 }
 
 function checkItemStatus(data, type) {
@@ -58,19 +54,18 @@ function getcheckBox(data) {
   if (data.IsRegistrationOpen === 1) {
     return `
       <div class="ShowCheckbox">
-        <label class="switch">
+        <label class="input-control checkbox small-check">
           <input type="checkbox" name="ShowKey" data-showkey="${data.ShowKey}" data-packagekey="${data.ShowPackageKey}">
           <span class="check"></span>
-          <span class="select-event">Select this event</span>
+          <span class="select-event caption">Select this event</span>
         </label>
-      </div>
-    `;
+      </div>`;
   } else {
     return `<div class="ShowCheckbox">
-              <label class="switch">
+              <label class="input-control checkbox small-check">
                 <input disabled type="checkbox">
                 <span class="check"></span>
-                <span class="select-event">Registration Closed</span>
+                <span class="select-event caption">Registration Closed</span>
               </label>
             </div>`;
   }
@@ -117,20 +112,20 @@ function cardContent(item, index, date, speakerData, initLoadStatus) {
                 <h6><b>Date</b>: ${date.year}</h6>
                 <h6><b>Time</b>: ${date.time}</h6>
               </div>
-              <p>${item.Comments}</p>
+              <div class="button-group">
+                <a class="button primary ${(speakerData.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
+                  View Speakers
+                </a>
+                <a class="button success ${(itemStatus === 'live' || itemStatus === 'ondemand' ? '' : 'hide')}" type="button" href="https://vts.inxpo.com/Launch/QReg.htm?ShowKey=${item.ShowKey}" target="_blank">
+                  Login
+                </a>
+              </div>
               <section>
                 <div class="dropdown-pane top hide" id="speaker${index}" data-speaker-toggler>
                   ${speakerData}
                 </div>
               </section>
-              <div class="button-group">
-                <a class="hollow button ${(speakerData.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
-                  View Speakers
-                </a>
-                <a class="hollow button success ${(itemStatus === 'live' || itemStatus === 'ondemand' ? '' : 'hide')}" type="button" href="https://vts.inxpo.com/Launch/QReg.htm?ShowKey=${item.ShowKey}" target="_blank">
-                  Login
-                </a>
-              </div>
+              <p>${item.Comments}</p>
             </div>
           </div>`;
 }

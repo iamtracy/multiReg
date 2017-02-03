@@ -84,6 +84,16 @@ function selectionState() {
   return selected;
 }
 
+function inputsChanged(){
+  let value = $.trim($(this).val());
+  if(value.length < 1) {
+    $(this).siblings('.placeholder').removeClass('hide');
+  } else {
+    $(this).siblings('.placeholder').addClass('hide');
+    console.log('more than 0')
+  }
+}
+
 function listeners() {
   const checkAllCheckbox = $('input[name="selectAll"]');
   checkAllCheckbox.change(checkAll);
@@ -91,6 +101,8 @@ function listeners() {
   speakerButtons.click(readMoreLess);
   const cardButtons = $('[data-event-group] .button');
   cardButtons.click(cardClickToSort);
+  const inputs = $('#formFields input[type="text"]');
+  inputs.change(inputsChanged)
   cardCheckBoxes = $('input[name="ShowKey"]');
   cardCheckBoxes.change(selectionState);
 }

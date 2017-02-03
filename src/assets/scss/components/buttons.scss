@@ -1,9 +1,22 @@
 .button-group {
   margin-bottom: 0;
+  position: relative;
   .button {
     margin-bottom: 0;
+    &.primary {
+      background: darken(map-get($foundation-palette, primary), 5%);
+    }
+    &.success {
+      background: darken(map-get($foundation-palette, success), 3%);
+    }
     &.is-active {
       background: map-get($foundation-palette, primary);
     }
+  }
+}
+
+.buttons {
+  .button-group {
+    border-bottom: 1px solid $light-gray;
   }
 }
