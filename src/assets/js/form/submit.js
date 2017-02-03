@@ -1,8 +1,6 @@
 const g_oAjax = new InxpoAJAXObject();
 const messages = {
   success: '<div>Success</div>',
-  error: `<div>There was an error during registration</div>`,
-  alreadyRegistered: `<div>You are already registered for this show</div>`,
   submitError: `<div>No Shows Were Selected</div>`
 }
 
@@ -27,16 +25,9 @@ function getRVARes(url, showKey, showPackageKey) {
   });
 }
 
-function postUI(showKey, regStatus) {
+function postUI(showKey) {
   const elem = $(`[data-showkey="${showKey}"]`);
-  console.log(elem);
-  if (regStatus === 'error') {
-    elem.parent().html(messages.error);
-  } else if (regStatus === 'success') {
-    elem.parent().html(messages.success);
-  } else if (regStatus === 'alreadyRegistered') {
-    elem.parent().html(messages.alreadyRegistered);
-  }
+  elem.parent().html(messages.success);
 }
 
 function doRegistration(iRetval, showKey, showPackageKey) {
@@ -45,11 +36,9 @@ function doRegistration(iRetval, showKey, showPackageKey) {
   if (iRetval > 0) {
     g_oAjax.SendSyncRequest("POST", "https://vts.inxpo.com/scripts/Server.nxp?", cUrl);
     const oResponse = EvalResponse(g_oAjax.m_oXMLHTTPReqObj.responseText);
-      if ((oResponse.ResultSet[0][0].ShowRegistrationKey == '0')) {
-        postUI(showKey, 'error');
-      } else {
-        postUI(showKey, 'success');
-      }
+      if ((oResponse.ResultSet[0][0].ShowRegistrationKey != '0')) {
+        postUI(showKey);
+      } 
   }
 }
 

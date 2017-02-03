@@ -68,6 +68,7 @@ PATHS:
     - "src/assets/js/ui.js"
     - "src/assets/js/form/build.js"
     - "src/assets/js/form/submit.js"
+    - "src/assets/js/third-party/metro.js"
     - "src/assets/js/cards.js"
     - "src/assets/js/!(app).js"
     - "src/assets/js/app.js"

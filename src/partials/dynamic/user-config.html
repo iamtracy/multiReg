@@ -84,15 +84,6 @@
         name: 'City',
         required: 'XR'
       }, {
-        labelText: 'StateProv',
-        fieldType: {
-          inputElem: 'select',
-          type: ''
-        },
-        id: 'StateProv',
-        name: 'StateProv',
-        required: 'XR'
-      }, {
         labelText: 'Postal Code',
         fieldType: {
           inputElem: 'input',
@@ -100,15 +91,6 @@
         },
         id: 'PostalCode',
         name: 'PostalCode',
-        required: 'XR'
-      }, {
-        labelText: 'Country',
-        fieldType: {
-          inputElem: 'select',
-          type: ''
-        },
-        id: 'Country',
-        name: 'Country',
         required: 'XR'
       }, {
         labelText: 'Email Address',
@@ -128,6 +110,24 @@
         id: 'Password',
         name: 'Password',
         required: 'XR'
+      }, {
+        labelText: 'StateProv',
+        fieldType: {
+          inputElem: 'select',
+          type: ''
+        },
+        id: 'StateProv',
+        name: 'StateProv',
+        required: 'XR'
+      }, {
+        labelText: 'Country',
+        fieldType: {
+          inputElem: 'select',
+          type: ''
+        },
+        id: 'Country',
+        name: 'Country',
+        required: 'XR'
       }, ],
       udfFields: [{
         labelText: 'Employees',
@@ -139,7 +139,7 @@
         required: '1',
         id: '',
         list: [{
-          value: '(select)'
+          value: 'Select Employees'
         }, {
           value: '1-50'
         }, {
@@ -157,7 +157,7 @@
         id: '',
         required: '1',
         list: [{
-          value: '(select)'
+          value: 'Select Job Role'
         }, {
           value: 'Project Manager'
         }, {

@@ -74,18 +74,22 @@ function getCardData(data, showStatus, array) {
   const buttons = buildButtons(showStatus);
   buttonsContainer.append(buttons);
   firstButton = $('[data-status]')[0];
-  firstButton.className += ' is-active';
-  const initLoadStatus = firstButton.dataset.status;
-  data.map((item, index) => {
-    const date = formatTime(item.FromDateTime, item.TZAbbrev);
-    let speakerArray = speakerData(item.WCSpeakerList)
-      .map((item, index) => speakerContent(item, index))
-      .join('');
-    array.push(
-      cardContent(item, index, date, speakerArray, initLoadStatus)
-    );
-  });
-  return array;
+  if(firstButton === 'undefined') {
+    alert('No shows to display');
+  } else{
+    firstButton.className += ' is-active';
+    const initLoadStatus = firstButton.dataset.status;
+    data.map((item, index) => {
+      const date = formatTime(item.FromDateTime, item.TZAbbrev);
+      let speakerArray = speakerData(item.WCSpeakerList)
+        .map((item, index) => speakerContent(item, index))
+        .join('');
+      array.push(
+        cardContent(item, index, date, speakerArray, initLoadStatus)
+      );
+    });
+    return array;
+  }
 }
 
 function buildCards(data) {

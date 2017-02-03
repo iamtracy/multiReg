@@ -7,7 +7,7 @@ function buildButtons(showStatus) {
     </div>
     <blockquote>
       <div class="small-12">
-        <label class="switch">
+        <label class="switch-original">
             <input type="checkbox" name="selectAll">
             <span class="check"></span>
             <span class="select-event">Select all events below or check individual events you would like to register for.</span>

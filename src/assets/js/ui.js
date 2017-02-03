@@ -53,6 +53,7 @@ function checkAll() {
   let selectedListArray;
   if (cardCheckBoxes !== "undefined") {
     selectedListArray = cardCheckBoxes.toArray();
+    console.log(selectedListArray.length);
     if (this.checked) selectedListArray.forEach(item => item.checked = true);
     else selectedListArray.forEach(item => item.checked = false);
     selectionState();
@@ -72,8 +73,14 @@ function selectionState() {
         showPackageKey: item.dataset.packagekey
       });
     });
-    return selected;
   }
+  if(selected.length !== selectedListArray.length){
+    $('input[name="selectAll"]').prop('checked', false);
+  }
+  if(selected.length === selectedListArray.length) {
+    $('input[name="selectAll"]').prop('checked', true);
+  }
+  return selected;
 }
 
 function listeners() {
@@ -85,31 +92,8 @@ function listeners() {
   cardButtons.click(cardClickToSort);
   cardCheckBoxes = $('input[name="ShowKey"]');
   cardCheckBoxes.change(selectionState);
-  poly();
 }
 
 function trimEmptyPTags() {
   $('p').filter(function() { return $.trim(this.innerHTML) == "" }).remove();
-}
-
-function poly(){
-  $('label[for^="check-me"]').change(function() {
-  
-  // find the first span which is our circle/bubble
-  var el = $(this).children('span:first-child');
-
-  console.log(el);
-  
-  // add the bubble class (we do this so it doesnt show on page load)
-  el.addClass('circle');
-  
-  // clone it
-  var newone = el.clone(true);  
-  
-  // add the cloned version before our original
-  el.before(newone);  
-  
-  // remove the original so that it is ready to run on next click
-  $("." + el.attr("class") + ":last").remove();
-}); 
 }
