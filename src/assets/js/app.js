@@ -43,7 +43,7 @@ function dataInit(data) {
   $('#RegisterBTN').removeAttr("disabled");
   listeners();
   trimEmptyPTags();
-  $(document).foundation();
+  // $(document).foundation();
 }
 
 function filterShowData(data) {
@@ -74,9 +74,9 @@ function getCardData(data, showStatus, array) {
   const buttons = buildButtons(showStatus);
   buttonsContainer.append(buttons);
   firstButton = $('[data-status]')[0];
-  if(firstButton === 'undefined') {
+  if (firstButton === 'undefined') {
     alert('No shows to display');
-  } else{
+  } else {
     firstButton.className += ' is-active';
     const initLoadStatus = firstButton.dataset.status;
     data.map((item, index) => {

@@ -69,7 +69,7 @@ function getcheckBox(data) {
               </label>
             </div>`;
   }
-  
+
 }
 
 function speakerData(data) {

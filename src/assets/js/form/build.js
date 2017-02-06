@@ -91,9 +91,11 @@
         item.list.forEach((item, index) => {
           radioOptions +=
             `<div>
+              <label class="input-control radio small-check" for="${item.name}">
               <div class="customRadio"></div>
-              <input name="radio${index}" type="radio">
-              <label for="${item.name}">${item.value}</label>
+              <input type="radio" name="radio${radioId}">
+              <span class="check"></span>
+              <span class="caption">${item.value}</span>
              </div>`
         });
         radioBuilder.append(radioOptions);
