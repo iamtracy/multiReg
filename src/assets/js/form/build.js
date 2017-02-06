@@ -52,7 +52,8 @@
         `<div class="small-12 columns">
           <fieldset id="${checkboxId}">          
           </fieldset>
-         </div>`);
+         </div>`
+      );
       (function(item, checkboxId) {
         let checkboxBuilder = $(`#${checkboxId}`);
         let checkBoxOptions = `<label>${item.labelText}</label>`;

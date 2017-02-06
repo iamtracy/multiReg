@@ -1,12 +1,18 @@
 function buildButtons(showStatus) {
+  const width = window.outerWidth;
   return `
     <div class="button-group">
       ${showStatus.livePresent ? '<a class="button" data-status="live">Live</a>' : ''}
       ${showStatus.upcomingPresent ? '<a class="button" data-status="upcoming">Upcoming</a>' : ''}
       ${showStatus.ondemandPresent ? '<a class="button" data-status="ondemand">On Demand</a>' : ''}
+      <label class="switch align-self-middle select-all ${width <= 1000 ? 'hide' : ''}">
+        <input type="checkbox" name="selectAll">
+        <span class="check"></span>
+        <span class="select-event">Select all events</span>
+      </label>
     </div>
     <div>
-      <label class="switch align-self-middle select-all">
+      <label class="switch align-self-middle select-all-mobile ${width >= 1000 ? 'hide' : ''}">
         <input type="checkbox" name="selectAll">
         <span class="check"></span>
         <span class="select-event">Select all events</span>

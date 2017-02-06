@@ -10,7 +10,26 @@ form {
   }
 }
 
+[type='text'],
+[type='password'],
+[type='date'],
+[type='datetime'],
+[type='datetime-local'],
+[type='month'],
+[type='week'],
+[type='email'],
+[type='number'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='url'],
+[type='color'],
+textarea {
+  box-shadow: none !important;
+}
+
 input[type="checkbox"],
+input[type="radio"],
 label.select-all {
   cursor: pointer;
 }
@@ -22,6 +41,11 @@ label.select-all {
 
 .select-event {
   margin-left: 0.75rem;
+}
+
+.select-all {
+  position: absolute;
+  right: 0;
 }
 
 .ShowCheckbox {

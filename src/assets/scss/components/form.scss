@@ -96,13 +96,6 @@
     select {
       border: 1px dashed #1ba1e2;
     }
-    &.neon {
-      input,
-      textarea,
-      select {
-        box-shadow: 0 0 25px 0 rgba(89, 205, 226, 0.7);
-      }
-    }
     .input-state-required {
       display: block;
       color: #1ba1e2;
@@ -113,13 +106,6 @@
     textarea,
     select {
       border: 1px solid #ce352c;
-    }
-    &.neon {
-      input,
-      textarea,
-      select {
-        box-shadow: 0 0 25px 0 rgba(128, 0, 0, 0.7);
-      }
     }
     .input-state-error {
       display: block;
