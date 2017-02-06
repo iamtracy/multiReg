@@ -10,6 +10,11 @@ form {
   }
 }
 
+input[type="checkbox"],
+label.select-all {
+  cursor: pointer;
+}
+
 [name="RegisterBTN"] {
   margin-top: 1.2rem;
   border-radius: 3px;

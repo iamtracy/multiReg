@@ -4,9 +4,10 @@
   .button {
     margin-bottom: 0;
     &.primary {
-      background: darken(map-get($foundation-palette, primary), 5%);
       &:hover {
         background: darken(map-get($foundation-palette, primary), 10%);
+        color: $white;
+        border: 1px solid darken(map-get($foundation-palette, primary), 5%);
       }
     }
     &.success {

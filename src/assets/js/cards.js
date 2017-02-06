@@ -4,6 +4,8 @@ function buildButtons(showStatus) {
       ${showStatus.livePresent ? '<a class="button" data-status="live">Live</a>' : ''}
       ${showStatus.upcomingPresent ? '<a class="button" data-status="upcoming">Upcoming</a>' : ''}
       ${showStatus.ondemandPresent ? '<a class="button" data-status="ondemand">On Demand</a>' : ''}
+    </div>
+    <div>
       <label class="switch align-self-middle select-all">
         <input type="checkbox" name="selectAll">
         <span class="check"></span>
@@ -113,19 +115,21 @@ function cardContent(item, index, date, speakerData, initLoadStatus) {
                 <h6><b>Time</b>: ${date.time}</h6>
               </div>
               <div class="button-group">
-                <a class="button primary ${(speakerData.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
-                  View Speakers
-                </a>
                 <a class="button success ${(itemStatus === 'live' || itemStatus === 'ondemand' ? '' : 'hide')}" type="button" href="https://vts.inxpo.com/Launch/QReg.htm?ShowKey=${item.ShowKey}" target="_blank">
                   Login
                 </a>
               </div>
+              <p>${item.Comments}</p>
               <section>
                 <div class="dropdown-pane top hide" id="speaker${index}" data-speaker-toggler>
                   ${speakerData}
                 </div>
               </section>
-              <p>${item.Comments}</p>
+              <div class="button-group">
+                <a class="hollow button primary ${(speakerData.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
+                  View Speakers
+                </a>
+              </div>
             </div>
           </div>`;
 }

@@ -42,7 +42,7 @@ function dataInit(data) {
   buildCards(cardData);
   listeners();
   trimEmptyPTags();
-  // $(document).foundation();
+  $(document).foundation();
 }
 
 function filterShowData(data) {
