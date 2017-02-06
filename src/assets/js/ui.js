@@ -74,23 +74,28 @@ function selectionState() {
       });
     });
   }
-  if(selected.length !== selectedListArray.length){
+  if (selected.length > 0) {
+    $('#RegisterBTN').removeAttr("disabled");
+  } else {
+    $('#RegisterBTN').attr("disabled", true);
+  }
+  if (selected.length !== selectedListArray.length) {
     $('input[name="selectAll"]').prop('checked', false);
   }
-  if(selected.length === selectedListArray.length) {
+  if (selected.length === selectedListArray.length) {
     $('input[name="selectAll"]').prop('checked', true);
   }
   console.log(selected);
   return selected;
 }
 
-function inputsChanged(){
+function inputsChanged() {
   let value = $.trim($(this).val());
-  if(value.length < 1) {
+  if (value.length < 1) {
     $(this).siblings('.placeholder').removeClass('hide');
   } else {
     $(this).siblings('.placeholder').addClass('hide');
-    console.log('more than 0')
+    console.log('more than 0');
   }
 }
 

@@ -5,12 +5,21 @@
     margin-bottom: 0;
     &.primary {
       background: darken(map-get($foundation-palette, primary), 5%);
+      &:hover {
+        background: darken(map-get($foundation-palette, primary), 10%);
+      }
     }
     &.success {
       background: darken(map-get($foundation-palette, success), 3%);
+      &:hover {
+        background: darken(map-get($foundation-palette, success), 10%);
+      }
     }
     &.is-active {
       background: map-get($foundation-palette, primary);
+      &:hover {
+        background: darken(map-get($foundation-palette, primary), 10%);
+      }
     }
   }
 }

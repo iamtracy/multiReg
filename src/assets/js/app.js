@@ -40,7 +40,6 @@ function dataInit(data) {
   const showStatus = getShowStatus(filteredData);
   const cardData = getCardData(filteredData, showStatus, []);
   buildCards(cardData);
-  $('#RegisterBTN').removeAttr("disabled");
   listeners();
   trimEmptyPTags();
   // $(document).foundation();

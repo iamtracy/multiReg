@@ -36,9 +36,9 @@ function doRegistration(iRetval, showKey, showPackageKey) {
   if (iRetval > 0) {
     g_oAjax.SendSyncRequest("POST", "https://vts.inxpo.com/scripts/Server.nxp?", cUrl);
     const oResponse = EvalResponse(g_oAjax.m_oXMLHTTPReqObj.responseText);
-      if ((oResponse.ResultSet[0][0].ShowRegistrationKey != '0')) {
-        postUI(showKey);
-      } 
+    if ((oResponse.ResultSet[0][0].ShowRegistrationKey != '0')) {
+      postUI(showKey);
+    }
   }
 }
 
@@ -57,13 +57,9 @@ function isUserRegisteredForShow(data, selectedShows) {
 
 function onSubmit() {
   const selectedShows = selectionState();
-  if (selectedShows.length === 0) {
-    $('#RegisterBTN').after(messages.submitError); //handle more elegantly
-  } else {
-    selectedShows.map(item => {
-      if (!isUserRegisteredForShow(item, selectedShows)) {
-        getRVAKey(item.showKey, item.showPackageKey) //needs to support oFormData.LangLocaleID
-      }
-    });
-  }
+  selectedShows.map(item => {
+    if (!isUserRegisteredForShow(item, selectedShows)) {
+      getRVAKey(item.showKey, item.showPackageKey) //needs to support oFormData.LangLocaleID
+    }
+  });
 }

@@ -9,7 +9,8 @@
       form.append(
         `<div class="small-12 columns">
           <fieldset>
-            <${item.fieldType.inputElem} 
+            <${item.fieldType.inputElem}
+              data-tooltip
               id="RegisterBTN"
               class="button primary"
               name="${item.id}"
@@ -90,7 +91,7 @@
         let radioOptions = `<label>${item.labelText}</label>`;
         item.list.forEach((item, index) => {
           radioOptions +=
-            `<div>
+            `<div class="ShowCheckbox">
               <label class="input-control radio small-check" for="${item.name}">
               <div class="customRadio"></div>
               <input type="radio" name="radio${radioId}">
