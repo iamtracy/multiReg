@@ -26,7 +26,6 @@ form {
 [type='color'],
 textarea {
   box-shadow: none !important;
-  font-size: 1.075rem;
 }
 
 input[type="checkbox"],
@@ -35,16 +34,36 @@ label.select-all {
   cursor: pointer;
 }
 
-[inputtype="XR"],
-[inputtype="1"] {}
-
 [name="RegisterBTN"] {
   margin-top: 1.2rem;
   border-radius: 3px;
 }
 
+::-webkit-input-placeholder {
+  /* Chrome */
+  color: $input-placeholder-color;
+}
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: $input-placeholder-color;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: $input-placeholder-color;
+  opacity: 1;
+}
+
+:-moz-placeholder {
+  /* Firefox 4 - 18 */
+  color: $input-placeholder-color;
+  opacity: 1;
+}
+
 .select-event {
   margin-left: 0.75rem;
+  color: $input-color;
 }
 
 .select-all {
