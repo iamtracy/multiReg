@@ -5,22 +5,24 @@
 
   function buildForm(item, index) {
     let form = $('#formFields');
+    let isRequired;
+    if (item.required === 'XR' || item.required === '1') {
+      isRequired = `placeholder="(required)"`
+    } else {
+      isRequired = '';
+    }
     if (item.id.toLowerCase() === 'registerbtn') {
       form.append(
         `<div class="small-12 columns">
           <fieldset>
-            <${item.fieldType.inputElem}
-              data-tooltip
-              id="RegisterBTN"
+            <a id="RegisterBTN"
               class="button primary"
-              name="${item.id}"
+              name="RegisterBTN"
               type="submit"
-              inputtype=${item.required}  
-              fieldname="${item.labelText}"
               disabled
             >
             ${item.labelText}
-            </${item.fieldType.inputElem}>
+            </a>
           </fieldset>
         </div>`);
     } else if (item.fieldType.inputElem.toLowerCase() === 'select' && item.name.toLowerCase().startsWith('udf')) {
@@ -75,7 +77,7 @@
           <fieldset>
             <label>
               ${item.labelText}
-              <textarea name="${item.name}" placeholder="${item.placeholder}" required=${item.required}></textarea>
+              <textarea name="${item.name}" ${isRequired} required=${item.required}></textarea>
             </label>
           </fieldset>
         </div>`
@@ -109,10 +111,10 @@
               <label for="right-label">${item.labelText}
                 <${item.fieldType.inputElem} 
                   id="${item.id}"
-                  class="" 
                   name="${item.id}"
                   type="${item.fieldType.type}"
-                  inputtype=${item.required}  
+                  inputtype=${item.required}
+                  ${isRequired}  
                   fieldname="${item.labelText}">
               </label>
           </fieldset>

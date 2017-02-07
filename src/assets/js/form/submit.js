@@ -1,5 +1,5 @@
 const g_oAjax = new InxpoAJAXObject();
-const messages = {
+const g_omessages = {
   success: '<div>Success</div>',
   submitError: `<div>No Shows Were Selected</div>`
 }
@@ -27,7 +27,7 @@ function getRVARes(url, showKey, showPackageKey) {
 
 function postUI(showKey) {
   const elem = $(`[data-showkey="${showKey}"]`);
-  elem.parent().html(messages.success);
+  elem.parent().html(g_omessages.success);
 }
 
 function doRegistration(iRetval, showKey, showPackageKey) {
@@ -56,10 +56,27 @@ function isUserRegisteredForShow(data, selectedShows) {
 }
 
 function onSubmit() {
-  const selectedShows = selectionState();
-  selectedShows.map(item => {
-    if (!isUserRegisteredForShow(item, selectedShows)) {
-      getRVAKey(item.showKey, item.showPackageKey) //needs to support oFormData.LangLocaleID
+  const oForm = document.getElementById('MainForm');
+  if (InputForm_Validate(oForm)) {
+    let oLID = document.getElementById("EMailAddress");
+    let oPWD = document.getElementById("Password");
+    if (oPWD === null) {
+      const pw = document.createElement('input');
+      pw.id = 'Password';
+      pw.name = 'Password';
+      pw.fieldname = 'Password';
+      pw.type = 'hidden';
+      pw.value = oLID.value.toLowerCase();
+      oForm.appendChild(pw);
+    } else {
+      oPWD.value = oLID.value.toLowerCase();
     }
-  });
+
+    const selectedShows = selectionState();
+    selectedShows.map(item => {
+      if (!isUserRegisteredForShow(item, selectedShows)) {
+        getRVAKey(item.showKey, item.showPackageKey) //needs to support oFormData.LangLocaleID
+      }
+    });
+  }
 }

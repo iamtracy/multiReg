@@ -1,231 +1,244 @@
 <script>
   function searchSettings() {
     return {
+      // Add Company Key below to display events
       CompanyKey: 882,
+      // To display specific events, add your filter type between the '' in the variable below. If you leave the variable blank (''), all events will display
       ShowTypeDesc: 'NutraIngredients',
+      // Include your related tenants can be set to true or false
       IncludeRelatedTenants: true,
-      NumDays: '270',
+      // 0 - retrieve all events open now, 7 retrieve all events opening in the next week, 90 retrieve all events opening in the next 90 days
+      NumDays: '90',
+      // Sort by soonest can be set to true or false. True = Ascend Dates, False = Descend Dates
       SortBySoonest: true
     }
   }
 
   function formSettings() {
     return {
+      /***** STANDARD FORM FIELDS *****/
       formFields: [{
-        labelText: 'First Name',
-        fieldType: {
-          inputElem: 'input',
-          type: 'text'
+          labelText: 'First Name', // Change label above input field
+          fieldType: {
+            inputElem: 'input',
+            type: 'text'
+          },
+          id: 'FirstName',
+          name: 'FirstName',
+          required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
+        }, {
+          labelText: 'Last Name', // Change label above input field
+          fieldType: {
+            inputElem: 'input',
+            type: 'text'
+          },
+          id: 'LastName',
+          name: 'LastName',
+          required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
+        }, {
+          labelText: 'Title', // Change label above input field
+          fieldType: {
+            inputElem: 'input',
+            type: 'text'
+          },
+          id: 'JobTitle',
+          name: 'JobTitle',
+          required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
+        }, {
+          labelText: 'Phone', // Change label above input field
+          fieldType: {
+            inputElem: 'input',
+            type: 'text'
+          },
+          id: 'Phone',
+          name: 'Phone',
+          required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
+        }, {
+          labelText: 'Company Name', // Change label above input field
+          fieldType: {
+            inputElem: 'input',
+            type: 'text'
+          },
+          id: 'CompanyName',
+          name: 'CompanyName',
+          required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
+        }, {
+          labelText: 'Address', // Change label above input field
+          fieldType: {
+            inputElem: 'input',
+            type: 'text'
+          },
+          id: 'Address1',
+          name: 'Address1',
+          required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
+        }, {
+          labelText: 'Unit / Apt. / Suite', // Change label above input field
+          fieldType: {
+            inputElem: 'input',
+            type: 'text'
+          },
+          id: 'Address2',
+          name: 'Address2',
+          required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
+        }, {
+          labelText: 'City', // Change label above input field
+          fieldType: {
+            inputElem: 'input',
+            type: 'text'
+          },
+          id: 'City',
+          name: 'City',
+          required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
+        }, {
+          labelText: 'Postal Code', // Change label above input field
+          fieldType: {
+            inputElem: 'input',
+            type: 'text'
+          },
+          id: 'PostalCode',
+          name: 'PostalCode',
+          required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
+        }, {
+          labelText: 'Email Address', // Change label above input field
+          fieldType: {
+            inputElem: 'input',
+            type: 'text'
+          },
+          id: 'EMailAddress',
+          name: 'EMailAddress',
+          required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
         },
-        id: 'FirstName',
-        name: 'FirstName',
-        required: 'XR'
-      }, {
-        labelText: 'Last Name',
-        fieldType: {
-          inputElem: 'input',
-          type: 'text'
+
+        /***** IF THE PASSWORD FIELD IS NOT NEEDED, COMMENT THE SECTION BELOW *****/
+        // {
+        //   labelText: 'Password', // Change label above input field
+        //   fieldType: {
+        //     inputElem: 'input',
+        //     type: 'text'
+        //   },
+        //   id: 'Password',
+        //   name: 'Password',
+        //   required: 'XR'
+        // },
+        /***** END IF PASSWORD IS NOT NEEDED, COMMENT OUT *****/
+
+        {
+          labelText: 'StateProv', // Change label above input field
+          fieldType: {
+            inputElem: 'select',
+            type: ''
+          },
+          id: 'StateProv',
+          name: 'StateProv',
+          required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRE
+        }, {
+          labelText: 'Country', // Change label above input field
+          fieldType: {
+            inputElem: 'select',
+            type: ''
+          },
+          id: 'Country',
+          name: 'Country',
+          required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRE
         },
-        id: 'LastName',
-        name: 'LastName',
-        required: 'XR'
-      }, {
-        labelText: 'Title',
-        fieldType: {
-          inputElem: 'input',
-          type: 'text'
-        },
-        id: 'JobTitle',
-        name: 'JobTitle',
-        required: 'XR'
-      }, {
-        labelText: 'Phone',
-        fieldType: {
-          inputElem: 'input',
-          type: 'text'
-        },
-        id: 'Phone',
-        name: 'Phone',
-        required: 'XR'
-      }, {
-        labelText: 'Company Name',
-        fieldType: {
-          inputElem: 'input',
-          type: 'text'
-        },
-        id: 'CompanyName',
-        name: 'CompanyName',
-        required: 'XR'
-      }, {
-        labelText: 'Address',
-        fieldType: {
-          inputElem: 'input',
-          type: 'text'
-        },
-        id: 'Address1',
-        name: 'Address1',
-        required: 'XR'
-      }, {
-        labelText: 'Unit / Apt. / Suite',
-        fieldType: {
-          inputElem: 'input',
-          type: 'text'
-        },
-        id: 'Address2',
-        name: 'Address2',
-        required: 'XR'
-      }, {
-        labelText: 'City',
-        fieldType: {
-          inputElem: 'input',
-          type: 'text'
-        },
-        id: 'City',
-        name: 'City',
-        required: 'XR'
-      }, {
-        labelText: 'Postal Code',
-        fieldType: {
-          inputElem: 'input',
-          type: 'text'
-        },
-        id: 'PostalCode',
-        name: 'PostalCode',
-        required: 'XR'
-      }, {
-        labelText: 'Email Address',
-        fieldType: {
-          inputElem: 'input',
-          type: 'text'
-        },
-        id: 'EMailAddress',
-        name: 'EMailAddress',
-        required: 'XR'
-      }, {
-        labelText: 'Password',
-        fieldType: {
-          inputElem: 'input',
-          type: 'text'
-        },
-        id: 'Password',
-        name: 'Password',
-        required: 'XR'
-      }, {
-        labelText: 'StateProv',
-        fieldType: {
-          inputElem: 'select',
-          type: ''
-        },
-        id: 'StateProv',
-        name: 'StateProv',
-        required: 'XR'
-      }, {
-        labelText: 'Country',
-        fieldType: {
-          inputElem: 'select',
-          type: ''
-        },
-        id: 'Country',
-        name: 'Country',
-        required: 'XR'
-      }, ],
+      ],
+      /***** END STANDARD FORM FIELDS *****/
+
+      /***** UDFs *****/
       udfFields: [{
-        labelText: 'Employees',
+        labelText: 'Employees', // Change label above input field
         fieldType: {
-          inputElem: 'select'
+          inputElem: 'select' // ADD THE INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'input', 'select', 'textarea'
         },
-        name: 'UDF1024',
-        required: '1',
+        name: 'UDF1024', // ADD UDF KEY BETWEEN THE QUOTES
+        required: '1', // 1 = REQUIRED, 0 = NOT REQUIRED
         id: '',
         list: [{
-          value: 'Select Employees'
+          value: 'Select Employees' // UPDATE VALUE OF SELECT OPTION
         }, {
-          value: '1-50'
+          value: '1-50' // UPDATE VALUE OF SELECT OPTION
         }, {
-          value: '51-100'
+          value: '51-100' // UPDATE VALUE OF SELECT OPTION
         }, {
-          value: '101-200'
+          value: '101-200' // UPDATE VALUE OF SELECT OPTION
         }, ]
       }, {
-        labelText: 'Job Role',
+        labelText: 'Job Role', // Change label above input field
         fieldType: {
-          inputElem: 'select'
+          inputElem: 'select' // ADD THE INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'input', 'select', 'textarea'
         },
-        name: 'UDF1025',
+        name: 'UDF1025', // ADD UDF KEY BETWEEN THE QUOTES
         id: '',
-        required: '1',
+        required: '1', // 1 = REQUIRED, 0 = NOT REQUIRED
         list: [{
-          value: 'Select Job Role'
+          value: 'Select Job Role' // UPDATE VALUE OF SELECT OPTION
         }, {
-          value: 'Project Manager'
+          value: 'Project Manager' // UPDATE VALUE OF SELECT OPTION
         }, {
-          value: 'Event Producer'
+          value: 'Event Producer' // UPDATE VALUE OF SELECT OPTION
         }, {
-          value: 'Creative Developer'
+          value: 'Creative Developer' // UPDATE VALUE OF SELECT OPTION
         }, {
-          value: 'Webcast Engineer'
+          value: 'Webcast Engineer' // UPDATE VALUE OF SELECT OPTION
         }, ]
       }, {
-        labelText: 'Favorite Sport',
+        labelText: 'Favorite Sport', // Change label above input field
         fieldType: {
-          inputElem: 'input',
-          type: 'checkbox'
+          inputElem: 'input', // ADD THE INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'input', 'select', 'textarea'
+          type: 'checkbox' // ADD THE TYPE OF INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'select', 'checkbox', 'radio', 'textarea', 'input', 'button'
         },
         list: [{
-          value: 'Football',
-          name: 'UDF1025',
+          value: 'Football', // UPDATE VALUE OF CHECKBOX OPTION
+          name: 'UDF1025', // ADD UDF KEY BETWEEN THE QUOTES
         }, {
-          value: 'Basketball',
-          name: 'UDF1026',
+          value: 'Basketball', // UPDATE VALUE OF CHECKBOX OPTION
+          name: 'UDF1026', // ADD UDF KEY BETWEEN THE QUOTES
         }, {
-          value: 'Golf',
-          name: 'UDF1027',
+          value: 'Golf', // UPDATE VALUE OF CHECKBOX OPTION
+          name: 'UDF1027', // ADD UDF KEY BETWEEN THE QUOTES
         }, {
-          value: 'Baseball',
-          name: 'UDF1028',
+          value: 'Baseball', // UPDATE VALUE OF CHECKBOX OPTION
+          name: 'UDF1028', // ADD UDF KEY BETWEEN THE QUOTES
         }, ],
         id: '',
-        required: '1'
+        required: '1' // 1 = REQUIRED, 0 = NOT REQUIRED
       }, {
-        labelText: 'Years in the industry',
+        labelText: 'Years in the industry', // Change label above input field
         fieldType: {
-          inputElem: 'input',
-          type: 'radio'
+          inputElem: 'input', // ADD THE INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'input', 'select', 'textarea'
+          type: 'radio' // ADD THE TYPE OF INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'select', 'checkbox', 'radio', 'textarea', 'input', 'button'
         },
         list: [{
-          value: '0-1',
-          name: 'UDF1030',
+          value: '0-1', // UPDATE VALUE OF RADIO OPTION
+          name: 'UDF1030', // ADD UDF KEY BETWEEN THE QUOTES
         }, {
-          value: '1-3',
-          name: 'UDF1031',
+          value: '1-3', // UPDATE VALUE OF RADIO OPTION
+          name: 'UDF1031', // ADD UDF KEY BETWEEN THE QUOTES
         }, {
-          value: '3-5',
-          name: 'UDF1032',
+          value: '3-5', // UPDATE VALUE OF RADIO OPTION
+          name: 'UDF1032', // ADD UDF KEY BETWEEN THE QUOTES
         }, {
-          value: '+5',
-          name: 'UDF1033',
+          value: '+5', // UPDATE VALUE OF RADIO OPTION
+          name: 'UDF1033', // ADD UDF KEY BETWEEN THE QUOTES
         }, ],
         id: '',
-        required: '1'
+        required: '1' // 1 = REQUIRED, 0 = NOT REQUIRED
       }, {
-        labelText: 'Short Bio',
+        labelText: 'Short Bio', // Change label above input field
         fieldType: {
-          inputElem: 'textarea',
-          type: 'textarea'
+          inputElem: 'textarea', // ADD THE INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'input', 'select', 'textarea'
+          type: 'textarea' // ADD THE TYPE OF INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'select', 'checkbox', 'radio', 'textarea', 'input', 'button'
         },
-        name: 'UDF1029',
+        name: 'UDF1029', // ADD UDF KEY BETWEEN THE QUOTES
         placeholder: '',
         id: '',
-        required: '1'
+        required: '1' // 1 = REQUIRED, 0 = NOT REQUIRED
       }],
+      /***** END UDFs *****/
+
       submit: [{
-        labelText: 'REGISTER',
-        fieldType: {
-          inputElem: 'a',
-          type: 'button'
-        },
-        id: 'RegisterBTN',
-        required: 'XR'
+        labelText: 'REGISTER', // Change submit button text
+        id: 'RegisterBTN'
       }]
     }
   }
