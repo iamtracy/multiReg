@@ -1,6 +1,6 @@
 const g_oAjax = new InxpoAJAXObject();
 const g_omessages = {
-  success: '<div>Success</div>',
+  success: '<div><i class="fa fa-check-square" aria-hidden="true"></i> Successfully Registered</div>',
   submitError: `<div>No Shows Were Selected</div>`
 }
 

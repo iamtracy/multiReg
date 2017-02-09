@@ -145,95 +145,95 @@
       /***** END STANDARD FORM FIELDS *****/
 
       /***** UDFs *****/
-      udfFields: [{
-        labelText: 'Employees', // Change label above input field
-        fieldType: {
-          inputElem: 'select' // ADD THE INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'input', 'select', 'textarea'
-        },
-        name: 'UDF1024', // ADD UDF KEY BETWEEN THE QUOTES
-        required: '1', // 1 = REQUIRED, 0 = NOT REQUIRED
-        id: '',
-        list: [{
-          value: 'Select Employees' // UPDATE VALUE OF SELECT OPTION
-        }, {
-          value: '1-50' // UPDATE VALUE OF SELECT OPTION
-        }, {
-          value: '51-100' // UPDATE VALUE OF SELECT OPTION
-        }, {
-          value: '101-200' // UPDATE VALUE OF SELECT OPTION
-        }, ]
-      }, {
-        labelText: 'Job Role', // Change label above input field
-        fieldType: {
-          inputElem: 'select' // ADD THE INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'input', 'select', 'textarea'
-        },
-        name: 'UDF1025', // ADD UDF KEY BETWEEN THE QUOTES
-        id: '',
-        required: '1', // 1 = REQUIRED, 0 = NOT REQUIRED
-        list: [{
-          value: 'Select Job Role' // UPDATE VALUE OF SELECT OPTION
-        }, {
-          value: 'Project Manager' // UPDATE VALUE OF SELECT OPTION
-        }, {
-          value: 'Event Producer' // UPDATE VALUE OF SELECT OPTION
-        }, {
-          value: 'Creative Developer' // UPDATE VALUE OF SELECT OPTION
-        }, {
-          value: 'Webcast Engineer' // UPDATE VALUE OF SELECT OPTION
-        }, ]
-      }, {
-        labelText: 'Favorite Sport', // Change label above input field
-        fieldType: {
-          inputElem: 'input', // ADD THE INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'input', 'select', 'textarea'
-          type: 'checkbox' // ADD THE TYPE OF INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'select', 'checkbox', 'radio', 'textarea', 'input', 'button'
-        },
-        list: [{
-          value: 'Football', // UPDATE VALUE OF CHECKBOX OPTION
-          name: 'UDF1025', // ADD UDF KEY BETWEEN THE QUOTES
-        }, {
-          value: 'Basketball', // UPDATE VALUE OF CHECKBOX OPTION
-          name: 'UDF1026', // ADD UDF KEY BETWEEN THE QUOTES
-        }, {
-          value: 'Golf', // UPDATE VALUE OF CHECKBOX OPTION
-          name: 'UDF1027', // ADD UDF KEY BETWEEN THE QUOTES
-        }, {
-          value: 'Baseball', // UPDATE VALUE OF CHECKBOX OPTION
-          name: 'UDF1028', // ADD UDF KEY BETWEEN THE QUOTES
-        }, ],
-        id: '',
-        required: '1' // 1 = REQUIRED, 0 = NOT REQUIRED
-      }, {
-        labelText: 'Years in the industry', // Change label above input field
-        fieldType: {
-          inputElem: 'input', // ADD THE INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'input', 'select', 'textarea'
-          type: 'radio' // ADD THE TYPE OF INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'select', 'checkbox', 'radio', 'textarea', 'input', 'button'
-        },
-        list: [{
-          value: '0-1', // UPDATE VALUE OF RADIO OPTION
-          name: 'UDF1030', // ADD UDF KEY BETWEEN THE QUOTES
-        }, {
-          value: '1-3', // UPDATE VALUE OF RADIO OPTION
-          name: 'UDF1031', // ADD UDF KEY BETWEEN THE QUOTES
-        }, {
-          value: '3-5', // UPDATE VALUE OF RADIO OPTION
-          name: 'UDF1032', // ADD UDF KEY BETWEEN THE QUOTES
-        }, {
-          value: '+5', // UPDATE VALUE OF RADIO OPTION
-          name: 'UDF1033', // ADD UDF KEY BETWEEN THE QUOTES
-        }, ],
-        id: '',
-        required: '1' // 1 = REQUIRED, 0 = NOT REQUIRED
-      }, {
-        labelText: 'Short Bio', // Change label above input field
-        fieldType: {
-          inputElem: 'textarea', // ADD THE INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'input', 'select', 'textarea'
-          type: 'textarea' // ADD THE TYPE OF INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'select', 'checkbox', 'radio', 'textarea', 'input', 'button'
-        },
-        name: 'UDF1029', // ADD UDF KEY BETWEEN THE QUOTES
-        placeholder: '',
-        id: '',
-        required: '1' // 1 = REQUIRED, 0 = NOT REQUIRED
-      }],
+      // udfFields: [{
+      //   labelText: 'Employees', // Change label above input field
+      //   fieldType: {
+      //     inputElem: 'select' // ADD THE INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'input', 'select', 'textarea'
+      //   },
+      //   name: 'UDF1024', // ADD UDF KEY BETWEEN THE QUOTES
+      //   required: '1', // 1 = REQUIRED, 0 = NOT REQUIRED
+      //   id: '',
+      //   list: [{
+      //     value: 'Select Employees' // UPDATE VALUE OF SELECT OPTION
+      //   }, {
+      //     value: '1-50' // UPDATE VALUE OF SELECT OPTION
+      //   }, {
+      //     value: '51-100' // UPDATE VALUE OF SELECT OPTION
+      //   }, {
+      //     value: '101-200' // UPDATE VALUE OF SELECT OPTION
+      //   }, ]
+      // }, {
+      //   labelText: 'Job Role', // Change label above input field
+      //   fieldType: {
+      //     inputElem: 'select' // ADD THE INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'input', 'select', 'textarea'
+      //   },
+      //   name: 'UDF1025', // ADD UDF KEY BETWEEN THE QUOTES
+      //   id: '',
+      //   required: '1', // 1 = REQUIRED, 0 = NOT REQUIRED
+      //   list: [{
+      //     value: 'Select Job Role' // UPDATE VALUE OF SELECT OPTION
+      //   }, {
+      //     value: 'Project Manager' // UPDATE VALUE OF SELECT OPTION
+      //   }, {
+      //     value: 'Event Producer' // UPDATE VALUE OF SELECT OPTION
+      //   }, {
+      //     value: 'Creative Developer' // UPDATE VALUE OF SELECT OPTION
+      //   }, {
+      //     value: 'Webcast Engineer' // UPDATE VALUE OF SELECT OPTION
+      //   }, ]
+      // }, {
+      //   labelText: 'Favorite Sport', // Change label above input field
+      //   fieldType: {
+      //     inputElem: 'input', // ADD THE INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'input', 'select', 'textarea'
+      //     type: 'checkbox' // ADD THE TYPE OF INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'select', 'checkbox', 'radio', 'textarea', 'input', 'button'
+      //   },
+      //   list: [{
+      //     value: 'Football', // UPDATE VALUE OF CHECKBOX OPTION
+      //     name: 'UDF1025', // ADD UDF KEY BETWEEN THE QUOTES
+      //   }, {
+      //     value: 'Basketball', // UPDATE VALUE OF CHECKBOX OPTION
+      //     name: 'UDF1026', // ADD UDF KEY BETWEEN THE QUOTES
+      //   }, {
+      //     value: 'Golf', // UPDATE VALUE OF CHECKBOX OPTION
+      //     name: 'UDF1027', // ADD UDF KEY BETWEEN THE QUOTES
+      //   }, {
+      //     value: 'Baseball', // UPDATE VALUE OF CHECKBOX OPTION
+      //     name: 'UDF1028', // ADD UDF KEY BETWEEN THE QUOTES
+      //   }, ],
+      //   id: '',
+      //   required: '1' // 1 = REQUIRED, 0 = NOT REQUIRED
+      // }, {
+      //   labelText: 'Years in the industry', // Change label above input field
+      //   fieldType: {
+      //     inputElem: 'input', // ADD THE INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'input', 'select', 'textarea'
+      //     type: 'radio' // ADD THE TYPE OF INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'select', 'checkbox', 'radio', 'textarea', 'input', 'button'
+      //   },
+      //   list: [{
+      //     value: '0-1', // UPDATE VALUE OF RADIO OPTION
+      //     name: 'UDF1030', // ADD UDF KEY BETWEEN THE QUOTES
+      //   }, {
+      //     value: '1-3', // UPDATE VALUE OF RADIO OPTION
+      //     name: 'UDF1031', // ADD UDF KEY BETWEEN THE QUOTES
+      //   }, {
+      //     value: '3-5', // UPDATE VALUE OF RADIO OPTION
+      //     name: 'UDF1032', // ADD UDF KEY BETWEEN THE QUOTES
+      //   }, {
+      //     value: '+5', // UPDATE VALUE OF RADIO OPTION
+      //     name: 'UDF1033', // ADD UDF KEY BETWEEN THE QUOTES
+      //   }, ],
+      //   id: '',
+      //   required: '1' // 1 = REQUIRED, 0 = NOT REQUIRED
+      // }, {
+      //   labelText: 'Short Bio', // Change label above input field
+      //   fieldType: {
+      //     inputElem: 'textarea', // ADD THE INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'input', 'select', 'textarea'
+      //     type: 'textarea' // ADD THE TYPE OF INPUT ELEMENT OF THE UDF BETWEEN THE QUOTES: 'select', 'checkbox', 'radio', 'textarea', 'input', 'button'
+      //   },
+      //   name: 'UDF1029', // ADD UDF KEY BETWEEN THE QUOTES
+      //   placeholder: '',
+      //   id: '',
+      //   required: '1' // 1 = REQUIRED, 0 = NOT REQUIRED
+      // }],
       /***** END UDFs *****/
 
       submit: [{
