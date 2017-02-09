@@ -1,9 +1,32 @@
 .button-group {
   margin-bottom: 0;
+  position: relative;
   .button {
     margin-bottom: 0;
+    &.primary {
+      &:hover {
+        background: darken(map-get($foundation-palette, primary), 10%);
+        color: $white;
+        border: 1px solid darken(map-get($foundation-palette, primary), 5%);
+      }
+    }
+    &.success {
+      background: darken(map-get($foundation-palette, success), 3%);
+      &:hover {
+        background: darken(map-get($foundation-palette, success), 10%);
+      }
+    }
     &.is-active {
       background: map-get($foundation-palette, primary);
+      &:hover {
+        background: darken(map-get($foundation-palette, primary), 10%);
+      }
     }
+  }
+}
+
+.buttons {
+  .button-group {
+    border-bottom: 1px solid $light-gray;
   }
 }

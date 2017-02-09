@@ -11,7 +11,7 @@ function readMoreLess() {
     elem.innerText = "View Speakers";
   }
 }
-//consult down to single cardSort() function
+
 function cardClickToSort() {
   let elem = $(this)[0];
   let activeState = $('[data-event-group] .button');
@@ -53,6 +53,7 @@ function checkAll() {
   let selectedListArray;
   if (cardCheckBoxes !== "undefined") {
     selectedListArray = cardCheckBoxes.toArray();
+    console.log(selectedListArray.length);
     if (this.checked) selectedListArray.forEach(item => item.checked = true);
     else selectedListArray.forEach(item => item.checked = false);
     selectionState();
@@ -72,7 +73,29 @@ function selectionState() {
         showPackageKey: item.dataset.packagekey
       });
     });
-    return selected;
+  }
+  if (selected.length > 0) {
+    $('#RegisterBTN').removeAttr("disabled");
+  } else {
+    $('#RegisterBTN').attr("disabled", true);
+  }
+  if (selected.length !== selectedListArray.length) {
+    $('input[name="selectAll"]').prop('checked', false);
+  }
+  if (selected.length === selectedListArray.length) {
+    $('input[name="selectAll"]').prop('checked', true);
+  }
+  console.log(selected);
+  return selected;
+}
+
+function inputsChanged() {
+  let value = $.trim($(this).val());
+  if (value.length < 1) {
+    $(this).siblings('.placeholder').removeClass('hide');
+  } else {
+    $(this).siblings('.placeholder').addClass('hide');
+    console.log('more than 0');
   }
 }
 
@@ -83,6 +106,12 @@ function listeners() {
   speakerButtons.click(readMoreLess);
   const cardButtons = $('[data-event-group] .button');
   cardButtons.click(cardClickToSort);
+  const inputs = $('#formFields input[type="text"]');
+  inputs.change(inputsChanged)
   cardCheckBoxes = $('input[name="ShowKey"]');
   cardCheckBoxes.change(selectionState);
+}
+
+function trimEmptyPTags() {
+  $('p').filter(function() { return $.trim(this.innerHTML) == "" }).remove();
 }

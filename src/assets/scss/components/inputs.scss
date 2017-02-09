@@ -1,6 +1,6 @@
 form {
   background: #fafafa;
-  padding: 1.25rem 2rem 2rem;
+  padding: 1.5rem 2rem 2rem;
   border: 1px solid #ddd;
   blockquote {
     padding: 0rem 0.5rem;
@@ -10,106 +10,90 @@ form {
   }
 }
 
+[type='text'],
+[type='password'],
+[type='date'],
+[type='datetime'],
+[type='datetime-local'],
+[type='month'],
+[type='week'],
+[type='email'],
+[type='number'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='url'],
+[type='color'],
+textarea {
+  box-shadow: none !important;
+}
+
+input[type="checkbox"],
+input[type="radio"],
+label.select-all {
+  cursor: pointer;
+}
+
 [name="RegisterBTN"] {
   margin-top: 1.2rem;
   border-radius: 3px;
 }
 
-input {
-  resize: none;
+::-webkit-input-placeholder {
+  /* Chrome */
+  color: $input-placeholder-color;
 }
 
-.customCheckbox {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  background: #fff;
-  border: 1px solid #ccc;
-  -webkit-transition: background 0.5s;
-  transition: background 0.5s;
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: $input-placeholder-color;
 }
 
-.customCheckbox:after {
-  bottom: 4px;
-  left: 8px;
-  width: 3px;
-  height: 8px;
-  transform: rotate(45deg);
-  border: solid #666;
-  border-width: 0 2px 2px 0;
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: $input-placeholder-color;
+  opacity: 1;
 }
 
-input:checked~.customCheckbox:after,
-input:checked~.customRadio:after {
-  display: block;
-}
-
-.ShowCheckbox {
-  margin-bottom: 0.75rem;
-}
-
-input[name="ShowKey"],
-input[type="checkbox"],
-input[name="selectAll"],
-input[type="radio"] {
-  position: absolute;
-  z-index: -999;
-  opacity: 0;
-}
-
-input[name="ShowKey"]:after,
-input[type="checkbox"]:after,
-input[name="selectAll"]:after,
-input[type="radio"]:after {
-  position: absolute;
-  display: none;
-  content: '';
+:-moz-placeholder {
+  /* Firefox 4 - 18 */
+  color: $input-placeholder-color;
+  opacity: 1;
 }
 
 .select-event {
-  margin-left: 1.65rem;
+  margin-left: 0.75rem;
+  color: $input-color;
 }
 
-.customRadio {
+.select-all {
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background: #fff;
-  margin-bottom: 0.5rem;
-  margin-right: 1.55556rem;
-  border: 1px solid #ccc;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  border-radius: 50%;
+  right: 0;
 }
 
-[type='checkbox']+label,
-[type='radio']+label {
-  display: inline-block;
-  margin-left: 1.55556rem;
-  margin-right: 1.11111rem;
-  margin-bottom: 0.5rem;
-  vertical-align: baseline;
-  line-height: 1.45rem;
-  font-size: 1.1rem;
-}
-
-input:checked~.customCheckbox,
-input:checked~.customRadio {
-  background: #f0f0f0;
-}
-
-label {
-  color: $medium-gray;
-  font-size: 1.2rem;
-  padding-left: 0;
-  &.customCheckboxControl {
-    line-height: 1.45rem;
-    font-size: 1rem;
+.ShowCheckbox {
+  padding-bottom: 1.1rem;
+  .input-control {
+    margin: 0;
   }
 }
 
-.input-group-label {
-  background: transparent;
+.udf-cont {
+  margin: .625rem 0;
+}
+
+.form-text {
+  color: #C8C8C8;
+}
+
+i.fa.fa-check-square {
+  color: #41CC61;
+}
+
+option {
+  padding: 0;
+}
+
+fieldset {
   border: none;
 }

@@ -1,21 +1,25 @@
 function buildButtons(showStatus) {
+  const width = window.outerWidth;
   return `
     <div class="button-group">
       ${showStatus.livePresent ? '<a class="button" data-status="live">Live</a>' : ''}
       ${showStatus.upcomingPresent ? '<a class="button" data-status="upcoming">Upcoming</a>' : ''}
       ${showStatus.ondemandPresent ? '<a class="button" data-status="ondemand">On Demand</a>' : ''}
+      <label class="switch align-self-middle select-all ${width <= 1000 ? 'hide' : ''}">
+        <input type="checkbox" name="selectAll">
+        <span class="check"></span>
+        <span class="select-event">Select all events</span>
+      </label>
     </div>
-    <blockquote>
-      <div class="small-12 custom-checkbox">
-        <label class="customCheckboxControl customCheckboxTick">
-            <input type="checkbox" name="selectAll">
-            <div class="customCheckbox"></div>
-            <div class="select-event">Select all events below or check individual events you would like to register for.</div>
-        </label>
-      </div>
-    </blockquote>`;
+    <div>
+      <label class="switch align-self-middle select-all-mobile ${width >= 1000 ? 'hide' : ''}">
+        <input type="checkbox" name="selectAll">
+        <span class="check"></span>
+        <span class="select-event">Select all events</span>
+      </label>
+    </div>`;
 }
-//compare to getStatus() function; may be redundant
+
 function checkItemStatus(data, type) {
   let status = false;
   data.map(item => {
@@ -58,15 +62,22 @@ function getcheckBox(data) {
   if (data.IsRegistrationOpen === 1) {
     return `
       <div class="ShowCheckbox">
-        <label class="customCheckboxControl customCheckboxTick">
+        <label class="input-control checkbox small-check">
           <input type="checkbox" name="ShowKey" data-showkey="${data.ShowKey}" data-packagekey="${data.ShowPackageKey}">
-          <div class="customCheckbox"></div>
-          <span class="select-event">Select this event</span>
+          <span class="check"></span>
+          <span class="select-event caption">Select this event</span>
         </label>
-      </div>
-    `;
+      </div>`;
+  } else {
+    return `<div class="ShowCheckbox">
+              <label class="input-control checkbox small-check">
+                <input disabled type="checkbox">
+                <span class="check"></span>
+                <span class="select-event caption">Registration Closed</span>
+              </label>
+            </div>`;
   }
-  return '';
+
 }
 
 function speakerData(data) {
@@ -109,18 +120,18 @@ function cardContent(item, index, date, speakerData, initLoadStatus) {
                 <h6><b>Date</b>: ${date.year}</h6>
                 <h6><b>Time</b>: ${date.time}</h6>
               </div>
+              <div class="button-group ${(item.OpenNow === 1 || item.IsOnDemand === 1 ? '' : 'hide')}">
+                <a class="button success" type="button" href="https://vts.inxpo.com/Launch/Event.htm?ShowKey=${item.ShowKey}" target="_blank">
+                  Login
+                </a>
+              </div>
               <p>${item.Comments}</p>
-              <section>
                 <div class="dropdown-pane top hide" id="speaker${index}" data-speaker-toggler>
                   ${speakerData}
                 </div>
-              </section>
               <div class="button-group">
-                <a class="hollow button ${(speakerData.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
+                <a class="hollow button primary ${(speakerData.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
                   View Speakers
-                </a>
-                <a class="hollow button success ${(itemStatus === 'live' || itemStatus === 'ondemand' ? '' : 'hide')}" type="button" href="https://vts.inxpo.com/Launch/QReg.htm?ShowKey=${item.ShowKey}" target="_blank">
-                  Login
                 </a>
               </div>
             </div>

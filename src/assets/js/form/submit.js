@@ -1,8 +1,6 @@
 const g_oAjax = new InxpoAJAXObject();
-const messages = {
-  success: '<div>Success</div>',
-  error: `<div>There was an error during registration</div>`,
-  alreadyRegistered: `<div>You are already registered for this show</div>`,
+const g_omessages = {
+  success: '<div><i class="fa fa-check-square" aria-hidden="true"></i> Successfully Registered</div>',
   submitError: `<div>No Shows Were Selected</div>`
 }
 
@@ -27,16 +25,9 @@ function getRVARes(url, showKey, showPackageKey) {
   });
 }
 
-function postUI(showKey, regStatus) {
+function postUI(showKey) {
   const elem = $(`[data-showkey="${showKey}"]`);
-  console.log(elem);
-  if (regStatus === 'error') {
-    elem.parent().html(messages.error);
-  } else if (regStatus === 'success') {
-    elem.parent().html(messages.success);
-  } else if (regStatus === 'alreadyRegistered') {
-    elem.parent().html(messages.alreadyRegistered);
-  }
+  elem.parent().html(g_omessages.success);
 }
 
 function doRegistration(iRetval, showKey, showPackageKey) {
@@ -45,14 +36,8 @@ function doRegistration(iRetval, showKey, showPackageKey) {
   if (iRetval > 0) {
     g_oAjax.SendSyncRequest("POST", "https://vts.inxpo.com/scripts/Server.nxp?", cUrl);
     const oResponse = EvalResponse(g_oAjax.m_oXMLHTTPReqObj.responseText);
-    if (oResponse.Status == '0') {
-      if ((oResponse.ResultSet[0][0].ShowRegistrationKey == '0')) {
-        postUI(showKey, 'error');
-      } else {
-        postUI(showKey, 'success');
-      }
-    } else {
-      postUI(showKey, 'alreadyRegistered');
+    if ((oResponse.ResultSet[0][0].ShowRegistrationKey != '0')) {
+      postUI(showKey);
     }
   }
 }
@@ -71,10 +56,23 @@ function isUserRegisteredForShow(data, selectedShows) {
 }
 
 function onSubmit() {
-  const selectedShows = selectionState();
-  if (selectedShows.length === 0) {
-    $('#RegisterBTN').after(messages.submitError); //handle more elegantly
-  } else {
+  const oForm = document.getElementById('MainForm');
+  if (InputForm_Validate(oForm)) {
+    let oLID = document.getElementById("EMailAddress");
+    let oPWD = document.getElementById("Password");
+    if (oPWD === null) {
+      const pw = document.createElement('input');
+      pw.id = 'Password';
+      pw.name = 'Password';
+      pw.fieldname = 'Password';
+      pw.type = 'hidden';
+      pw.value = oLID.value.toLowerCase();
+      oForm.appendChild(pw);
+    } else {
+      oPWD.value = oLID.value.toLowerCase();
+    }
+
+    const selectedShows = selectionState();
     selectedShows.map(item => {
       if (!isUserRegisteredForShow(item, selectedShows)) {
         getRVAKey(item.showKey, item.showPackageKey) //needs to support oFormData.LangLocaleID
