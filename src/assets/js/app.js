@@ -1,5 +1,5 @@
 const userSettings = searchSettings();
-let firstButton;
+//let firstButton;
 
 if (window.location.hostname === 'vts.inxpo.com') {
   function getJSON(url) {
@@ -39,7 +39,9 @@ function dataInit(data) {
   const filteredData = filterShowData(data)
   const showStatus = getShowStatus(filteredData);
   const cardData = getCardData(filteredData, showStatus, []);
-  buildCards(cardData);
+  if(cardData.status) {
+    buildCards(cardData.data);
+  }  
   listeners();
   trimEmptyPTags();
   $(document).foundation();
@@ -60,7 +62,6 @@ function getShowStatus(data) {
   const livePresent = checkItemStatus(data, 'live');
   const upcomingPresent = checkItemStatus(data, 'upcoming');
   const ondemandPresent = checkItemStatus(data, 'ondemand');
-  console.log(livePresent, upcomingPresent, ondemandPresent);
   return {
     livePresent: livePresent,
     upcomingPresent: upcomingPresent,
@@ -72,10 +73,14 @@ function getCardData(data, showStatus, array) {
   const buttonsContainer = $('[data-event-group]');
   const buttons = buildButtons(showStatus);
   buttonsContainer.append(buttons);
-  firstButton = $('[data-status]')[0];
-  if (firstButton === 'undefined') {
-    alert('No shows to display');
+  if ($('[data-status]').length === 0) {
+    buttonsContainer.html('<h5 class="text-center">No Shows to Display</h5>');
+    $('[data-cards]').html('');
+    return {
+      status: false
+    };
   } else {
+    let firstButton = $('[data-status]')[0];
     firstButton.className += ' is-active';
     const initLoadStatus = firstButton.dataset.status;
     data.map((item, index) => {
@@ -87,7 +92,10 @@ function getCardData(data, showStatus, array) {
         cardContent(item, index, date, speakerArray, initLoadStatus)
       );
     });
-    return array;
+    return {
+      data: array,
+      status: true
+    };
   }
 }
 

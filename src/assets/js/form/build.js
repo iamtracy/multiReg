@@ -1,6 +1,5 @@
 (function(formSettings) {
   const formFields = formSettings.formFields;
-  console.log(formSettings.udfFields !== 'undefined');
   if (formSettings.udfFields !== 'undefined') {
     formFields.concat(formSettings.udfFields);
   }
