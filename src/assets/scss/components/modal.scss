@@ -1,0 +1,17 @@
+button.close-button {
+  position: absolute;
+  right: 0.35rem;
+  top: 0;
+}
+
+.reveal {
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.1);
+  border: none;
+  .fa {
+    color: darken($light-gray, 25%);
+    font-size: 1.85rem;
+  }
+  .fa-times-thin:before {
+    content: '\00d7';
+  }
+}
