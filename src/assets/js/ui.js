@@ -1,4 +1,5 @@
 let cardCheckBoxes;
+const modal = $('myModal');
 
 function readMoreLess() {
   let elem = $(this)[0];

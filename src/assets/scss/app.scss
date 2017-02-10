@@ -32,7 +32,7 @@
 //@include foundation-meter-element;
 //@include foundation-slider;
 //@include foundation-sticky;
-//@include foundation-reveal;
+@include foundation-reveal;
 //@include foundation-switch;
 //@include foundation-table;
 @include foundation-tabs;
@@ -57,3 +57,4 @@
 @import 'components/normalize-custom';
 @import 'components/loader';
 @import 'components/form';
+@import 'components/modal';

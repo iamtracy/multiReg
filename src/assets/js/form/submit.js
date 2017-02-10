@@ -1,6 +1,6 @@
 const g_oAjax = new InxpoAJAXObject();
 const g_omessages = {
-  success: '<div><i class="fa fa-check-square" aria-hidden="true"></i> Successfully Registered</div>',
+  success: '<div class="success-message"><i class="fa fa-check-square" aria-hidden="true"></i><span class="select-event event-success caption">Successfully Registered</span></div>',
   submitError: `<div>No Shows Were Selected</div>`
 }
 
@@ -38,6 +38,7 @@ function doRegistration(iRetval, showKey, showPackageKey) {
     const oResponse = EvalResponse(g_oAjax.m_oXMLHTTPReqObj.responseText);
     if ((oResponse.ResultSet[0][0].ShowRegistrationKey != '0')) {
       postUI(showKey);
+      $('#successModal').foundation('open');
     }
   }
 }

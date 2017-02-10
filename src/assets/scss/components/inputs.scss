@@ -86,8 +86,15 @@ label.select-all {
   color: #C8C8C8;
 }
 
-i.fa.fa-check-square {
-  color: #41CC61;
+.success-message {
+  .fa {
+    color: #41CC61;
+    font-size: 1.15rem;
+    margin-right: 0.2rem;
+  }
+  .event-success {
+    vertical-align: initial !important;
+  }
 }
 
 option {
