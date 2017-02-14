@@ -1,26 +1,25 @@
 let cardCheckBoxes;
-const modal = $('myModal');
 
 function readMoreLess() {
-  let elem = $(this)[0];
-  let speakerID = $(elem.dataset.speakerToggler).selector;
+  let elem = $(this);
+  let speakerID = $(elem.data('speakerToggler')).selector;
   let speakerElem = $(`#${speakerID}`);
   speakerElem.toggleClass('hide');
-  if (elem.innerText === "View Speakers") {
-    elem.innerText = "Hide Speakers";
+  if (elem.text() === "View Speakers") {
+    elem.text("Hide Speakers");
   } else {
-    elem.innerText = "View Speakers";
+    elem.text("View Speakers");
   }
 }
 
 function cardClickToSort() {
-  let elem = $(this)[0];
+  let elem = $(this);
   let activeState = $('[data-event-group] .button');
   activeState.removeClass('is-active');
-  $(this).addClass('is-active');
-  if (elem.dataset.status === "live") cardSort('live');
-  if (elem.dataset.status === "upcoming") cardSort('upcoming');
-  if (elem.dataset.status === "ondemand") cardSort('ondemand');
+  elem.addClass('is-active');
+  if (elem.data('status') === "live") cardSort('live');
+  if (elem.data('status') === "upcoming") cardSort('upcoming');
+  if (elem.data('status') === "ondemand") cardSort('ondemand');
 }
 
 function cardSort(type) {
@@ -54,7 +53,6 @@ function checkAll() {
   let selectedListArray;
   if (cardCheckBoxes !== "undefined") {
     selectedListArray = cardCheckBoxes.toArray();
-    console.log(selectedListArray.length);
     if (this.checked) selectedListArray.forEach(item => item.checked = true);
     else selectedListArray.forEach(item => item.checked = false);
     selectionState();
@@ -86,7 +84,6 @@ function selectionState() {
   if (selected.length === selectedListArray.length) {
     $('input[name="selectAll"]').prop('checked', true);
   }
-  console.log(selected);
   return selected;
 }
 
@@ -96,7 +93,6 @@ function inputsChanged() {
     $(this).siblings('.placeholder').removeClass('hide');
   } else {
     $(this).siblings('.placeholder').addClass('hide');
-    console.log('more than 0');
   }
 }
 
@@ -111,8 +107,4 @@ function listeners() {
   inputs.change(inputsChanged)
   cardCheckBoxes = $('input[name="ShowKey"]');
   cardCheckBoxes.change(selectionState);
-}
-
-function trimEmptyPTags() {
-  $('p').filter(function() { return $.trim(this.innerHTML) == "" }).remove();
 }

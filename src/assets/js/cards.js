@@ -130,9 +130,10 @@ function cardContent(item, index, date, speakerData, initLoadStatus) {
                   ${speakerData}
                 </div>
               <div class="button-group">
-                <a class="hollow button primary ${(speakerData.length === 0 ? 'hide' : '')}" type="button" data-speaker-toggler="speaker${index}" data-speaker>
-                  View Speakers
-                </a>
+                <a class="hollow button primary ${(speakerData.length === 0 ? 'hide' : '')}" 
+                  type="button" 
+                  data-speaker-toggler="speaker${index}" 
+                  data-speaker>View Speakers</a>
               </div>
             </div>
           </div>`;

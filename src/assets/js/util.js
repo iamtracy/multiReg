@@ -38,3 +38,13 @@ function getTime(time, timeZone) {
   }
   return `${bigHand}:${littleHand}${amPM}`;
 }
+
+$(document).ready(() => {
+  var date = new Date();
+  var year = date.getFullYear();
+  $('#dynamicYear').html(year);
+});
+
+function trimEmptyPTags() {
+  $('p').filter(function() { return $.trim(this.innerHTML) == "" }).remove();
+}

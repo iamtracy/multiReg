@@ -8,8 +8,21 @@ footer {
       margin-bottom: .7rem;
     }
   }
+  i:last-child {
+    margin-right: 0;
+  }
+  .fa {
+    color: rgba($light-gray, .25);
+    font-size: 1.5rem;
+    padding-top: 1.2rem;
+    margin-right: 1.5rem;
+    transition: color .35s ease-in;
+  }
+  .fa:hover {
+    color: rgba($light-gray, .4)
+  }
   a {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.35);
     margin-right: 1rem;
     @include breakpoint(small down) {
       display: block;

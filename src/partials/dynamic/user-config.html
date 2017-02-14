@@ -4,9 +4,9 @@
   { 
     return {
       // Add Company Key below to display events
-      CompanyKey: 882,
+      CompanyKey: 000,
       // To display specific events, add your filter type between the '' in the variable below. If you leave the variable blank (''), all events will display
-      ShowTypeDesc: 'NutraIngredients',
+      ShowTypeDesc: '',
       // Include your related tenants can be set to true or false
       IncludeRelatedTenants: true,
       // 0 - retrieve all events open now, 7 retrieve all events opening in the next week, 90 retrieve all events opening in the next 90 days
@@ -20,7 +20,8 @@
   {
     return {
       /***** STANDARD FORM FIELDS *****/
-      formFields: [{
+      formFields: [
+        {
           labelText: 'First Name', // Change label above input field
           fieldType: {
             inputElem: 'input',
@@ -29,7 +30,8 @@
           id: 'FirstName',
           name: 'FirstName',
           required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
-        }, {
+        }, 
+        {
           labelText: 'Last Name', // Change label above input field
           fieldType: {
             inputElem: 'input',
@@ -38,7 +40,8 @@
           id: 'LastName',
           name: 'LastName',
           required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
-        }, {
+        }, 
+        {
           labelText: 'Title', // Change label above input field
           fieldType: {
             inputElem: 'input',
@@ -47,7 +50,8 @@
           id: 'JobTitle',
           name: 'JobTitle',
           required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
-        }, {
+        }, 
+        {
           labelText: 'Phone', // Change label above input field
           fieldType: {
             inputElem: 'input',
@@ -56,7 +60,8 @@
           id: 'Phone',
           name: 'Phone',
           required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
-        }, {
+        }, 
+        {
           labelText: 'Company Name', // Change label above input field
           fieldType: {
             inputElem: 'input',
@@ -65,7 +70,8 @@
           id: 'CompanyName',
           name: 'CompanyName',
           required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
-        }, {
+        }, 
+        {
           labelText: 'Address', // Change label above input field
           fieldType: {
             inputElem: 'input',
@@ -74,7 +80,8 @@
           id: 'Address1',
           name: 'Address1',
           required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
-        }, {
+        }, 
+        {
           labelText: 'Unit / Apt. / Suite', // Change label above input field
           fieldType: {
             inputElem: 'input',
@@ -83,7 +90,8 @@
           id: 'Address2',
           name: 'Address2',
           required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
-        }, {
+        }, 
+        {
           labelText: 'City', // Change label above input field
           fieldType: {
             inputElem: 'input',
@@ -92,7 +100,8 @@
           id: 'City',
           name: 'City',
           required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
-        }, {
+        }, 
+        {
           labelText: 'Postal Code', // Change label above input field
           fieldType: {
             inputElem: 'input',
@@ -101,7 +110,8 @@
           id: 'PostalCode',
           name: 'PostalCode',
           required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRED
-        }, {
+        }, 
+        {
           labelText: 'Email Address', // Change label above input field
           fieldType: {
             inputElem: 'input',
@@ -134,7 +144,8 @@
           id: 'StateProv',
           name: 'StateProv',
           required: 'XR' // 'XR' = REQUIRED, '' = NOT REQUIRE
-        }, {
+        }, 
+        {
           labelText: 'Country', // Change label above input field
           fieldType: {
             inputElem: 'select',
@@ -239,10 +250,12 @@
       // }],
       /***** END UDFs *****/
 
-      submit: [{
+      submit: [
+        {
         labelText: 'REGISTER', // Change submit button text
         id: 'RegisterBTN'
-      }]
+        }
+      ]
     }
   }
 </script>
