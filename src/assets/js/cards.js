@@ -96,14 +96,16 @@ function speakerData(data) {
 }
 
 function speakerContent(item) {
-  return `<div class="media-object-section">
-            <div class="thumbnail">
-              <img src="${item.img}" alt="Space">
+  return  `<div class="media-object">
+            <div class="media-object-section">
+              <div class="thumbnail">
+                <img src="${item.img}" alt="Space">
+              </div>
             </div>
-          </div>
-          <div class="media-object-section">
-            <h4>${item.name}</h4>
-            <p>${item.bio}</p>
+            <div class="media-object-section">
+              <h4>${item.name}</h4>
+              <p>${item.bio}</p>
+            </div>
           </div>`;
 }
 

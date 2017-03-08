@@ -1,4 +1,5 @@
 const userSettings = searchSettings();
+const baseURI = 'https://' + window.location.host + '/scripts/';
 
 if (window.location.hostname === 'vts.inxpo.com') {
   function getJSON(url) {
@@ -23,13 +24,9 @@ if (window.location.hostname === 'vts.inxpo.com') {
   }
 
   const ajaxPromise = getJSON(`
-   https://vts.inxpo.com/scripts/
-   Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1550
-   &CompanyKey=${userSettings.CompanyKey}
-   ${userSettings.IncludeRelatedTenants ? '&IncludeRelatedTenants=1' : '&IncludeRelatedTenants=0'}
-   ${'&NumDays='+userSettings.NumDays}
-   ${userSettings.SortBySoonest ? '&SortBySoonest=1' : '&SortBySoonest=0'}
-`);
+   ${baseURI}Server.nxp?LASCmd=AI:4;F:LBSEXPORT!JSON&SQLID=1550&CompanyKey=${userSettings.CompanyKey}
+   ${userSettings.IncludeRelatedTenants ? '&IncludeRelatedTenants=1' : '&IncludeRelatedTenants=0'}${'&NumDays='+userSettings.NumDays}
+   ${userSettings.SortBySoonest ? '&SortBySoonest=1' : '&SortBySoonest=0'}`);
 } else {
   dataInit(mockAjax());
 }

@@ -26,14 +26,16 @@
     border-radius: 3px;
   }
   .thumbnail {
-    float: left;
-    padding: 0 15px 0 0;
+    img {
+      max-width: 90px;
+    }
   }
   .button-group {
     margin: 1.05rem 0;
+    display: flex;
   }
   .media-object-section {
-    margin: 0.4rem 0 2rem;
+    margin-bottom: .2rem;
   }
 }
 
