@@ -1,7 +1,7 @@
 const userSettings = searchSettings();
 const baseURI = 'https://' + window.location.host + '/scripts/';
 
-if (window.location.hostname === 'vts.inxpo.com') {
+if (window.location.hostname != 'localhost') {
   function getJSON(url) {
     return new Promise((resolve, reject) => {
       let xhr = new XMLHttpRequest();
